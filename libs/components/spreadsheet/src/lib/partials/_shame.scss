@@ -1,0 +1,17 @@
+.cdk-spreadsheet,
+.mat-spreadsheet {
+  // bugfix for selects, inputs in spreadsheet
+  .mat-select-value {
+    padding: 3px 0 2px 0;
+  }
+
+  // no clue why
+  .cdk-spreadsheet-collapse {
+    position: relative;
+    inline-size: 100%;
+  }
+
+  .cdk-header-cell span {
+    padding-inline-start: 2px;
+  }
+}

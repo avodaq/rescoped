@@ -1,0 +1,77 @@
+@use '@angular/material' as mat;
+@use '~@rescoped/abstracts-style/palettes' as avo_palettes;
+@use 'sass:map';
+
+@mixin cardStyles {
+  .card {
+    display: flex;
+    flex-direction: column;
+    block-size: 100%;
+    background: white;
+    border-radius: 8px;
+    @media (max-height: 400px) {
+      min-block-size: 320px;
+    }
+  }
+}
+
+@mixin headStyles {
+  .head {
+    display: flex;
+    justify-content: center;
+    padding-block: 1rem;
+    padding-inline: 1rem;
+    //border-block-end: 1px solid avo_palettes.$black-12;
+    @media (min-width: 600px) {
+      justify-content: start;
+      padding-block: 1.5rem;
+    }
+
+    .avo-headline {
+      opacity: 0.6;
+      font-weight: 400;
+      text-align: center;
+      @media (min-width: 600px) {
+        text-align: start;
+      }
+    }
+  }
+}
+
+@mixin bodyStyles {
+  .body {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 1rem;
+    padding-block-end: 1rem;
+    overflow-y: auto;
+  }
+}
+
+@mixin footerStyles {
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 1rem 1rem 1rem;
+    @media (min-width: 600px) {
+      flex-direction: row;
+      align-items: baseline;
+    }
+    .table-row-count {
+      display: flex;
+      justify-content: center;
+      flex-grow: 1;
+      flex-wrap: wrap;
+      opacity: 0.6;
+    }
+  }
+}
+
+@mixin cardDarkTheme {
+  body.dark .card {
+    background: map.get(mat.$blue-grey-palette, 800);
+  }
+}

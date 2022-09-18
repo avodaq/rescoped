@@ -1,0 +1,7 @@
+@mixin option-themed($palette) {
+  @each $key in map-keys($palette) {
+    .mat-#{$key} .mat-option.mat-selected:not(.mat-option-disabled) {
+      color: map-get($palette, $key);
+    }
+  }
+}

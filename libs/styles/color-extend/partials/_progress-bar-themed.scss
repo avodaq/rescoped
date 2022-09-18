@@ -1,0 +1,27 @@
+@mixin progress-bar-themed($palette) {
+  @each $key in map-keys($palette) {
+    .mat-progress-bar[mode='determinate'],
+    .mat-progress-bar[mode='indeterminate'],
+    .mat-progress-bar[mode='query'] {
+      &.mat-#{$key} .mat-progress-bar-background {
+        fill: transparent;
+      }
+
+      &.mat-#{$key} .mat-progress-bar-buffer {
+        background-color: rgba(map-get($palette, $key), 0.4);
+      }
+
+      &.mat-#{$key} .mat-progress-bar-fill::after {
+        background-color: map-get($palette, $key);
+      }
+    }
+  }
+
+  @each $key in map-keys($palette) {
+    .mat-progress-bar[mode='buffer'] {
+      &.mat-#{$key} .mat-progress-bar-background {
+        fill: rgba(map-get($palette, $key), 0.4);
+      }
+    }
+  }
+}

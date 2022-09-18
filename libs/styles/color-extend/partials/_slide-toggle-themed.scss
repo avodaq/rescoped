@@ -1,0 +1,24 @@
+@mixin _checked-color($color) {
+  &.mat-checked {
+    .mat-slide-toggle-thumb {
+      background-color: $color;
+    }
+    .mat-slide-toggle-bar {
+      background: rgba($color, 0.54);
+    }
+
+    .mat-ripple-element {
+      background-color: $color;
+    }
+  }
+}
+
+@mixin slide-toggle-themed($palette) {
+  @each $key in map-keys($palette) {
+    .mat-slide-toggle {
+      &.mat-#{$key} {
+        @include _checked-color(map-get($palette, $key));
+      }
+    }
+  }
+}

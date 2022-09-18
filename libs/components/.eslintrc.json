@@ -1,0 +1,29 @@
+{
+  "extends": ["../../.eslintrc.json", "@rescoped/eslint-config/angular"],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": ["plugin:@nrwl/nx/angular"],
+      "rules": {
+        "@nrwl/nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": ["@rescoped/components/*", "@rescoped/tests/debug"]
+          }
+        ]
+      }
+    },
+    // @todo:
+    // - this can be added to the spreadsheet because its applied there!
+    // - how to apply to a specific inline-template?
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@nrwl/nx/angular-template"],
+      "rules": {
+        "@angular-eslint/template/no-call-expression": 0
+      }
+    }
+  ]
+}

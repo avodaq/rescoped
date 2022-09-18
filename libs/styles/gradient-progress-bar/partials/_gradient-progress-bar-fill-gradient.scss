@@ -1,0 +1,18 @@
+// Gradient Background
+@mixin bg-gradient-light($parent, $gradient) {
+  .mat-progress-bar.gradient-progress-bar.mat-#{$parent} {
+    .mat-progress-bar-fill::after {
+      background: $gradient;
+      filter: saturate(1.35);
+    }
+  }
+}
+// Gradient Background
+@mixin bg-gradient-dark($parent, $gradient) {
+  .mat-progress-bar.gradient-progress-bar.mat-#{$parent} {
+    .mat-progress-bar-fill::after {
+      background: $gradient;
+      filter: saturate(1.35);
+    }
+  }
+}

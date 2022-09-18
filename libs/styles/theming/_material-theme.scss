@@ -1,0 +1,84 @@
+@use '@angular/material' as mat;
+@use '~@angular/material/theming' as mat_palettes;
+@use '~@rescoped/abstracts-style/palettes' as avo_palettes;
+@use 'sass:map';
+
+@include mat.core();
+
+/**
+ * Define corporate palettes
+ */
+
+$avo-primary: mat.$cyan-palette;
+$avo-accent: mat.$deep-purple-palette;
+$mat-warn: mat.$red-palette;
+
+$primary: mat.define-palette($avo-primary);
+$accent: mat.define-palette($avo-accent, A200, A100, A400);
+$warn: mat.define-palette(mat.$red-palette);
+
+/**
+ * Define light theme
+ */
+$avo-light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+  )
+);
+
+/**
+ * Include light theme
+ */
+@include mat.all-component-themes($avo-light-theme);
+
+/**
+ * define custom background-palette for dark theme
+ */
+$avo-dark-theme-background-palette: (
+  status-bar: black,
+  app-bar: map.get(mat.$blue-grey-palette, 800),
+  background: map.get(mat.$blue-grey-palette, 900),
+  hover: rgba(white, 0.04),
+  // TODO(kara): check style with Material Design UX
+  card: map.get(mat.$blue-grey-palette, 800),
+  dialog: map.get(mat.$blue-grey-palette, 800),
+  disabled-button: rgba(200, 225, 255, 0.14),
+  raised-button: map.get(mat.$blue-grey-palette, 800),
+  focused-button: mat_palettes.$light-focused,
+  selected-button: map.get(mat.$blue-grey-palette, 900),
+  selected-disabled-button: map.get(mat.$blue-grey-palette, 800),
+  disabled-button-toggle: black,
+  unselected-chip: map.get(mat.$blue-grey-palette, 700),
+  disabled-list-option: black,
+  tooltip: map.get(mat.$blue-grey-palette, 700),
+);
+
+/**
+ * Implement custom-palette for dark theme
+ */
+@function _avo-create-dark-color-config($primary, $accent, $warn: null) {
+  @return (
+    primary: $primary,
+    accent: $accent,
+    warn: if($warn != null, $warn, mat.define-palette(mat.$red-palette)),
+    is-dark: true,
+    foreground: mat.$dark-theme-foreground-palette,
+    background: $avo-dark-theme-background-palette
+  );
+}
+
+/**
+ * Create custom dark theme
+ */
+$avo-dark-theme: _avo-create-dark-color-config($primary, $accent, $warn);
+
+/**
+ * Include dark Theme
+ */
+.dark {
+  @include mat.all-component-themes($avo-dark-theme);
+}

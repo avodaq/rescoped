@@ -1,0 +1,13 @@
+<svg id="skygrid_waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <style>
+      .e {
+        fill: #9c27b0;
+      }
+    </style>
+  </defs>
+  <g>
+    <path class="e" d="M14.2,44c-2.1-20,13.5-20,11.4-40H11.6C13.7,24-1.9,24,.2,44H14.2Z"/>
+    <path class="e" d="M36.4,44c-2.1-20,13.5-20,11.4-40h-14c2.1,20-13.5,20-11.4,40h14Z"/>
+  </g>
+</svg>

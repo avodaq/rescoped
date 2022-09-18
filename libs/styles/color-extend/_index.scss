@@ -1,0 +1,48 @@
+@use 'sass:map';
+
+@use './partials/badge-themed';
+@use './partials/button-themed';
+@use './partials/checkbox-themed';
+@use './partials/chips-themed';
+@use './partials/datepicker-themed';
+@use './partials/form-field-outline-themed';
+@use './partials/form-field-themed';
+@use './partials/icon-themed';
+@use './partials/input-themed';
+@use './partials/option-themed';
+@use './partials/progress-bar-themed';
+@use './partials/progress-spinner-themed';
+@use './partials/pseudo-checkbox-themed';
+@use './partials/radio-themed';
+@use './partials/select-themed';
+@use './partials/slide-toggle-themed';
+@use './partials/slider-themed';
+@use './partials/stepper-themed';
+@use './partials/toolbar-themed';
+
+@mixin createColorExtension($palette) {
+  //split
+  $palette-no-contrast: map.remove($palette, contrast);
+  $palette-contrast: map.get($palette, contrast);
+
+  // push palettes to automatically create styles
+  @include badge-themed.badge-themed($palette-no-contrast, $palette-contrast);
+  @include button-themed.button-themed($palette-no-contrast, $palette-contrast);
+  @include checkbox-themed.checkbox-themed($palette-no-contrast, $palette-contrast);
+  @include chips-themed.chips-themed($palette-no-contrast, $palette-contrast);
+  @include datepicker-themed.datepicker-themed($palette-no-contrast, $palette-contrast);
+  @include form-field-outline-themed.form-field-outline-themed($palette-no-contrast);
+  @include form-field-themed.form-field-themed($palette-no-contrast);
+  @include icon-themed.icon-themed($palette-no-contrast);
+  @include input-themed.input-themed($palette-no-contrast);
+  @include option-themed.option-themed($palette-no-contrast);
+  @include progress-bar-themed.progress-bar-themed($palette-no-contrast);
+  @include progress-spinner-themed.progress-spinner-themed($palette-no-contrast);
+  @include pseudo-checkbox-themed.pseudo-checkbox-themed($palette-no-contrast);
+  @include radio-themed.radio-themed($palette-no-contrast);
+  @include select-themed.select-themed($palette-no-contrast);
+  @include slide-toggle-themed.slide-toggle-themed($palette-no-contrast);
+  @include slider-themed.slider-themed($palette-no-contrast);
+  @include stepper-themed.stepper-themed($palette-no-contrast, $palette-contrast);
+  @include toolbar-themed.toolbar-themed($palette-no-contrast, $palette-contrast);
+}

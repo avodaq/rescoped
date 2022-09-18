@@ -1,0 +1,23 @@
+body.dark {
+  --scroll-color: 255, 255, 255;
+}
+
+body {
+  --scroll-color: 0, 0, 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--scroll-color), 0.25);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar {
+  --scroll-thickness: 8px;
+  inline-size: var(--scroll-thickness);
+  block-size: var(--scroll-thickness);
+  background-color: rgba(var(--scroll-color), 0.1);
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(var(--scroll-color), 0.1);
+}

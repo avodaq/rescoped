@@ -1,0 +1,13 @@
+$typescale: (
+  /* 98 - 112px */ 'display-4': clamp(6.125rem, 5.625rem + 2.2vw, 7rem),
+  /* 40 -  56px */ 'display-3': clamp(2.5rem, 2rem + 2.5vw, 3.5rem),
+  /* 38 -  46px */ 'display-2': clamp(2.375rem, 2.25rem + 0.95vw, 2.875rem),
+  /* 30 -  34px */ 'display-1': clamp(1.875rem, 1.75rem + 0.65vw, 2.125rem),
+  /* 20 -  24px */ 'headline': clamp(1.25rem, 1.225rem + 0.47vw, 1.5rem),
+  /* 18 -  20px */ 'title': clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem),
+  /* 14 -  16px */ 'subheading-2': clamp(0.875rem, 0.81rem + 0.3vw, 1rem),
+  /* 13 -  15px */ 'subheading-1': clamp(0.813rem, 0.75rem + 0.3vw, 0.94rem),
+  /* 12 -  14px */ 'body': clamp(0.75rem, 0.7rem + 0.3vw, 0.875rem),
+  /* 12px       */ 'button': 0.75rem,
+  /* 12 -  14px */ 'caption': clamp(0.75rem, 0.7rem + 0.3vw, 0.875rem)
+);

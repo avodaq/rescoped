@@ -1,0 +1,9 @@
+@mixin input-themed($palette) {
+  @each $key in map-keys($palette) {
+    .mat-form-field {
+      &.mat-#{$key} .mat-input-element {
+        caret-color: map-get($palette, $key);
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/provider/src",
+  "prefix": "avo",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/provider"],
+      "options": {
+        "project": "libs/provider/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/provider/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/provider/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "libs/provider/src/test.ts",
+        "tsConfig": "libs/provider/tsconfig.spec.json",
+        "karmaConfig": "libs/provider/karma.conf.js"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/provider/src/**/*.ts", "libs/provider/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

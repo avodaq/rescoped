@@ -1,0 +1,12 @@
+// import mixins and variables
+@use '../gradient-progress-bar/index' as gpb;
+@use 'sass:map';
+
+// color config
+@include gpb.bg-gradient-light('cyan-purple', map.get(gpb.$all-gradients, 'cyan-purple'));
+@include gpb.progress-bar-background-light('cyan-purple', gpb.$cyan, gpb.$cyan-lightness);
+// dark theme
+body.dark {
+  @include gpb.bg-gradient-dark('cyan-purple', map.get(gpb.$all-gradients, 'cyan-purple'));
+  @include gpb.progress-bar-background-dark('cyan-purple', gpb.$cyan, gpb.$cyan-lightness);
+}

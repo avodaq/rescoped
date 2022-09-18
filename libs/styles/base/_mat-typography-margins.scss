@@ -1,0 +1,44 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.mat-h1,
+.mat-h2,
+.mat-h3,
+.mat-h4,
+.mat-h5,
+.mat-h6,
+.mat-headline,
+.mat-subheading-1,
+.mat-subheading-2,
+.mat-title,
+.mat-body,
+.mat-body-strong,
+.mat-body-1,
+.mat-body-2,
+p {
+  margin: 0 !important;
+}
+
+.mat-body,
+.mat-body-strong,
+.mat-body-1,
+.mat-body-2 {
+  p {
+    margin: 0 !important;
+  }
+}
+
+.mat-small,
+.mat-caption {
+  margin: 0 !important;
+}
+
+.mat-display-1,
+.mat-display-2,
+.mat-display-3,
+.mat-display-4 {
+  margin: 0 !important;
+}

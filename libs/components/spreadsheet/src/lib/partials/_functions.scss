@@ -1,0 +1,39 @@
+// scss automatically converts hsl to hex color
+// these functions prevent this conversion
+// for use in other files import like so: @use '~@rescoped/abstracts/hsl' as *;
+// then just use hsl(100deg, 100%, 50%) or hsla(100deg, 100%, 50%, 0.5)
+
+@function hsl($args...) {
+  @return #{'hsl(#{$args})'};
+}
+
+@function hsla($args...) {
+  @return hsl($args...);
+}
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+@mixin min-max-width($map) {
+  @each $name, $width in $map {
+    @if length($width) > 2 {
+      @error '#{$name}: Max two values allowed';
+    }
+    @if length($width) > 1 {
+      .cdk-column-#{$name} {
+        min-inline-size: #{nth($width, 1)};
+        max-inline-size: #{nth($width, 2)};
+      }
+    }
+    @if length($width) == 1 {
+      .cdk-column-#{$name} {
+        max-inline-size: #{$width};
+      }
+    }
+  }
+}

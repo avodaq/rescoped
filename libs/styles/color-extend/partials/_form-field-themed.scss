@@ -1,0 +1,26 @@
+@mixin form-field-themed($palette) {
+  @each $key in map-keys($palette) {
+    .mat-form-field.mat-focused {
+      &.mat-#{$key} .mat-form-field-label {
+        color: map-get($palette, $key);
+      }
+    }
+  }
+
+  @each $key in map-keys($palette) {
+    .mat-form-field-type-mat-native-select.mat-focused:not(.mat-form-field-invalid) {
+      &.mat-#{$key} .mat-form-field-infix::after {
+        color: map-get($palette, $key);
+      }
+    }
+  }
+
+  //underline
+  @each $key in map-keys($palette) {
+    .mat-form-field.mat-focused {
+      &.mat-#{$key} .mat-form-field-ripple {
+        background-color: map-get($palette, $key);
+      }
+    }
+  }
+}

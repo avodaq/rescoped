@@ -1,0 +1,11 @@
+@mixin slider-themed($palette) {
+  @each $key in map-keys($palette) {
+    .mat-#{$key} {
+      & .mat-slider-thumb,
+      & .mat-slider-thumb-label,
+      & .mat-slider-track-fill {
+        background-color: map-get($palette, $key);
+      }
+    }
+  }
+}

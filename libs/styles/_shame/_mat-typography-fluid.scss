@@ -1,0 +1,47 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+//$display-4:     define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+//$display-3:     define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+//$display-2:     define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+//$display-1:     define-typography-level(34px, 40px, 400),
+//$headline:      define-typography-level(24px, 32px, 400),
+//$title:         define-typography-level(20px, 32px, 500),
+//$subheading-2:  define-typography-level(16px, 28px, 400),
+//$subheading-1:  define-typography-level(15px, 24px, 400),
+//$body-2:        define-typography-level(14px, 24px, 500),
+//$body-1:        define-typography-level(14px, 20px, 400),
+//$caption:       define-typography-level(12px, 20px, 400),
+//$button:        define-typography-level(14px, 14px, 500),
+
+// 16*0.875
+$scale: (
+  /* 98 - 112px */ 'display-4': clamp(6.13rem, 5.69rem + 2.19vw, 7rem),
+  /* 40 -  56px */ 'display-3': clamp(2.5rem, 2rem + 2.5vw, 3.5rem),
+  /* 39 -  45px */ 'display-2': clamp(2.44rem, 2.25rem + 0.94vw, 2.81rem),
+  /* 30 -  34px */ 'display-1': clamp(1.88rem, 1.75rem + 0.63vw, 2.13rem),
+  /* 20 -  24px */ 'headline': clamp(1.25rem, 1.22rem + 0.47vw, 1.5rem),
+  /* 18 -  20px */ 'title': clamp(1.13rem, 1.06rem + 0.31vw, 1.25rem),
+  /* 14 -  16px */ 'subheading-2': clamp(0.88rem, 0.81rem + 0.31vw, 1rem),
+  /* 13 -  15px */ 'subheading-1': clamp(0.81rem, 0.75rem + 0.31vw, 0.94rem),
+  /* 12 -  14px */ 'body-2': clamp(0.75rem, 0.69rem + 0.31vw, 0.875rem),
+  /* 12 -  14px */ 'body-1': clamp(0.75rem, 0.69rem + 0.31vw, 0.875rem),
+  /* 12px       */ 'button': 12px,
+  /* 12 -  14px */ 'caption': clamp(0.75rem, 0.69rem + 0.31vw, 0.875rem)
+);
+
+$typo-config: mat.define-typography-config(
+  $display-4: mat.define-typography-level(map.get($scale, 'display-4')),
+  $display-3: mat.define-typography-level(map.get($scale, 'display-3')),
+  $display-2: mat.define-typography-level(map.get($scale, 'display-2')),
+  $display-1: mat.define-typography-level(map.get($scale, 'display-1')),
+  $headline: mat.define-typography-level(map.get($scale, 'headline')),
+  $title: mat.define-typography-level(map.get($scale, 'title')),
+  $subheading-2: mat.define-typography-level(map.get($scale, 'subheading-2')),
+  $subheading-1: mat.define-typography-level(map.get($scale, 'subheading-1')),
+  $body-2: mat.define-typography-level(map.get($scale, 'body-2')),
+  $body-1: mat.define-typography-level(map.get($scale, 'body-1')),
+  $button: mat.define-typography-level(map.get($scale, 'button')),
+  $caption: mat.define-typography-level(map.get($scale, 'caption')),
+  //$input: mat.define-typography-level(inherit)
+);

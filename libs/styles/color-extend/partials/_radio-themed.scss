@@ -1,0 +1,21 @@
+@mixin _color($color) {
+  &.mat-radio-checked .mat-radio-outer-circle {
+    border-color: $color;
+  }
+  .mat-radio-inner-circle,
+  .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+  &.mat-radio-checked .mat-radio-persistent-ripple,
+  &:active .mat-radio-persistent-ripple {
+    background-color: $color;
+  }
+}
+
+@mixin radio-themed($palette) {
+  @each $key in map-keys($palette) {
+    .mat-radio-button {
+      &.mat-#{$key}.mat-accent {
+        @include _color(map-get($palette, $key));
+      }
+    }
+  }
+}

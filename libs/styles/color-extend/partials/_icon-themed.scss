@@ -1,0 +1,9 @@
+@mixin icon-themed($palette) {
+  @each $key in map-keys($palette) {
+    .mat-icon {
+      &.mat-#{$key} {
+        color: map-get($palette, $key);
+      }
+    }
+  }
+}

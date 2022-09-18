@@ -1,0 +1,184 @@
+@use './index';
+@use '@angular/material' as mat;
+@use '~@rescoped/theme-style/material-theme' as avo_theme;
+@use './functions' as f;
+@use 'sass:map';
+@use 'sass:color';
+
+$primary-color: map.get(mat.$light-blue-palette, 500) !default;
+$filter-color: map.get(mat.$amber-palette, 500) !default;
+
+$global-color-light: f.tint($primary-color, 20%) !default;
+$global-color-light-hover: f.tint($primary-color, 0%) !default;
+$global-color-dark: f.tint($primary-color, 10%) !default;
+$global-color-dark-hover: f.shade($primary-color, 10%) !default;
+
+$group-color-light: map.get(mat.$grey-palette, 200) !default;
+$group-color-light-hover: map.get(mat.$grey-palette, 300) !default;
+$group-color-dark: map.get(mat.$grey-palette, 600) !default;
+$group-color-dark-hover: map.get(mat.$grey-palette, 700) !default;
+
+$single-color-light-hover: f.tint($primary-color, 85%) !default;
+$single-color-dark-hover: f.shade(color.scale($primary-color, $saturation: -75%), 50%) !default;
+
+$row-height: 38px !default;
+$border-thickness: 8px !default;
+
+$dark-theme-class: 'body.dark' !default;
+
+// last row has border in center
+$empty-row-center-height: calc((#{$row-height} * 0.5 + (#{$border-thickness} * 0.5)) * -1);
+$empty-row-center-erase-height: calc((#{$row-height} * 0.5 - (#{$border-thickness} * 0.5)) * -1);
+$empty-row-center-erase-color-light: white !default;
+$empty-row-center-erase-color-dark: map.get(mat.$blue-grey-palette, 800) !default;
+
+.mat-row {
+  &.cdk-spreadsheet-global-edit {
+    background-color: $global-color-light;
+  }
+
+  &.cdk-spreadsheet-group-edit {
+    background-color: $group-color-light;
+  }
+
+  &.cdk-spreadsheet-single-edit {
+    box-shadow: inset $border-thickness 0 0 0 $group-color-light;
+  }
+
+  &.cdk-spreadsheet-filter {
+    background-color: $filter-color;
+  }
+
+  &.cdk-spreadsheet-empty {
+    box-shadow: inset $border-thickness 0 0 0 $group-color-light,
+      inset 0 ($border-thickness * -1) 0 0 $group-color-light;
+  }
+}
+
+// spreadsheet border on row-hover light
+.rows-hover .mat-row:hover {
+  &.cdk-spreadsheet-global-edit {
+    background-color: $global-color-light-hover;
+  }
+
+  &.cdk-spreadsheet-group-edit {
+    background-color: $group-color-light-hover;
+  }
+
+  &.cdk-spreadsheet-single-edit {
+    background-color: $single-color-light-hover;
+    box-shadow: inset $border-thickness 0 0 0 $group-color-light-hover;
+  }
+
+  &.cdk-spreadsheet-empty {
+    box-shadow: inset $border-thickness 0 0 0 $group-color-light-hover,
+      inset 0 ($border-thickness * -1) 0 0 $group-color-light-hover;
+    background-color: $single-color-light-hover;
+  }
+}
+
+// empty-row center light
+.empty-row-center .mat-row {
+  &.cdk-spreadsheet-empty {
+    box-shadow: inset 0 $empty-row-center-erase-height 0 0 $empty-row-center-erase-color-light,
+      inset 0 $empty-row-center-height 0 0 $group-color-light,
+      inset $border-thickness 0 0 0 $group-color-light;
+  }
+}
+
+// empty-row center light:hover
+.empty-row-center .mat-row:hover {
+  &.cdk-spreadsheet-empty {
+    box-shadow: inset 0 $empty-row-center-erase-height 0 0 $single-color-light-hover,
+      inset 0 $empty-row-center-height 0 0 $group-color-light-hover,
+      inset $border-thickness 0 0 0 $group-color-light-hover;
+  }
+}
+
+//
+//
+//
+//
+//
+// Dark Theme
+
+#{$dark-theme-class} {
+  .mat-row {
+    &.cdk-spreadsheet-global-edit {
+      background-color: $global-color-dark;
+    }
+
+    &.cdk-spreadsheet-group-edit {
+      background-color: $group-color-dark;
+    }
+
+    &.cdk-spreadsheet-single-edit {
+      box-shadow: inset $border-thickness 0 0 0 $group-color-dark;
+    }
+
+    &.cdk-spreadsheet-filter {
+      background-color: $filter-color;
+    }
+
+    &.cdk-spreadsheet-empty {
+      box-shadow: inset $border-thickness 0 0 0 $group-color-dark,
+        inset 0 ($border-thickness * -1) 0 0 $group-color-dark;
+    }
+  }
+
+  // spreadsheet border on row-hover dark
+  .rows-hover .mat-row:hover {
+    &.cdk-spreadsheet-global-edit {
+      background-color: $global-color-dark-hover;
+    }
+
+    &.cdk-spreadsheet-group-edit {
+      background-color: $group-color-dark-hover;
+    }
+
+    &.cdk-spreadsheet-single-edit {
+      background-color: $single-color-dark-hover;
+      box-shadow: inset $border-thickness 0 0 0 $group-color-dark-hover;
+    }
+
+    &.cdk-spreadsheet-empty {
+      box-shadow: inset $border-thickness 0 0 0 $group-color-dark-hover,
+        inset 0 ($border-thickness * -1) 0 0 $group-color-dark-hover;
+      background-color: $single-color-dark-hover;
+    }
+  }
+
+  // empty-row center dark
+  .empty-row-center .mat-row {
+    &.cdk-spreadsheet-empty {
+      box-shadow: inset 0 $empty-row-center-erase-height 0 0 $empty-row-center-erase-color-dark,
+        inset 0 $empty-row-center-height 0 0 $group-color-dark,
+        inset $border-thickness 0 0 0 $group-color-dark;
+    }
+  }
+
+  // empty-row center dark:hover
+  .empty-row-center .mat-row:hover {
+    &.cdk-spreadsheet-empty {
+      box-shadow: inset 0 $empty-row-center-erase-height 0 0 $single-color-dark-hover,
+        inset 0 $empty-row-center-height 0 0 $group-color-dark-hover,
+        inset $border-thickness 0 0 0 $group-color-dark-hover;
+    }
+  }
+}
+
+// todo: Please think about this class-scheme instead group-edit etc.
+//.cdk-spreadsheet-row-global {
+//}
+//
+//.cdk-spreadsheet-row-group {
+//}
+//
+//.cdk-spreadsheet-row-child {
+//}
+//
+//.cdk-spreadsheet-row-single {
+//}
+//
+//.cdk-spreadsheet-row-filter {
+//}

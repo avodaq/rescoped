@@ -1,0 +1,71 @@
+// [Description] base overwrites and general styles for spreadsheet
+
+.cdk-spreadsheet,
+.mat-spreadsheet {
+  // dense header row
+  mat-header-row {
+    min-height: 2.5rem;
+  }
+
+  // remove height from rows
+  mat-row,
+  mat-footer-row {
+    min-block-size: 38px;
+  }
+
+  .mat-spreadsheet-combobox,
+  .mat-spreadsheet-datepicker,
+  .mat-spreadsheet-input,
+  .mat-spreadsheet-select {
+    inline-size: 100%;
+  }
+
+  // form-fields should grow
+  .cdk-row,
+  .mat-form-field {
+    inline-size: 100%;
+  }
+
+  // remove min-width of 180px from inputs
+  .mat-form-field-infix {
+    inline-size: auto;
+  }
+
+  // remove padding below form-fields
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    padding-block-end: 0;
+  }
+}
+
+// [BUGFIX] Icon in dropdown
+.cdk-spreadsheet,
+.mat-spreadsheet {
+  .add-item-icon {
+    transform: translateY(0.125rem);
+  }
+}
+
+.cdk-spreadsheet,
+.mat-spreadsheet {
+  // [BUGFIX] for focus ring
+  .cdk-cell:focus,
+  .mat-cell:focus {
+    outline: none;
+  }
+
+  // [BUGFIX] for focus-visible ring
+  .cdk-cell:focus-visible,
+  .mat-cell:focus-visible {
+    outline: none;
+  }
+}
+
+.cdk-spreadsheet,
+.mat-spreadsheet {
+  .mat-input-element {
+    block-size: 27px;
+  }
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    border-radius: 4px;
+  }
+}

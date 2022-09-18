@@ -1,0 +1,4 @@
+{
+  "extends": ["../../.eslintrc.json", "@rescoped/eslint-config/angular"],
+  "ignorePatterns": ["!**/*"]
+}

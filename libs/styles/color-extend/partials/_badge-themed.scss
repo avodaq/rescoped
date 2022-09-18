@@ -1,0 +1,8 @@
+@mixin badge-themed($palette, $palette-contrast) {
+  @each $key in map-keys($palette) {
+    .mat-#{$key} .mat-badge-content {
+      background: map-get($palette, $key);
+      color: map-get($palette-contrast, $key);
+    }
+  }
+}

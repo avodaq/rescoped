@@ -1,0 +1,10 @@
+@mixin pseudo-checkbox-themed($palette) {
+  @each $key in map-keys($palette) {
+    .mat-#{$key} {
+      &.mat-pseudo-checkbox-checked,
+      .mat-pseudo-checkbox-indeterminate {
+        background: map-get($palette, $key);
+      }
+    }
+  }
+}

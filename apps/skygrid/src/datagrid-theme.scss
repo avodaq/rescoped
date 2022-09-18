@@ -1,0 +1,12 @@
+@use '~@rescoped/datagrid-theme/functions' as f;
+@use 'sass:map';
+
+$skygrid-color: #9c27b0;
+
+@use '~@rescoped/datagrid-theme/theme' with (
+  $primary-color: $skygrid-color,
+  $global-color-light: $skygrid-color,
+  $global-color-light-hover: f.tint($skygrid-color, 15%),
+  $global-color-dark: $skygrid-color,
+  $global-color-dark-hover: f.shade($skygrid-color, 10%)
+);

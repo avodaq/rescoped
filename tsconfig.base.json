@@ -1,0 +1,37 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strict": true,
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2019", "dom"],
+    "typeRoots": ["node_modules/@types"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "stripInternal": true,
+    "baseUrl": ".",
+    "paths": {
+      "@rescoped/components/*": ["libs/components/*"],
+      "@rescoped/directives/*": ["libs/directives/*"],
+      "@rescoped/provider": ["libs/provider/src/index.ts"],
+      "@rescoped/services/*": ["libs/services/*"]
+    }
+  },
+  "angularCompilerOptions": {
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "strictNullInputTypes": false,
+    "preserveSymlinks": true
+  },
+  "exclude": ["node_modules", "tmp"]
+}

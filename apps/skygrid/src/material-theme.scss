@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+
+$skygrid-primary: mat.define-palette(mat.$purple-palette, 500);
+$skygrid-accent: mat.define-palette(mat.$yellow-palette, A200, A100, A400);
+$skygrid-warn: mat.define-palette(mat.$red-palette);
+
+$skygrid-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $skygrid-primary,
+      accent: $skygrid-accent,
+      warn: $skygrid-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($skygrid-theme);
+
+.dark {
+  @include mat.all-component-themes($skygrid-theme);
+}

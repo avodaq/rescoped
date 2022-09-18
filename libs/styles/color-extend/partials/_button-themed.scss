@@ -1,0 +1,13 @@
+@mixin button-themed($palette, $palette-contrast) {
+  @each $key in map-keys($palette) {
+    .mat-flat-button,
+    .mat-raised-button,
+    .mat-fab,
+    .mat-mini-fab {
+      &.mat-#{$key} {
+        background-color: map-get($palette, $key);
+        color: map-get($palette-contrast, $key);
+      }
+    }
+  }
+}

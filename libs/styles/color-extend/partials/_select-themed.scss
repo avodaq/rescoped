@@ -1,0 +1,9 @@
+@mixin select-themed($palette) {
+  @each $key in map-keys($palette) {
+    .mat-form-field.mat-focused {
+      &.mat-#{$key} .mat-select-arrow {
+        color: map-get($palette, $key);
+      }
+    }
+  }
+}

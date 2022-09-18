@@ -1,0 +1,10 @@
+@mixin progress-spinner-themed($palette) {
+  @each $key in map-keys($palette) {
+    .mat-progress-spinner,
+    .mat-spinner {
+      &.mat-#{$key} circle {
+        stroke: map-get($palette, $key);
+      }
+    }
+  }
+}

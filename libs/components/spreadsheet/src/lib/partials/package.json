@@ -1,0 +1,16 @@
+{
+  "name": "SreadsheetStyles",
+  "version": "1.0.0",
+  "description": "This package is to be installed and shared as local dependency",
+  "main": "_index.scss",
+  "keywords": [
+    "scss",
+    "avodaq",
+    "arthur"
+  ],
+  "author": "Arthur Ersosi",
+  "license": "MIT",
+  "files": [
+    "_index.scss"
+  ]
+}

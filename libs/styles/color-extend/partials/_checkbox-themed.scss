@@ -1,0 +1,21 @@
+@mixin checkbox-themed($palette, $palette-contrast) {
+  @each $key in map-keys($palette) {
+    .mat-checkbox-indeterminate,
+    .mat-checkbox-checked {
+      &.mat-#{$key} .mat-checkbox-background {
+        background-color: map-get($palette, $key);
+
+        & .mat-checkbox-checkmark-path {
+          stroke: map-get($palette-contrast, $key) !important;
+        }
+      }
+    }
+    // Checkbox ripples
+    .mat-checkbox-checked:not(.mat-checkbox-disabled),
+    .mat-checkbox:active:not(.mat-checkbox-disabled) {
+      &.mat-#{$key} .mat-ripple-element {
+        background: map-get($palette, $key);
+      }
+    }
+  }
+}

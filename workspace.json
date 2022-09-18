@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "projects": {
+    "components": "libs/components",
+    "directives": "libs/directives",
+    "provider": "libs/provider",
+    "services": "libs/services",
+    "skygrid": "apps/skygrid"
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
+}

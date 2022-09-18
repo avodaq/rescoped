@@ -1,0 +1,28 @@
+@use '~@rescoped/abstracts-style/helpers' as helpers;
+@use 'material-theme';
+@use 'datagrid-theme';
+
+$columns-min: (
+  'date': '8rem',
+  'airline': '8rem',
+  'flightNumber': '8rem',
+  'status': '8rem',
+  'origin': '8rem',
+  'destination': '8rem',
+  'duration': '5.5rem',
+  'estArrival': '4rem',
+  'estDeparture': '4rem',
+  'terminal': '4rem',
+  'gate': '4rem',
+);
+@include helpers.min-width($columns-min);
+
+$columns-max: (
+  'date': '11rem',
+  'duration': '8.5rem',
+  'estArrival': '7rem',
+  'estDeparture': '7rem',
+  'terminal': '7rem',
+  'gate': '7rem',
+);
+@include helpers.max-width($columns-max);

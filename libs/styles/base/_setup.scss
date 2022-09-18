@@ -1,0 +1,36 @@
+@use '@angular/material' as mat;
+@use '~@rescoped/theme-style/material-theme' as avo_theme;
+@use 'sass:map';
+
+$avo-primary: map.get(avo_theme.$avo-primary, 500);
+$avo-accent: map.get(avo_theme.$avo-accent, 500);
+/*
+ * apply a natural box layout model to all elements, but allowing components to change
+ * @url https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  block-size: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  background: map.get(avo_theme.$avo-primary, 50);
+}
+
+body.dark {
+  background: map.get(mat.$blue-grey-palette, 900);
+  color: white;
+}

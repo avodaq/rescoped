@@ -1,0 +1,38 @@
+@use '~@rescoped/theme-style/material-theme' as avo_theme;
+@use 'sass:map';
+
+$avo-primary: map.get(avo_theme.$avo-primary, 500);
+$avo-accent: map.get(avo_theme.$avo-accent, 500);
+
+a[target='blank']::after,
+a[target='_blank']::after {
+  font-family: 'Material Icons', fantasy;
+  content: '\e89e'; // open_in_new icon
+  position: relative;
+  inset-block-start: 0.15rem;
+  inset-inline-end: -0.15rem;
+}
+
+@mixin textLink() {
+  color: map.get(avo_theme.$avo-primary, 500);
+  font-weight: 500;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset-block-end: -2px;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    block-size: 2px;
+    background-color: map.get(avo_theme.$avo-primary, 500);
+    transform-origin: bottom right;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+
+  &:hover:before {
+    transform-origin: bottom left;
+    transform: scaleX(1);
+  }
+}

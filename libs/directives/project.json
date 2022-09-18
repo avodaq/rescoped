@@ -1,0 +1,46 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/directives/src",
+  "prefix": "avo",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/directives"],
+      "options": {
+        "project": "libs/directives/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/directives/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/directives/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "libs/directives/src/test.ts",
+        "tsConfig": "libs/directives/tsconfig.spec.json",
+        "karmaConfig": "libs/directives/karma.conf.js"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/directives/src/**/*.ts",
+          "libs/directives/src/**/*.html",
+          "libs/directives/color-extend/**/*.ts",
+          "libs/directives/color-extend/**/*.html",
+          "libs/directives/gradient-progress-bar/**/*.ts",
+          "libs/directives/gradient-progress-bar/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

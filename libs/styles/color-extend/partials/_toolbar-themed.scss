@@ -1,0 +1,10 @@
+@mixin toolbar-themed($palette, $palette-contrast) {
+  @each $key in map-keys($palette) {
+    .mat-toolbar {
+      &.mat-#{$key} {
+        background-color: map-get($palette, $key);
+        color: map-get($palette-contrast, $key);
+      }
+    }
+  }
+}

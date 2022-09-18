@@ -1,0 +1,74 @@
+@use './palettes' as palettes;
+
+// [BUGFIX] collapse-icon wrong position
+.cdk-spreadsheet,
+.mat-spreadsheet {
+  .cdk-spreadsheet-collapse-icon {
+    user-select: none; // avoid selecting collapsed icon
+    position: absolute;
+    inset-block-start: 0.25rem;
+    inset-inline-start: -1.5rem;
+    transition: color 0.25s ease;
+
+    .global-edit {
+      display: flex;
+      align-items: center;
+      color: white;
+
+      .description {
+        font-weight: bold;
+        padding: 0 10.5px;
+      }
+    }
+  }
+
+  .cdk-spreadsheet-collapse-icon {
+    color: palettes.$black-24;
+  }
+
+  .cdk-spreadsheet-collapse-icon:hover {
+    color: palettes.$black-84;
+  }
+
+  .cdk-spreadsheet-collapse-icon .group-edit {
+    cursor: pointer;
+  }
+}
+
+body.dark {
+  .cdk-spreadsheet,
+  .mat-spreadsheet {
+    .cdk-spreadsheet-global-icon {
+      color: palettes.$white-48;
+      pointer-events: none;
+    }
+
+    .cdk-spreadsheet-collapse-icon {
+      cursor: pointer;
+      color: palettes.$white-36;
+    }
+
+    .cdk-spreadsheet-collapse-icon:hover {
+      color: palettes.$white-84;
+    }
+  }
+}
+
+// [BUGFIX] collapse-icon not visible outside of parent element
+.cdk-spreadsheet,
+.mat-spreadsheet {
+  .mat-cell,
+  .cdk-cell {
+    overflow: visible;
+  }
+}
+
+// [BUGFIX] padding for icon
+.cdk-spreadsheet,
+.mat-spreadsheet {
+  &.rows-grouping {
+    .mat-row .mat-cell:first-child {
+      padding-inline-start: 2rem;
+    }
+  }
+}
