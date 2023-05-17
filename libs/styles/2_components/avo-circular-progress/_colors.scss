@@ -1,0 +1,25 @@
+@use 'mixins';
+@use 'variables' as vars;
+
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin avo-circular-progress-colors($mat-theme) {
+  $color-config: mat.get-color-config($mat-theme);
+  $primary: map.get(map.get($color-config, 'primary'), 500);
+  $accent: map.get(map.get($color-config, 'accent'), 500);
+  $warn: map.get(map.get($color-config, 'warn'), 500);
+
+  .#{vars.$comp-name} {
+    @include mixins.spinner-color();
+  }
+  .#{vars.$comp-name}[color='primary'] {
+    @include mixins.spinner-color($primary);
+  }
+  .#{vars.$comp-name}[color='accent'] {
+    @include mixins.spinner-color($accent);
+  }
+  .#{vars.$comp-name}[color='warn'] {
+    @include mixins.spinner-color($warn);
+  }
+}

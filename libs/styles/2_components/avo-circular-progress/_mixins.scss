@@ -1,0 +1,16 @@
+@use 'variables' as vars;
+
+@mixin spinner-density($height: 24px) {
+  .#{vars.$comp-name} {
+    .progress-svg {
+      width: auto;
+      height: $height;
+    }
+  }
+}
+
+@mixin spinner-color($color: black) {
+  .progress-svg .progress-circle {
+    stroke: $color;
+  }
+}

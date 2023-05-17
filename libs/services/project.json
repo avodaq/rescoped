@@ -1,12 +1,13 @@
 {
+  "name": "services",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/services/src",
+  "sourceRoot": "libs/services",
   "prefix": "avo",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/services"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
         "project": "libs/services/ng-package.json"
       },
@@ -23,25 +24,17 @@
     "test": {
       "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "main": "libs/services/src/test.ts",
         "tsConfig": "libs/services/tsconfig.spec.json",
         "karmaConfig": "libs/services/karma.conf.js",
-        "assets": ["libs/services/src/mockServiceWorker.js"]
+        "assets": [],
+        "polyfills": ["zone.js", "zone.js/testing"]
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/services/src/**/*.ts",
-          "libs/services/src/**/*.html",
-          "libs/services/context-loader-manager/**/*.ts",
-          "libs/services/context-loader-manager/**/*.html",
-          "libs/services/http-client/**/*.ts",
-          "libs/services/http-client/**/*.html",
-          "libs/services/theme-store/**/*.ts",
-          "libs/services/theme-store/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/services/**/*.ts", "libs/services/**/*.html"]
       }
     }
   },

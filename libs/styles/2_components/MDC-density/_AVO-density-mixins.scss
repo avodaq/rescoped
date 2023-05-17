@@ -1,0 +1,26 @@
+@mixin AVO-fake-input-densities() {
+  .density-lg {
+    .cdk-default-field,
+    .cdk-default-date-field {
+      block-size: #{56px - 5 * 4};
+    }
+  }
+  .density-md {
+    .cdk-default-field,
+    .cdk-default-date-field {
+      block-size: #{56px - 6 * 4};
+    }
+  }
+  .density-sm {
+    .cdk-default-field,
+    .cdk-default-date-field {
+      block-size: #{56px - 7 * 4};
+    }
+  }
+  .density-xs {
+    .cdk-default-field,
+    .cdk-default-date-field {
+      block-size: #{56px - 8 * 4};
+    }
+  }
+}

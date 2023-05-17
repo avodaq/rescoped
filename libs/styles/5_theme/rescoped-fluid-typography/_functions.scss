@@ -1,0 +1,35 @@
+@use 'sass:math';
+
+@function expInt($x, $min: 10, $max: 96, $steps: 12, $round: true) {
+  // natural exponential interpolation between 10px and 96px
+  $result: $min * (math.pow(($max / $min), ($x - 1)/ ($steps - 1)));
+  @if $round {
+    @return math.round($result);
+  } @else {
+    @return $result;
+  }
+}
+
+@function px-to-rem($px) {
+  @return #{math.div($px, 16)}rem;
+}
+
+@function scale-by-factor($px, $factor: 1.15, $round: true) {
+  // scale value by 1.15
+  @if $round {
+    @return math.round($px * $factor);
+  } @else {
+    @return $px * $factor;
+  }
+}
+
+@function clamp-size($browser-min, $browser-max, $font-min, $font-max) {
+  $factor: 1 / ($browser-max - $browser-min) * ($font-max - $font-min);
+  $calc-value: unquote('#{ $font-min - ($browser-min * $factor) }px + #{ 100vw * $factor } ');
+
+  @return clamp(
+    #{if($font-min > $font-max, #{$font-max}px, #{$font-min}px)},
+    #{$calc-value},
+    #{if($font-min > $font-max, #{$font-min}px, #{$font-max}px)}
+  );
+}

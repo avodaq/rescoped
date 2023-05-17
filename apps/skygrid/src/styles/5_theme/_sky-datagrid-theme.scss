@@ -1,0 +1,7 @@
+@use '@rescoped/styles/0_abstracts/functions' as f;
+@use 'sass:map';
+@use '../0_abstracts/variables' as v;
+
+@use '@rescoped/styles/2_components/datagrid-styles' with (
+  $primary-color: v.$primary-color
+);

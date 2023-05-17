@@ -1,0 +1,9 @@
+@use 'colors';
+@use 'density';
+@use 'base';
+
+@mixin avo-circular-progress($mat-theme: 'lol') {
+  @include colors.avo-circular-progress-colors($mat-theme);
+  @include density.avo-circular-progress-densities;
+  @include base.avo-circular-progress-theme;
+}

@@ -1,0 +1,70 @@
+@use '@rescoped/styles/0_abstracts/functions' as f;
+@use 'sass:string';
+
+@mixin gradient-linear-progress-config(
+  $color-start: red,
+  $color-end: blue,
+  $color-center: 'n0pe',
+  $color-buffer: 'n0pe',
+  $saturate: 'n0pe',
+  $direction: right,
+  $unique-selector: 'n0pe'
+) {
+  // $color-start, $color-end, $color-center, $color-buffer == color
+  @if f.is-color($color-start) == false {
+    @warn "Warn: Value '$color-start: #{$color-start}' is data-type #{type-of($color-start)} but must be a valid color.";
+  }
+  @if f.is-color($color-end) == false {
+    @warn "Warn: Value '$color-end: #{$color-end}' is data-type #{type-of($color-end)} but must be a valid color.";
+  }
+  @if $color-center != 'n0pe' and f.is-color($color-center) == false {
+    @warn "Warn: Value '$color-center: #{$color-center}' is data-type #{type-of($color-center)} but must be a valid color.";
+  }
+  @if $color-buffer != 'n0pe' and f.is-color($color-buffer) == false {
+    @warn "Warn: Value '$color-buffer: #{$color-buffer}' is data-type #{type-of($color-buffer)} but must be a valid color.";
+  }
+  // $saturate == number
+  @if $saturate != 'n0pe' and f.is-number($saturate) == false {
+    @warn "Warn: Value '$saturate: #{$saturate}' is data-type #{type-of($saturate)} and must be a number.";
+  }
+  // $direction == left or right and string
+  @if f.is-left-right($direction) == false {
+    @warn "Warn: Value '$direction: #{$direction}' is data-type #{type-of($direction)} and must be a string of left or right.";
+  }
+
+  // $unique-selector == valid selector and string
+  @if $unique-selector != 'n0pe' and f.is-selector($unique-selector) == false {
+    @warn "Warn: Value '$unique-selector: #{$unique-selector}' is data-type #{type-of($unique-selector)} and must be a string and a valid css selector.";
+  }
+
+  // $unique-selector = default value -> '' is passed to #{$unique-selector}
+  @if $unique-selector == 'n0pe' {
+    $unique-selector: '';
+  }
+
+  .mat-mdc-progress-bar[gradient-linear-progress]#{$unique-selector} {
+    .mdc-linear-progress__bar-inner {
+      border-image-slice: 1;
+      $border-image-source: if(
+        $color-center != 'n0pe',
+        linear-gradient(to $direction, $color-start, $color-center, $color-end),
+        linear-gradient(to $direction, $color-start, $color-end)
+      );
+      border-image-source: $border-image-source;
+
+      @if $saturate != 'n0pe' and f.is-number($saturate) {
+        filter: saturate($saturate);
+      }
+    }
+
+    $background-color: rgba(if($color-buffer != 'n0pe', $color-buffer, $color-start), 0.25);
+
+    .mdc-linear-progress__buffer-bar {
+      background-color: $background-color;
+    }
+
+    .mdc-linear-progress__buffer-dots {
+      background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='#{$background-color}' /%3E%3C/svg%3E");
+    }
+  }
+}

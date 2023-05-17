@@ -1,0 +1,165 @@
+@use '@angular/material' as mat;
+
+@mixin MDC-form-field-densities() {
+  .density-lg {
+    @include mat.private-form-field-density(-5);
+    .mat-mdc-form-field-input-control.mat-mdc-form-field-input-control {
+      font-size: 16px;
+    }
+  }
+  .density-md {
+    @include mat.private-form-field-density(-6);
+    .mat-mdc-form-field-input-control.mat-mdc-form-field-input-control {
+      font-size: 15.25px;
+    }
+  }
+  .density-sm {
+    @include mat.private-form-field-density(-7);
+    .mat-mdc-form-field-input-control.mat-mdc-form-field-input-control {
+      font-size: 14.75px;
+    }
+  }
+  .density-xs {
+    @include mat.private-form-field-density(-8);
+    .mat-mdc-form-field-input-control.mat-mdc-form-field-input-control {
+      font-size: 14px;
+    }
+  }
+}
+
+@mixin MDC-icon-button-densities() {
+  .density-lg {
+    @include mat.icon-button-density(-3);
+  }
+  .density-md {
+    @include mat.icon-button-density(-4);
+
+    $size: 22px;
+
+    .mat-mdc-icon-button {
+      svg,
+      img {
+        width: $size;
+        height: $size;
+      }
+    }
+
+    .mat-icon {
+      font-size: $size;
+      line-height: $size + 2;
+    }
+  }
+  .density-sm {
+    @include mat.icon-button-density(-5);
+
+    $size: 20px;
+
+    .mat-mdc-icon-button svg,
+    .mat-mdc-icon-button {
+      svg,
+      img {
+        width: $size;
+        height: $size;
+      }
+    }
+
+    .mat-icon {
+      font-size: $size;
+      line-height: $size + 4;
+    }
+  }
+  .density-xs {
+    @include mat.icon-button-density(-6);
+
+    $size: 18px;
+    .mat-mdc-icon-button {
+      svg,
+      img {
+        width: $size;
+        height: $size;
+      }
+    }
+
+    .mat-icon {
+      font-size: $size;
+      line-height: $size + 6;
+    }
+  }
+}
+
+@mixin MDC-button-densities() {
+  .density-lg {
+    @include mat.button-density(0);
+  }
+  .density-md {
+    @include mat.button-density(-1);
+    $size: 22px;
+    .mat-icon {
+      font-size: $size;
+    }
+  }
+  .density-sm {
+    @include mat.button-density(-2);
+
+    $size: 20px;
+    .mat-icon {
+      font-size: $size;
+    }
+  }
+  .density-xs {
+    @include mat.button-density(-3);
+
+    $size: 18px;
+    .mat-icon {
+      font-size: $size;
+    }
+  }
+}
+
+@mixin MDC-table-densities() {
+  .density-lg {
+    @include mat.table-density(0);
+  }
+  .density-md {
+    @include mat.table-density(-1.5);
+  }
+  .density-sm {
+    @include mat.table-density(-3);
+  }
+  .density-xs {
+    @include mat.table-density(-4.5);
+  }
+}
+
+@mixin MDC-checkbox-densities() {
+  .density-lg {
+    @include mat.checkbox-density(0);
+  }
+  .density-md {
+    @include mat.checkbox-density(-1);
+
+    .mdc-checkbox__background {
+      width: 17px;
+      height: 17px;
+      inset: 5.5px !important;
+    }
+  }
+  .density-sm {
+    @include mat.checkbox-density(-2);
+
+    .mdc-checkbox__background {
+      width: 16px;
+      height: 16px;
+      inset: 6px !important;
+    }
+  }
+  .density-xs {
+    @include mat.checkbox-density(-3);
+
+    .mdc-checkbox__background {
+      width: 15px;
+      height: 15px;
+      inset: 6.5px !important;
+    }
+  }
+}

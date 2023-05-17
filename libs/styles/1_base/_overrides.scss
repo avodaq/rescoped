@@ -1,0 +1,27 @@
+// todo: the content of this file should be app specific and not imported generally
+
+//// remove focus on click
+//button:focus {
+//  outline: none;
+//}
+//
+//// keep focus on keyboard tab
+//button:focus-visible {
+//  outline: 5px auto -webkit-focus-ring-color;
+//}
+//
+//// fixed card-actions padding
+//.mat-card-actions.avo-card-actions {
+//  margin-inline-start: 0;
+//  margin-inline-end: 0;
+//}
+//
+//.mat-card > .mat-card-actions.avo-card-actions:last-child {
+//  margin-block-end: 0;
+//}
+//
+//// select-page service dropdown
+//.mat-select-panel .mat-option.styled-option {
+//  block-size: initial;
+//}
+//

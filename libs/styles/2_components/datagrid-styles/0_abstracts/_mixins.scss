@@ -1,0 +1,45 @@
+@mixin header-font-size($size, $selector: '') {
+  #{$selector}.mdc-data-table__header-cell {
+    font-size: #{$size};
+  }
+}
+
+@mixin column-spacing-x($size, $selector: '') {
+  #{$selector}.mdc-data-table__cell,
+  #{$selector}.mdc-data-table__header-cell {
+    padding: 0 $size 0 $size;
+  }
+}
+
+@mixin input-padding-x($size, $selector: '') {
+  #{$selector}.mdc-text-field {
+    padding: 0 $size;
+  }
+}
+
+@mixin fake-input-padding-x($size, $selector: '') {
+  #{$selector}.cdk-default-field:not(.disabled),
+  #{$selector}.cdk-default-date-field:not(.disabled) {
+    padding: 0 $size;
+  }
+}
+
+@mixin fake-input-font-size($size, $selector: '') {
+  #{$selector}.cdk-default-field,
+  #{$selector}.cdk-default-date-field {
+    font-size: $size;
+  }
+}
+
+@mixin outline-input-bg-color($bg, $selector: '') {
+  #{$selector}.mat-mdc-text-field-wrapper {
+    background-color: $bg;
+  }
+}
+
+@mixin fake-input-bg-color($bg, $selector: '') {
+  #{$selector}.cdk-default-field:not(.disabled),
+  #{$selector}.cdk-default-date-field:not(.disabled) {
+    background-color: $bg;
+  }
+}

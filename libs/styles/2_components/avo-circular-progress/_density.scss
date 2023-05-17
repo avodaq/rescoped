@@ -1,0 +1,20 @@
+@use 'mixins' as mix;
+
+@mixin avo-circular-progress-densities() {
+  @include mix.spinner-density();
+
+  .density-lg {
+    @include mix.spinner-density(24px);
+  }
+  .density-md {
+    @include mix.spinner-density(22px);
+  }
+  .density-sm {
+    @include mix.spinner-density(20px);
+  }
+  .density-xs {
+    @include mix.spinner-density(18px);
+  }
+}
+
+@include avo-circular-progress-densities();

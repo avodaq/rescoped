@@ -1,0 +1,55 @@
+@use '../0_abstracts/mixins' as m;
+
+// MDC overwrites and general styles for datagrid
+
+.re-datagrid {
+  mat-row,
+  mat-footer-row,
+  mat-header-row {
+    min-height: auto;
+  }
+
+  // make elements grow horizontally
+  .mat-datagrid-combobox,
+  .mat-datagrid-datepicker,
+  .mat-datagrid-input,
+  .mat-datagrid-select {
+    inline-size: 100%;
+  }
+
+  .mat-mdc-form-field {
+    inline-size: 100%;
+  }
+
+  // align input vertically center
+  .mat-mdc-form-field-infix {
+    display: flex;
+  }
+
+  // remove min-width of 180px from inputs
+  .mat-mdc-form-field-infix {
+    width: auto;
+  }
+
+  // remove unnecessary element
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+}
+
+// tigther cell inline-padding
+.density-xs .re-datagrid {
+  @include m.input-padding-x(6px);
+}
+
+.density-sm .re-datagrid {
+  @include m.input-padding-x(7px);
+}
+
+.density-md .re-datagrid {
+  @include m.input-padding-x(8px);
+}
+
+.density-lg .re-datagrid {
+  @include m.input-padding-x(9px);
+}

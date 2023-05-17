@@ -1,0 +1,12 @@
+@forward 'MDC-material-imports';
+@forward 'AVO-density-imports';
+@use 'MDC-density-mixins' as density;
+@use 'AVO-density-mixins' as avo-density;
+
+@include density.MDC-form-field-densities();
+@include density.MDC-button-densities();
+@include density.MDC-icon-button-densities();
+@include density.MDC-table-densities();
+@include density.MDC-checkbox-densities();
+
+@include avo-density.AVO-fake-input-densities();

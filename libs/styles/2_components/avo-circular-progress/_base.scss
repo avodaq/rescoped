@@ -1,0 +1,39 @@
+@use 'variables' as vars;
+
+@mixin avo-circular-progress-theme() {
+  .#{vars.$comp-name} {
+    display: inline-flex;
+
+    .progress-svg {
+      animation: rotate calc(#{vars.$time} * 5.25) linear infinite;
+
+      & .progress-circle {
+        stroke-linecap: round;
+        animation: dash calc(#{vars.$time} * 4) ease-in-out infinite;
+      }
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes dash {
+      0% {
+        stroke-dasharray: (vars.$twoPI * 3), (vars.$twoPI * 363);
+        stroke-dashoffset: 0;
+      }
+
+      60% {
+        stroke-dasharray: (vars.$twoPI * 280), (vars.$twoPI * 363);
+        stroke-dashoffset: (vars.$twoPI * 90) * -1;
+      }
+
+      100% {
+        stroke-dasharray: (vars.$twoPI * 280), (vars.$twoPI * 363);
+        stroke-dashoffset: (vars.$twoPI * 357) * -1;
+      }
+    }
+  }
+}

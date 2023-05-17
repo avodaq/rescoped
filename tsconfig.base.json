@@ -21,8 +21,7 @@
     "baseUrl": ".",
     "paths": {
       "@rescoped/components/*": ["libs/components/*"],
-      "@rescoped/directives/*": ["libs/directives/*"],
-      "@rescoped/provider": ["libs/provider/src/index.ts"],
+      "@rescoped/provider/*": ["libs/provider/*"],
       "@rescoped/services/*": ["libs/services/*"]
     }
   },

@@ -1,0 +1,737 @@
+@use 'sass:map';
+@use 'functions' as func;
+
+@mixin mixin-calc-font-size($browser-min, $browser-max, $font-min, $font-max) {
+  font-size: #{$font-min}px;
+  font-size: func.clamp-size($browser-min, $browser-max, $font-min, $font-max);
+}
+
+@mixin mixin-calc-line-height($multiplier) {
+  line-height: $multiplier;
+}
+
+@mixin mixin-calc-letter-spacing($browser-min, $browser-max, $spacing-min, $spacing-max) {
+  letter-spacing: #{$spacing-min}px;
+  letter-spacing: func.clamp-size($browser-min, $browser-max, $spacing-min, $spacing-max);
+}
+
+@mixin calc-html-typescale(
+  $prefix,
+  $browser-min,
+  $browser-max,
+  $h1,
+  $h2,
+  $h3,
+  $h4,
+  $h5,
+  $h6,
+  $body-1,
+  $body-2,
+  $italic-1,
+  $italic-2,
+  $bold-1,
+  $bold-2,
+  $strong-1,
+  $strong-2,
+  $a,
+  $small
+) {
+  //headlines
+  h1 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($h1, 'font-size-min'),
+      map.get($h1, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($h1, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($h1, 'letter-spacing-min'),
+      map.get($h1, 'letter-spacing-max')
+    );
+  }
+  h2 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($h2, 'font-size-min'),
+      map.get($h2, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($h2, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($h2, 'letter-spacing-min'),
+      map.get($h2, 'letter-spacing-max')
+    );
+  }
+  h3 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($h3, 'font-size-min'),
+      map.get($h3, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($h3, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($h3, 'letter-spacing-min'),
+      map.get($h3, 'letter-spacing-max')
+    );
+  }
+  h4 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($h4, 'font-size-min'),
+      map.get($h4, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($h4, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($h4, 'letter-spacing-min'),
+      map.get($h4, 'letter-spacing-max')
+    );
+  }
+  h5 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($h5, 'font-size-min'),
+      map.get($h5, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($h5, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($h5, 'letter-spacing-min'),
+      map.get($h5, 'letter-spacing-max')
+    );
+  }
+  h6 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($h6, 'font-size-min'),
+      map.get($h6, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($h6, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($h6, 'letter-spacing-min'),
+      map.get($h6, 'letter-spacing-max')
+    );
+  }
+
+  //body
+  p,
+  p.#{$prefix}body-1 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($body-1, 'font-size-min'),
+      map.get($body-1, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($body-1, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($body-1, 'letter-spacing-min'),
+      map.get($body-1, 'letter-spacing-max')
+    );
+  }
+  p.#{$prefix}body-2 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($body-2, 'font-size-min'),
+      map.get($body-2, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($body-2, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($body-2, 'letter-spacing-min'),
+      map.get($body-2, 'letter-spacing-max')
+    );
+  }
+
+  //italic
+  i,
+  i.#{$prefix}italic-1 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($italic-1, 'font-size-min'),
+      map.get($italic-1, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($italic-1, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($italic-1, 'letter-spacing-min'),
+      map.get($italic-1, 'letter-spacing-max')
+    );
+  }
+  i.#{$prefix}italic-2 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($italic-2, 'font-size-min'),
+      map.get($italic-2, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($italic-2, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($italic-2, 'letter-spacing-min'),
+      map.get($italic-2, 'letter-spacing-max')
+    );
+  }
+
+  //bold
+  b,
+  b.#{$prefix}bold-1 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($bold-1, 'font-size-min'),
+      map.get($bold-1, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($bold-1, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($bold-1, 'letter-spacing-min'),
+      map.get($bold-1, 'letter-spacing-max')
+    );
+  }
+  b.#{$prefix}bold-2 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($bold-2, 'font-size-min'),
+      map.get($bold-2, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($bold-2, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($bold-2, 'letter-spacing-min'),
+      map.get($bold-2, 'letter-spacing-max')
+    );
+  }
+
+  //strong
+  strong,
+  strong.#{$prefix}strong-1 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($strong-1, 'font-size-min'),
+      map.get($strong-1, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($strong-1, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($strong-1, 'letter-spacing-min'),
+      map.get($strong-1, 'letter-spacing-max')
+    );
+  }
+  strong.#{$prefix}strong-2 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($strong-2, 'font-size-min'),
+      map.get($strong-2, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($strong-2, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($strong-2, 'letter-spacing-min'),
+      map.get($strong-2, 'letter-spacing-max')
+    );
+  }
+
+  //anchor
+  a {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($a, 'font-size-min'),
+      map.get($a, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($a, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($a, 'letter-spacing-min'),
+      map.get($a, 'letter-spacing-max')
+    );
+  }
+
+  //small
+  small {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($small, 'font-size-min'),
+      map.get($small, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($small, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($small, 'letter-spacing-min'),
+      map.get($small, 'letter-spacing-max')
+    );
+  }
+}
+
+@mixin calc-rescoped-typescale(
+  $prefix,
+  $browser-min,
+  $browser-max,
+  $h1,
+  $h2,
+  $h3,
+  $h4,
+  $h5,
+  $h6,
+  $body-1,
+  $body-2,
+  $italic-1,
+  $italic-2,
+  $bold-1,
+  $bold-2,
+  $strong-1,
+  $strong-2,
+  $a,
+  $small,
+  $headline-1,
+  $headline-2,
+  $headline-3,
+  $headline-4,
+  $overline
+) {
+  //headlines
+  .#{$prefix}type-scale-5,
+  .#{$prefix}h1 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($h1, 'font-size-min'),
+      map.get($h1, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($h1, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($h1, 'letter-spacing-min'),
+      map.get($h1, 'letter-spacing-max')
+    );
+  }
+
+  .#{$prefix}type-scale-4,
+  .#{$prefix}h2 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($h2, 'font-size-min'),
+      map.get($h2, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($h2, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($h2, 'letter-spacing-min'),
+      map.get($h2, 'letter-spacing-max')
+    );
+  }
+  .#{$prefix}type-scale-3,
+  .#{$prefix}h3 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($h3, 'font-size-min'),
+      map.get($h3, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($h3, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($h3, 'letter-spacing-min'),
+      map.get($h3, 'letter-spacing-max')
+    );
+  }
+  .#{$prefix}type-scale-2,
+  .#{$prefix}h4 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($h4, 'font-size-min'),
+      map.get($h4, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($h4, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($h4, 'letter-spacing-min'),
+      map.get($h4, 'letter-spacing-max')
+    );
+  }
+  .#{$prefix}type-scale-1,
+  .#{$prefix}h5 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($h5, 'font-size-min'),
+      map.get($h5, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($h5, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($h5, 'letter-spacing-min'),
+      map.get($h5, 'letter-spacing-max')
+    );
+  }
+  .#{$prefix}type-scale-0,
+  .#{$prefix}h6 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($h6, 'font-size-min'),
+      map.get($h6, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($h6, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($h6, 'letter-spacing-min'),
+      map.get($h6, 'letter-spacing-max')
+    );
+  }
+
+  //body
+  .#{$prefix}body-1 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($body-1, 'font-size-min'),
+      map.get($body-1, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($body-1, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($body-1, 'letter-spacing-min'),
+      map.get($body-1, 'letter-spacing-max')
+    );
+  }
+  .#{$prefix}type-scale-n1,
+  .#{$prefix}body-2 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($body-2, 'font-size-min'),
+      map.get($body-2, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($body-2, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($body-2, 'letter-spacing-min'),
+      map.get($body-2, 'letter-spacing-max')
+    );
+  }
+
+  //italic
+  .#{$prefix}italic-1 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($italic-1, 'font-size-min'),
+      map.get($italic-1, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($italic-1, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($italic-1, 'letter-spacing-min'),
+      map.get($italic-1, 'letter-spacing-max')
+    );
+  }
+  .#{$prefix}italic-2 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($italic-2, 'font-size-min'),
+      map.get($italic-2, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($italic-2, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($italic-2, 'letter-spacing-min'),
+      map.get($italic-2, 'letter-spacing-max')
+    );
+  }
+
+  //bold
+  .#{$prefix}bold-1 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($bold-1, 'font-size-min'),
+      map.get($bold-1, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($bold-1, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($bold-1, 'letter-spacing-min'),
+      map.get($bold-1, 'letter-spacing-max')
+    );
+  }
+  .#{$prefix}bold-2 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($bold-2, 'font-size-min'),
+      map.get($bold-2, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($bold-2, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($bold-2, 'letter-spacing-min'),
+      map.get($bold-2, 'letter-spacing-max')
+    );
+  }
+
+  //strong
+  .#{$prefix}strong-1 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($strong-1, 'font-size-min'),
+      map.get($strong-1, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($strong-1, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($strong-1, 'letter-spacing-min'),
+      map.get($strong-1, 'letter-spacing-max')
+    );
+  }
+  .#{$prefix}strong-2 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($strong-2, 'font-size-min'),
+      map.get($strong-2, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($strong-2, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($strong-2, 'letter-spacing-min'),
+      map.get($strong-2, 'letter-spacing-max')
+    );
+  }
+
+  //anchor
+  .#{$prefix}anchor {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($a, 'font-size-min'),
+      map.get($a, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($a, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($a, 'letter-spacing-min'),
+      map.get($a, 'letter-spacing-max')
+    );
+  }
+
+  //small
+  .#{$prefix}type-scale-n2,
+  .#{$prefix}small {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($small, 'font-size-min'),
+      map.get($small, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($small, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($small, 'letter-spacing-min'),
+      map.get($small, 'letter-spacing-max')
+    );
+  }
+
+  //display headlines
+  .#{$prefix}type-scale-9,
+  .#{$prefix}headline-1 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($headline-1, 'font-size-min'),
+      map.get($headline-1, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($headline-1, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($headline-1, 'letter-spacing-min'),
+      map.get($headline-1, 'letter-spacing-max')
+    );
+  }
+  .#{$prefix}type-scale-8,
+  .#{$prefix}headline-2 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($headline-2, 'font-size-min'),
+      map.get($headline-2, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($headline-2, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($headline-2, 'letter-spacing-min'),
+      map.get($headline-2, 'letter-spacing-max')
+    );
+  }
+  .#{$prefix}type-scale-7,
+  .#{$prefix}headline-3 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($headline-3, 'font-size-min'),
+      map.get($headline-3, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($headline-3, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($headline-3, 'letter-spacing-min'),
+      map.get($headline-3, 'letter-spacing-max')
+    );
+  }
+
+  .#{$prefix}type-scale-6,
+  .#{$prefix}headline-4 {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($headline-4, 'font-size-min'),
+      map.get($headline-4, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($headline-4, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($headline-4, 'letter-spacing-min'),
+      map.get($headline-4, 'letter-spacing-max')
+    );
+  }
+
+  //overline
+  .#{$prefix}type-scale-n3,
+  .#{$prefix}overline {
+    @include mixin-calc-font-size(
+      $browser-min,
+      $browser-max,
+      map.get($overline, 'font-size-min'),
+      map.get($overline, 'font-size-max')
+    );
+    @include mixin-calc-line-height(map.get($overline, 'line-height-multiplier'));
+    @include mixin-calc-letter-spacing(
+      $browser-min,
+      $browser-max,
+      map.get($overline, 'letter-spacing-min'),
+      map.get($overline, 'letter-spacing-max')
+    );
+  }
+
+  // font-weights
+  .#{$prefix}h1 {
+    font-weight: map.get($h1, 'font-weight');
+  }
+  .#{$prefix}h2 {
+    font-weight: map.get($h2, 'font-weight');
+  }
+  .#{$prefix}h3 {
+    font-weight: map.get($h3, 'font-weight');
+  }
+  .#{$prefix}h4 {
+    font-weight: map.get($h4, 'font-weight');
+  }
+  .#{$prefix}h5 {
+    font-weight: map.get($h5, 'font-weight');
+  }
+  .#{$prefix}h6 {
+    font-weight: map.get($h6, 'font-weight');
+  }
+  .#{$prefix}body-1 {
+    font-weight: map.get($body-1, 'font-weight');
+  }
+  .#{$prefix}body-2 {
+    font-weight: map.get($body-2, 'font-weight');
+  }
+  .#{$prefix}italic-1 {
+    font-weight: map.get($italic-1, 'font-weight');
+  }
+  .#{$prefix}italic-2 {
+    font-weight: map.get($italic-2, 'font-weight');
+  }
+  .#{$prefix}bold-1 {
+    font-weight: map.get($bold-1, 'font-weight');
+  }
+  .#{$prefix}bold-2 {
+    font-weight: map.get($bold-2, 'font-weight');
+  }
+  .#{$prefix}strong-1 {
+    font-weight: map.get($strong-1, 'font-weight');
+  }
+  .#{$prefix}strong-2 {
+    font-weight: map.get($strong-2, 'font-weight');
+  }
+  .#{$prefix}anchor {
+    font-weight: map.get($a, 'font-weight');
+  }
+  .#{$prefix}small {
+    font-weight: map.get($small, 'font-weight');
+  }
+  .#{$prefix}headline-1 {
+    font-weight: map.get($headline-1, 'font-weight');
+  }
+  .#{$prefix}headline-2 {
+    font-weight: map.get($headline-2, 'font-weight');
+  }
+  .#{$prefix}headline-3 {
+    font-weight: map.get($headline-3, 'font-weight');
+  }
+  .#{$prefix}headline-4 {
+    font-weight: map.get($headline-4, 'font-weight');
+  }
+  .#{$prefix}overline {
+    font-weight: map.get($overline, 'font-weight');
+    text-transform: map.get($overline, 'text-transform');
+  }
+}

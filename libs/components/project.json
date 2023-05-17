@@ -1,12 +1,13 @@
 {
+  "name": "components",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/components/src",
+  "sourceRoot": "libs/components",
   "prefix": "avo",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/components"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
         "project": "libs/components/ng-package.json"
       },
@@ -23,64 +24,16 @@
     "test": {
       "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "main": "libs/components/src/test.ts",
         "tsConfig": "libs/components/tsconfig.spec.json",
-        "karmaConfig": "libs/components/karma.conf.js"
+        "karmaConfig": "libs/components/karma.conf.js",
+        "polyfills": ["zone.js", "zone.js/testing"]
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/components/src/**/*.ts",
-          "libs/components/src/**/*.html",
-          "libs/components/components/**/*.ts",
-          "libs/components/components/**/*.html",
-          "libs/components/app-logos/**/*.ts",
-          "libs/components/app-logos/**/*.html",
-          "libs/components/context-loader/**/*.ts",
-          "libs/components/context-loader/**/*.html",
-          "libs/components/dialog/**/*.ts",
-          "libs/components/dialog/**/*.html",
-          "libs/components/skeleton/**/*.ts",
-          "libs/components/skeleton/**/*.html",
-          "libs/components/spreadsheet/**/*.ts",
-          "libs/components/spreadsheet/**/*.html",
-          "libs/components/toggle-icon/**/*.ts",
-          "libs/components/toggle-icon/**/*.html",
-          "libs/components/toggle-icon-theme/**/*.ts",
-          "libs/components/toggle-icon-theme/**/*.html",
-          "libs/components/progressbar/**/*.ts",
-          "libs/components/progressbar/**/*.html"
-        ]
-      }
-    },
-    "storybook": {
-      "executor": "@storybook/angular:start-storybook",
-      "options": {
-        "port": 4400,
-        "configDir": "libs/components/.storybook",
-        "browserTarget": "components:build-storybook",
-        "compodoc": false
-      },
-      "configurations": {
-        "ci": {
-          "quiet": true
-        }
-      }
-    },
-    "build-storybook": {
-      "executor": "@storybook/angular:build-storybook",
-      "options": {
-        "outputDir": "dist/storybook/components",
-        "configDir": "libs/components/.storybook",
-        "browserTarget": "components:build-storybook",
-        "compodoc": false
-      },
-      "configurations": {
-        "ci": {
-          "quiet": true
-        }
+        "lintFilePatterns": ["libs/components/**/*.ts", "libs/components/**/*.html"]
       }
     }
   },

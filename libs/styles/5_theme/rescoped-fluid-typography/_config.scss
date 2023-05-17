@@ -1,0 +1,166 @@
+@use 'sass:map';
+@use 'functions' as func;
+
+$browser-min: 640;
+$browser-max: 1440;
+$selector: 're-typography';
+$prefix: 're-';
+
+$headline-1: (
+  font-weight: 700,
+  font-size-min: func.expInt(12),
+  font-size-max: func.scale-by-factor(func.expInt(12)),
+  line-height-multiplier: 0.95,
+  letter-spacing-min: -2,
+  letter-spacing-max: func.scale-by-factor(-2, 1.25, false),
+);
+$headline-2: (
+  font-weight: 700,
+  font-size-min: func.expInt(11),
+  font-size-max: func.scale-by-factor(func.expInt(11)),
+  line-height-multiplier: 1,
+  letter-spacing-min: -1.5,
+  letter-spacing-max: func.scale-by-factor(-1.5, 1.25, false),
+);
+$headline-3: (
+  font-weight: 700,
+  font-size-min: func.expInt(10),
+  font-size-max: func.scale-by-factor(func.expInt(10)),
+  line-height-multiplier: 1.05,
+  letter-spacing-min: -1.125,
+  letter-spacing-max: func.scale-by-factor(-1.125, 1.25, false),
+);
+$headline-4: (
+  font-weight: 700,
+  font-size-min: func.expInt(9),
+  font-size-max: func.scale-by-factor(func.expInt(9)),
+  line-height-multiplier: 1.1,
+  letter-spacing-min: -0.75,
+  letter-spacing-max: func.scale-by-factor(-0.75, 1.25, false),
+);
+$h1: (
+  font-weight: 700,
+  font-size-min: func.expInt(8),
+  font-size-max: func.scale-by-factor(func.expInt(8)),
+  line-height-multiplier: 1.15,
+  letter-spacing-min: -0.375,
+  letter-spacing-max: func.scale-by-factor(-0.375, 1.25, false),
+);
+$h2: (
+  font-weight: 700,
+  font-size-min: func.expInt(7),
+  font-size-max: func.scale-by-factor(func.expInt(7)),
+  line-height-multiplier: 1.2,
+  letter-spacing-min: -0.125,
+  letter-spacing-max: func.scale-by-factor(-0.125, 1.25, false),
+);
+$h3: (
+  font-weight: 700,
+  font-size-min: func.expInt(6),
+  font-size-max: func.scale-by-factor(func.expInt(6)),
+  line-height-multiplier: 1.25,
+  letter-spacing-min: 0.125,
+  letter-spacing-max: func.scale-by-factor(0.125, 0.75, false),
+);
+$h4: (
+  font-weight: 700,
+  font-size-min: func.expInt(5),
+  font-size-max: func.scale-by-factor(func.expInt(5)),
+  line-height-multiplier: 1.3,
+  letter-spacing-min: 0.25,
+  letter-spacing-max: func.scale-by-factor(0.25, 0.75, false),
+);
+$h5: (
+  font-weight: 700,
+  font-size-min: func.expInt(4),
+  font-size-max: func.scale-by-factor(func.expInt(4)),
+  line-height-multiplier: 1.35,
+  letter-spacing-min: 0.375,
+  letter-spacing-max: func.scale-by-factor(0.375, 0.75, false),
+);
+$h6: (
+  font-weight: 700,
+  font-size-min: func.expInt(3.5),
+  font-size-max: func.scale-by-factor(func.expInt(3.5)),
+  line-height-multiplier: 1.4,
+  letter-spacing-min: 0.5,
+  letter-spacing-max: func.scale-by-factor(0.5, 0.75, false),
+);
+$body-1: (
+  font-weight: 400,
+  font-size-min: func.expInt(3.2),
+  font-size-max: func.scale-by-factor(func.expInt(3.2)),
+  line-height-multiplier: 1.5,
+  letter-spacing-min: 0.25,
+  letter-spacing-max: func.scale-by-factor(0.25, 0.75, false),
+);
+$body-2: (
+  font-weight: 400,
+  font-size-min: func.expInt(2.5),
+  font-size-max: func.scale-by-factor(func.expInt(2.5)),
+  line-height-multiplier: 1.6,
+  letter-spacing-min: 0.25,
+  letter-spacing-max: func.scale-by-factor(0.25, 0.75, false),
+);
+$italic-1: (
+  font-weight: map.get($body-1, font-weight),
+  font-size-min: map.get($body-1, font-size-min),
+  font-size-max: map.get($body-1, font-size-max),
+  line-height-multiplier: map.get($body-1, line-height-multiplier),
+  letter-spacing-min: map.get($body-1, letter-spacing-min),
+  letter-spacing-max: map.get($body-1, letter-spacing-max),
+);
+$italic-2: (
+  font-weight: map.get($body-2, font-weight),
+  font-size-min: map.get($body-2, font-size-min),
+  font-size-max: map.get($body-2, font-size-max),
+  line-height-multiplier: map.get($body-2, line-height-multiplier),
+  letter-spacing-min: map.get($body-2, letter-spacing-min),
+  letter-spacing-max: map.get($body-2, letter-spacing-max),
+);
+$bold-1: (
+  font-weight: 700,
+  font-size-min: map.get($body-1, font-size-min),
+  font-size-max: map.get($body-1, font-size-max),
+  line-height-multiplier: map.get($body-1, line-height-multiplier),
+  letter-spacing-min: map.get($h6, letter-spacing-min),
+  letter-spacing-max: map.get($h6, letter-spacing-min),
+);
+$bold-2: (
+  font-weight: 700,
+  font-size-min: map.get($body-2, font-size-min),
+  font-size-max: map.get($body-2, font-size-max),
+  line-height-multiplier: map.get($body-2, line-height-multiplier),
+  letter-spacing-min: map.get($body-1, letter-spacing-min),
+  letter-spacing-max: map.get($body-1, letter-spacing-min),
+);
+
+$strong-1: $bold-1;
+$strong-2: $bold-2;
+
+$a: (
+  font-weight: 500,
+  font-size-min: map.get($body-1, font-size-min),
+  font-size-max: map.get($body-1, font-size-max),
+  line-height-multiplier: map.get($body-1, line-height-multiplier),
+  letter-spacing-min: map.get($body-1, letter-spacing-min),
+  letter-spacing-max: map.get($body-1, letter-spacing-max),
+);
+$small: (
+  font-weight: 400,
+  font-size-min: func.expInt(2),
+  font-size-max: func.scale-by-factor(func.expInt(2)),
+  line-height-multiplier: 1.6,
+  letter-spacing-min: 0.75,
+  letter-spacing-max: func.scale-by-factor(0.75, 0.75, false),
+);
+
+$overline: (
+  font-weight: 400,
+  font-size-min: func.expInt(1),
+  font-size-max: func.scale-by-factor(func.expInt(1)),
+  line-height-multiplier: 1.6,
+  letter-spacing-min: 0.75,
+  letter-spacing-max: func.scale-by-factor(0.75, 0.75, false),
+  text-transform: uppercase,
+);

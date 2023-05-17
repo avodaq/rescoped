@@ -1,5 +1,5 @@
-@use '../color-extend/index' as ce;
-//@use '~@rescoped/abstracts/hsl' as *;
+@use '../color-extend' as ce;
+//@use '@rescoped/abstracts/hsl' as *;
 
 // define light palette
 $extended-palette-light: (

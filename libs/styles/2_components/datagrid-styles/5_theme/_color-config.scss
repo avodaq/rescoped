@@ -1,0 +1,154 @@
+@use 'sass:map';
+@use 'sass:color';
+@use '@rescoped/styles/0_abstracts/functions' as f;
+@use '../0_abstracts/variables' as v;
+
+$dark-theme-class: v.$dark-theme-class;
+$border-thickness: v.$border-thickness;
+
+$primary-color: v.$primary-color !default;
+$primary-color-light: $primary-color !default;
+$primary-color-dark: color.scale($primary-color, $saturation: 10%, $lightness: -40%) !default;
+$accent-color: #ffc107 !default;
+
+///////////////////
+// light
+$color-light-global: rgba($primary-color-light, 0.7) !default;
+$color-light-group: rgba(color.scale($primary-color-light, $saturation: -70%), 0.1) !default;
+$color-light-single: rgba($primary-color-light, 0.02) !default;
+$color-light-empty: $color-light-single !default;
+$color-light-filter: rgba($accent-color, 0.75) !default;
+$color-light-search-replace: rgba($accent-color, 0.25) !default;
+
+$background-color-light: (
+  'row-global': $color-light-global,
+  'row-group': $color-light-group,
+  'row-single': $color-light-single,
+  'row-empty': $color-light-empty,
+  'row-filter': $color-light-filter,
+  'row-search-replace': $color-light-search-replace,
+);
+
+///////////////////
+// light:hover
+$color-light-global-hover: rgba($primary-color-light, 1) !default;
+$color-light-group-hover: rgba(color.scale($primary-color-light, $saturation: -70%), 0.2) !default;
+$color-light-single-hover: rgba(color.scale($primary-color-light, $lightness: 20%), 0.1) !default;
+$color-light-empty-hover: $color-light-single-hover !default;
+$color-light-filter-hover: rgba($accent-color, 0.8) !default;
+$color-light-search-replace-hover: rgba($accent-color, 0.25) !default;
+
+$background-color-light-hover: (
+  'row-global': $color-light-global-hover,
+  'row-group': $color-light-group-hover,
+  'row-single': $color-light-single-hover,
+  'row-empty': $color-light-empty-hover,
+  'row-filter': $color-light-filter-hover,
+  'row-search-replace': $color-light-search-replace-hover,
+);
+
+///////////////////
+// light factories
+.re-datagrid.mat-mdc-table {
+  @each $name, $color in $background-color-light {
+    .mat-mdc-row.cdk-datagrid-#{$name},
+    .mat-mdc-footer.cdk-datagrid-#{$name} {
+      background-color: $color;
+    }
+  }
+
+  .cdk-datagrid-row-single,
+  .cdk-datagrid-row-empty {
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: $border-thickness;
+      height: 100%;
+      background-color: $color-light-group;
+    }
+  }
+}
+
+///////////////////
+// light:hover factories
+.re-datagrid.mat-mdc-table {
+  @each $name, $color in $background-color-light-hover {
+    .mat-mdc-row:hover.cdk-datagrid-#{$name},
+    .mat-mdc-footer:hover.cdk-datagrid-#{$name} {
+      background-color: $color;
+    }
+  }
+}
+
+///////////////////
+// dark
+$color-dark-global: rgba($primary-color-dark, 0.4) !default;
+$color-dark-group: rgba(
+  color.scale($primary-color-dark, $saturation: -60%, $lightness: -10%),
+  0.3
+) !default;
+$color-dark-single: rgba($primary-color-dark, 0.02) !default;
+$color-dark-empty: $color-dark-single !default;
+$color-dark-filter: rgba($accent-color, 0.75) !default;
+$color-dark-search-replace: rgba($accent-color, 0.25) !default;
+
+$background-color-dark: (
+  'row-global': $color-dark-global,
+  'row-group': $color-dark-group,
+  'row-single': $color-dark-single,
+  'row-empty': $color-dark-empty,
+  'row-filter': $color-dark-filter,
+  'row-search-replace': $color-dark-search-replace,
+);
+
+///////////////////
+// dark factories
+#{$dark-theme-class} .re-datagrid.mat-mdc-table {
+  @each $name, $color in $background-color-dark {
+    .mat-mdc-row.cdk-datagrid-#{$name},
+    .mat-mdc-footer.cdk-datagrid-#{$name} {
+      background-color: $color;
+    }
+  }
+
+  .cdk-datagrid-row-single,
+  .cdk-datagrid-row-empty {
+    &:before {
+      background-color: $color-dark-group;
+    }
+  }
+}
+
+///////////////////
+// dark:hover
+$color-dark-global-hover: rgba($primary-color-dark, 1) !default;
+$color-dark-group-hover: rgba(
+  color.scale($primary-color-dark, $saturation: -60%, $lightness: -10%),
+  0.5
+) !default;
+$color-dark-single-hover: rgba(color.scale($primary-color-dark, $lightness: -20%), 0.2) !default;
+$color-dark-empty-hover: $color-dark-single-hover !default;
+$color-dark-filter-hover: rgba($accent-color, 0.9) !default;
+$color-dark-search-replace-hover: rgba($accent-color, 0.35) !default;
+
+$background-color-dark-hover: (
+  'row-global': $color-dark-global-hover,
+  'row-group': $color-dark-group-hover,
+  'row-single': $color-dark-single-hover,
+  'row-empty': $color-dark-empty-hover,
+  'row-filter': $color-dark-filter-hover,
+  'row-search-replace': $color-dark-search-replace-hover,
+);
+
+///////////////////
+// dark:hover factories
+#{$dark-theme-class} .re-datagrid.mat-mdc-table {
+  @each $name, $color in $background-color-dark-hover {
+    .mat-mdc-row:hover.cdk-datagrid-#{$name},
+    .mat-mdc-footer:hover.cdk-datagrid-#{$name} {
+      background-color: $color;
+    }
+  }
+}

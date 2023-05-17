@@ -1,0 +1,27 @@
+@use '@angular/material' as mat;
+@use '@rescoped/theme-style/material-theme' as avo_theme;
+@use 'sass:map';
+
+$avo-primary: map.get(avo_theme.$avo-primary, 500);
+$avo-accent: map.get(avo_theme.$avo-accent, 500);
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: auto;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

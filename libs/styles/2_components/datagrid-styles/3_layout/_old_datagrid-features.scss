@@ -1,0 +1,74 @@
+// [Description] this file contains css that enables you active styles in the datagrid by adding a class
+
+$gaps: (
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  7: 1.75rem,
+  8: 2rem,
+  9: 2.25rem,
+  10: 2.5rem,
+  11: 2.75rem,
+  12: 3rem,
+);
+
+// padding for each cell
+@each $name, $gap in $gaps {
+  .cdk-datagrid,
+  .mat-datagrid {
+    &.mat-table-gap-#{$name} {
+      // example: mat-table-gap-2
+      .mat-header-cell,
+      .mat-cell,
+      tr th:not(:last-child),
+      tr td:not(:last-child) {
+        padding-inline-end: $gap;
+      }
+    }
+  }
+}
+
+// remove divider between rows
+.re-datagrid {
+  &.hide-divider {
+    mat-row,
+    mat-footer-row,
+    td.mat-cell,
+    td.mat-footer-cell {
+      border-block-end: 0;
+    }
+  }
+}
+
+// remove initial border on inputs
+.re-datagrid {
+  &.hide-inputs-border {
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+      opacity: 0;
+    }
+  }
+}
+
+// remove unnecessary spaces in each row
+.re-datagrid {
+  &.rows-collapsed {
+    .mat-form-field {
+      line-height: inherit;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-wrapper {
+      margin: 0 !important;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-flex {
+      margin-block-start: 0 !important;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+      inset-block-start: 0;
+    }
+  }
+}

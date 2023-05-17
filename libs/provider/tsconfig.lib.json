@@ -5,8 +5,10 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": []
+    "types": [],
+    "target": "ES2022",
+    "useDefineForClassFields": false
   },
-  "exclude": ["src/test.ts", "**/*.spec.ts", "**/*.test.ts"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"],
   "include": ["**/*.ts"]
 }

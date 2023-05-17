@@ -1,0 +1,3 @@
+@forward 'MDC-overwrites';
+@forward 'color-config' hide $dark-theme-class, $border-thickness, $primary-color;
+@forward 'fake-input-fields' hide $dark-theme-class;

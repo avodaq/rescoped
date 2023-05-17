@@ -1,0 +1,39 @@
+@use '@angular/material' as mat;
+@use '../0_abstracts/variables';
+@include mat.core();
+
+$skygrid-primary: variables.$skygrid-palette-primary;
+$skygrid-accent: variables.$skygrid-palette-accent;
+$skygrid-warn: variables.$skygrid-palette-warn;
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+
+$skygrid-typography: mat.define-typography-config();
+
+$skygrid-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $skygrid-primary,
+      accent: $skygrid-accent,
+      warn: $skygrid-warn,
+    ),
+    typography: $skygrid-typography,
+  )
+);
+
+$skygrid-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $skygrid-primary,
+      accent: $skygrid-accent,
+      warn: $skygrid-warn,
+    ),
+  )
+);
+@include mat.all-component-typographies($skygrid-theme);
+@include mat.all-component-themes($skygrid-theme);
+
+#{variables.$dark-theme-class} {
+  @include mat.all-component-colors($skygrid-dark-theme);
+}

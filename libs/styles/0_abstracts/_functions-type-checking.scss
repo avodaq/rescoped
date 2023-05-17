@@ -1,0 +1,85 @@
+@function is-number($value) {
+  @return type-of($value) == 'number';
+}
+
+@function is-color($value) {
+  @return type-of($value) == 'color';
+}
+
+@function is-string($value) {
+  @return type-of($value) == 'string';
+}
+
+@function is-bool($value) {
+  @return type-of($value) == 'bool';
+}
+
+@function is-left-right($value) {
+  @if $value == left or $value == right {
+    @return true;
+  }
+  @return false;
+}
+
+@function is-selector($selector) {
+  $letters: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  $numbers: '0123456789';
+  $any: '*';
+  $classID: '.#';
+  $commaSpace: ', ';
+  $attribute: '[]="\'>+~^$|';
+  $special: ':()-_';
+  $allSpecial: $any + $classID + $commaSpace + $attribute + $special;
+  $single-char: $letters + $any;
+  $all-char: $letters + $numbers + $allSpecial;
+
+  // check if you actually put something in
+  @if str-length($selector) == 0 {
+    @return false;
+  }
+
+  // check if it is a string
+  @if type-of($selector) != 'string' {
+    @return false;
+  }
+
+  // check if single character selector (e.g. * or a)
+  @if str-length($selector) == 1 and str-index($single-char, $selector) == null {
+    @return false;
+  }
+
+  // check if first character is number
+  @if str-index($numbers, str-slice($selector, 1, 1)) {
+    @return false;
+  }
+
+  // check if class or ID, followed by number
+  $firstChar: str-slice($selector, 1, 1);
+  $secondChar: str-slice($selector, 2, 2);
+  @if ($firstChar == '.' or $firstChar == '#') and str-index($numbers, $secondChar) {
+    @return false;
+  }
+
+  // check if two hyphens at start
+  @if str-index('-', str-slice($selector, 1, 1)) and str-index('-', str-slice($selector, 2, 2)) {
+    @return false;
+  }
+
+  // check if a hyphen followed by a digit
+  @if str-index('-', str-slice($selector, 1, 1)) and str-index($numbers, str-slice($selector, 2, 2))
+  {
+    @return false;
+  }
+
+  // todo: check if . followed by # or [ ???
+
+  // check if only allowed characters
+  @for $i from 1 through str-length($selector) {
+    $char: str-slice($selector, $i, $i);
+    $found: str-index($all-char, $char);
+    @if ($found == null) {
+      @return false;
+    }
+  }
+  @return true;
+}

@@ -1,0 +1,80 @@
+@use '../0_abstracts/variables' as v;
+@use '../0_abstracts/mixins' as m;
+
+$primary-color: v.$primary-color;
+$dark-theme-class: v.$dark-theme-class;
+
+.re-datagrid.enhance-color {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: $primary-color;
+    mix-blend-mode: overlay;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0.25;
+  }
+}
+
+#{$dark-theme-class} .re-datagrid.enhance-color {
+  &:before {
+    mix-blend-mode: overlay;
+    opacity: 0.125;
+  }
+}
+
+// remove border-bottom from each table-cell
+.re-datagrid.hide-row-divider {
+  .mdc-data-table__cell {
+    border-bottom-width: 0;
+    border-bottom-style: none;
+  }
+}
+
+// change spacing between each column
+.re-datagrid {
+  &.column-spacing-xxs {
+    @include m.column-spacing-x(2px);
+  }
+
+  &.column-spacing-xs {
+    @include m.column-spacing-x(4px);
+  }
+
+  &.column-spacing-sm {
+    @include m.column-spacing-x(6px);
+  }
+
+  &.column-spacing-md {
+    @include m.column-spacing-x(8px);
+  }
+
+  &.column-spacing-lg {
+    @include m.column-spacing-x(10px);
+  }
+
+  &.column-spacing-xl {
+    @include m.column-spacing-x(12px);
+  }
+}
+
+.re-datagrid {
+  &.header-font-size-10 {
+    @include m.header-font-size(10px);
+  }
+
+  &.header-font-size-11 {
+    @include m.header-font-size(11px);
+  }
+
+  &.header-font-size-12 {
+    @include m.header-font-size(12px);
+  }
+
+  &.header-font-size-13 {
+    @include m.header-font-size(13px);
+  }
+}

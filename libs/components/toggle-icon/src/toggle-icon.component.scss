@@ -1,0 +1,31 @@
+@use '@rescoped/styles/0_abstracts/helpers' as helpers;
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+.avo-toggle-icon {
+  // hide MDC SVGs
+  .mdc-switch__icons svg {
+    display: none;
+  }
+
+  //General
+  .mdc-switch .mdc-switch__icons:before {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    font-size: 0.85rem;
+    transition: color 0.5s ease;
+  }
+
+  // unchecked
+  .mdc-switch--unselected .mdc-switch__icons:before {
+    @include helpers.get-icon(var(--avo-toggle-icon-unchecked));
+    color: map.get(mat.$yellow-palette, 500);
+  }
+
+  // checked
+  .mdc-switch--selected .mdc-switch__icons:before {
+    @include helpers.get-icon(var(--avo-toggle-icon-checked));
+    color: black;
+  }
+}

@@ -1,4 +1,4 @@
-import { setItemPayload } from '@rescoped/components/spreadsheet';
+import { setItemPayload } from '@rescoped/components/datagrid';
 
 export type SkyGridData = typeof skyGridData[number];
 
@@ -17,7 +17,7 @@ export const skyGridData = [
       terminal: '2',
       gate: 'A09',
     },
-    { actionType: 'single-edit' },
+    { actionType: 'row-single' },
   ),
 
   setItemPayload(
@@ -34,7 +34,7 @@ export const skyGridData = [
       terminal: '1',
       gate: 'C03',
     },
-    { actionType: 'single-edit' },
+    { actionType: 'row-single' },
   ),
   setItemPayload(
     {
@@ -50,7 +50,7 @@ export const skyGridData = [
       terminal: '2',
       gate: 'A07',
     },
-    { actionType: 'single-edit' },
+    { actionType: 'row-single' },
   ),
   setItemPayload(
     {
@@ -66,7 +66,7 @@ export const skyGridData = [
       terminal: '1',
       gate: 'B03',
     },
-    { actionType: 'single-edit' },
+    { actionType: 'row-single' },
   ),
   setItemPayload(
     {
@@ -82,7 +82,7 @@ export const skyGridData = [
       terminal: '1',
       gate: 'A07',
     },
-    { actionType: 'single-edit' },
+    { actionType: 'row-single' },
   ),
   setItemPayload(
     {
@@ -98,7 +98,7 @@ export const skyGridData = [
       terminal: '2',
       gate: 'B10',
     },
-    { actionType: 'single-edit' },
+    { actionType: 'row-single' },
   ),
   setItemPayload(
     {
@@ -114,7 +114,7 @@ export const skyGridData = [
       terminal: '2',
       gate: 'C02',
     },
-    { actionType: 'single-edit' },
+    { actionType: 'row-single' },
   ),
   setItemPayload(
     {
@@ -130,7 +130,7 @@ export const skyGridData = [
       terminal: '1',
       gate: 'A03',
     },
-    { actionType: 'single-edit' },
+    { actionType: 'row-single' },
   ),
   setItemPayload(
     {
@@ -146,6 +146,6 @@ export const skyGridData = [
       terminal: '1',
       gate: 'B04',
     },
-    { actionType: 'single-edit' },
+    { actionType: 'row-single' },
   ),
 ];

@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { destinations, flightStatus, gates, SkyGridData, skyGridData } from './skygrid-data2';
-import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
 import { ThemeStore } from '@rescoped/services/theme-store';
 
 import {
+  DatagridValidation,
   GlobalRules,
   ItemRules,
-  SpreadsheetValidation,
   Validators,
-} from '@rescoped/components/spreadsheet';
+} from '@rescoped/components/datagrid';
+import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
 
 @Component({
   selector: 'avo-skygrid',
@@ -22,6 +22,7 @@ export class SkyGridComponent implements OnInit {
   constructor(private readonly _themeStore: ThemeStore) {}
 
   readonly tableColumns = [
+    'collapse',
     'date',
     'airline',
     'flightNumber',
@@ -38,6 +39,10 @@ export class SkyGridComponent implements OnInit {
   readonly commonRules: ItemRules<SkyGridData> = {
     render: false,
     overrides: {
+      collapse: {
+        render: false,
+        disable: true,
+      },
       date: {
         render: true,
         disable: true,
@@ -58,11 +63,14 @@ export class SkyGridComponent implements OnInit {
   };
 
   readonly itemRules: GlobalRules<SkyGridData> = {
-    'global-edit': this.commonRules,
-    'group-edit': this.commonRules,
-    'single-edit': {
+    'row-global': this.commonRules,
+    'row-group': this.commonRules,
+    'row-single': {
       validate: true,
       overrides: {
+        collapse: {
+          disable: true,
+        },
         date: {
           disable: true,
         },
@@ -79,7 +87,7 @@ export class SkyGridComponent implements OnInit {
     },
   };
 
-  readonly flightNumberValidation: SpreadsheetValidation = {
+  readonly flightNumberValidation: DatagridValidation = {
     validator: [
       Validators.required({
         validationCode: 'REQUIRED_FIELD',
@@ -92,7 +100,7 @@ export class SkyGridComponent implements OnInit {
     ],
   };
 
-  readonly flightStatusValidation: SpreadsheetValidation = {
+  readonly flightStatusValidation: DatagridValidation = {
     validator: [
       Validators.required({
         validationCode: 'PLEASE_SELECT_FLIGHT_STATUS',
@@ -101,7 +109,7 @@ export class SkyGridComponent implements OnInit {
     ],
   };
 
-  readonly durationAValidation: SpreadsheetValidation = {
+  readonly durationAValidation: DatagridValidation = {
     validator: [
       Validators.required({
         validationCode: 'REQUIRED_FIELD',
@@ -114,7 +122,7 @@ export class SkyGridComponent implements OnInit {
     ],
   };
 
-  readonly destinationValidation: SpreadsheetValidation = {
+  readonly destinationValidation: DatagridValidation = {
     validator: [
       Validators.required({
         validationCode: 'PLEASE_SELECT_DESTINATION',
@@ -123,7 +131,7 @@ export class SkyGridComponent implements OnInit {
     ],
   };
 
-  readonly standardValidation: SpreadsheetValidation = {
+  readonly standardValidation: DatagridValidation = {
     validator: [
       Validators.required({
         validationCode: 'REQUIRED_FIELD',

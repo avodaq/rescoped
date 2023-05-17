@@ -1,24 +1,17 @@
 {
-  "npmScope": "rescoped",
+  "npmScope": "@rescoped",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
-  "implicitDependencies": {
-    "angular.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
-    "tsconfig.base.json": "*",
-    "tslint.json": "*",
-    ".eslintrc.json": "*",
-    "nx.json": "*"
+  "workspaceLayout": {
+    "appsDir": "apps",
+    "libsDir": "packages"
   },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e", "build-storybook"],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "parallel": 1
       }
     }
@@ -30,36 +23,44 @@
       },
       "library": {
         "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
       }
     },
     "@nrwl/angular:application": {
       "style": "scss",
       "linter": "eslint",
-      "unitTestRunner": "karma",
+      "unitTestRunner": "none",
       "e2eTestRunner": "cypress",
       "routing": true,
       "strict": true
     },
     "@nrwl/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "karma",
-      "simpleModuleName": true,
+      "unitTestRunner": "none",
+      "simpleName": true,
+      "skipModule": true,
+      "addModuleSpec": false,
+      "skipPackageJson": true,
       "strict": true,
-      "buildable": true
-    },
-    "@nrwl/angular:module": {
-      "flat": true
+      "buildable": false,
+      "publishable": false
     },
     "@nrwl/angular:component": {
       "style": "scss",
       "changeDetection": "OnPush",
+      "displayBlock": true,
+      "inlineStyle": true,
+      "inlineTemplate": true,
+      "standalone": true,
+      "skipTests": true,
       "export": true,
-      "flat": true,
-      "viewEncapsulation": "None",
-      "prefix": "avo"
+      "flat": false,
+      "viewEncapsulation": "Emulated"
+    },
+    "@nrwl/angular:library-secondary-entry-point": {
+      "skipModule": true
+    },
+    "@nrwl/angular:module": {
+      "flat": true
     },
     "@nrwl/angular:service": {
       "flat": true
@@ -68,7 +69,34 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "test": {
+      "inputs": ["default", "^production", "{workspaceRoot}/karma.conf.js"]
+    },
+    "e2e": {
+      "inputs": ["default", "^production"]
+    },
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
     }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [
+      "{workspaceRoot}/angular.json",
+      "{workspaceRoot}/tsconfig.base.json",
+      "{workspaceRoot}/tslint.json",
+      "{workspaceRoot}/nx.json"
+    ],
+    "production": [
+      "default",
+      "!{projectRoot}/**/*.spec.[jt]s",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/karma.conf.js",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)"
+    ]
   }
 }

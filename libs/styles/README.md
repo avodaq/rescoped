@@ -58,15 +58,15 @@ The example structure below shows a main.scss file. In Angular we import styles 
 ```
 "styles": [
   "libs/styles/theming/_index.scss",
-  "libs/styles/tailwind/_tailwindcss-base.scss",
-  "libs/styles/tailwind/_tailwindcss-components.scss",
-  "libs/styles/tailwind/_tailwindcss-utilities.scss",
+  "libs/styles/6_vendors/_tailwindcss-base.scss",
+  "libs/styles/6_vendors/_tailwindcss-components.scss",
+  "libs/styles/6_vendors/_tailwindcss-utilities.scss",
   "libs/styles/base/_index.scss",
-  "libs/components/src/spreadsheet/_cdk-spreadsheet.scss"
+  "libs/components/src/datagrid/_cdk-datagrid.scss"
 ],
 ```
 
 We use npm to [symlink](https://docs.npmjs.com/cli/v6/configuring-npm/package-json/#local-paths) (use as local dependencies) most of the styles into the node_modules folder. In the root package.json you find
 the following: `"@rescoped/abstracts": "file:libs/styles/abstracts",`.
 
-When `npm install` the symlinks are created and globally available in our monorepo. Import styles from abstracts like so: `@use '~@rescoped/abstracts/palettes' as avo_palettes; `
+When `npm install` the symlinks are created and globally available in our monorepo. Import styles from abstracts like so: `@use '@rescoped/abstracts/palettes' as avo_palettes; `

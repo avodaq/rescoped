@@ -1,0 +1,45 @@
+@use '../0_abstracts/variables';
+@use '@rescoped/styles/0_abstracts/palettes' as pal;
+@use '@rescoped/styles/0_abstracts/functions' as f;
+@use 'sass:color';
+
+:root {
+  --color-switch: black;
+  .dark {
+    --color-switch: white;
+  }
+}
+
+// box sizing
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+// reset
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: auto;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+// colors
+body {
+  background: rgba(variables.$primary-color, 0.125);
+  color: pal.$black-84;
+
+  &.dark {
+    background: f.shade(color.scale(variables.$primary-color, $saturation: -85%), 65%);
+    color: pal.$white-84;
+  }
+}

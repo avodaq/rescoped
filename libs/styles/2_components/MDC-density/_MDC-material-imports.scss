@@ -1,0 +1,19 @@
+// button
+@use '@material/button';
+
+// icon-button
+@use '@material/icon-button' with (
+  $minimum-height: 24px
+);
+
+// form-field
+@use '@material/textfield' with (
+  $minimum-height: 24px
+);
+
+// table
+@use '@material/data-table' with (
+  $minimum-row-height: 32px
+);
+
+@use '@material/checkbox';

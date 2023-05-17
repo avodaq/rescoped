@@ -1,0 +1,119 @@
+@use 'sass:math';
+
+@function linInt($x, $min: 10, $max: 96, $steps: 12, $round: true) {
+  // linear interpolation between 10px and 96px
+  $result: ($max - $min) / ($steps - 1) * ($x - 1) + $min;
+  @if $round {
+    @return math.round($result);
+  } @else {
+    @return $result;
+  }
+}
+
+@function expInt($x, $min: 10, $max: 96, $steps: 12, $round: true) {
+  // natural exponential interpolation between 10px and 96px
+  $result: $min * (math.pow(($max / $min), ($x - 1)/ ($steps - 1)));
+  @if $round {
+    @return math.round($result);
+  } @else {
+    @return $result;
+  }
+}
+
+@function expIntScale($x, $scale: 1, $min: 10, $max: 96, $steps: 12, $round: true) {
+  // exponential interpolation between 10px and 96px
+  // scale curvature by setting $scale to e.g. 0.75
+  // kind of works like interpolating the average between linear and exponential
+  // but results are crap
+  $result: $min * (math.pow(($max / $min), math.pow(($x - 1) / ($steps - 1), $scale)));
+  @if $round {
+    @return math.round($result);
+  } @else {
+    @return $result;
+  }
+}
+
+@function avrgInt($x, $factor: 0.5, $min: 10, $max: 96, $steps: 12, $round: true) {
+  // get the average between the linear and exponential values
+  // use $factor to set where in between
+  $result: (
+      (linInt($x, $min, $max, $steps, false) - expInt($x, $min, $max, $steps, false)) * $factor
+    ) + expInt($x, $min, $max, $steps, false);
+  @if $round {
+    @return math.round($result);
+  } @else {
+    @return $result;
+  }
+}
+
+@function rem-to-px($px) {
+  @return $px / 16px;
+}
+
+//$line: (
+//  1: linInt(1),
+//  2: linInt(2),
+//  3: linInt(3),
+//  4: linInt(4),
+//  5: linInt(5),
+//  6: linInt(6),
+//  7: linInt(7),
+//  8: linInt(8),
+//  9: linInt(9),
+//  10: linInt(10),
+//  11: linInt(11),
+//  12: linInt(12),
+//);
+//
+//$expo: (
+//  1: expInt(1),
+//  2: expInt(2),
+//  3: expInt(3),
+//  4: expInt(4),
+//  5: expInt(5),
+//  6: expInt(6),
+//  7: expInt(7),
+//  8: expInt(8),
+//  9: expInt(9),
+//  10: expInt(10),
+//  11: expInt(11),
+//  12: expInt(12),
+//);
+
+$average: (
+  1: avrgInt(1),
+  2: avrgInt(2),
+  3: avrgInt(3),
+  4: avrgInt(4),
+  5: avrgInt(5),
+  6: avrgInt(6),
+  7: avrgInt(7),
+  8: avrgInt(8),
+  9: avrgInt(9),
+  10: avrgInt(10),
+  11: avrgInt(11),
+  12: avrgInt(12),
+);
+
+@each $name, $size in $average {
+  .average-#{$name} {
+    font-size: #{$size}px;
+    font-size: #{$size / 16}rem;
+  }
+}
+
+// @each $name, $size in $expo {
+//   .exponential-#{$name} {
+//     font-size: $size;
+//     font-size: math.round($size) px;
+//     font-size: math.round($size) / 16 rem;
+//   }
+// }
+
+// @each $name, $size in $line {
+//   .linear-#{$name} {
+//     font-size: $size;
+//     font-size: math.round($size) px;
+//     font-size: math.round($size) / 16 rem;
+//   }
+// }

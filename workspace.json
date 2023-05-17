@@ -2,10 +2,11 @@
   "version": 2,
   "projects": {
     "components": "libs/components",
-    "directives": "libs/directives",
     "provider": "libs/provider",
     "services": "libs/services",
-    "skygrid": "apps/skygrid"
+    "skygrid": "apps/skygrid",
+    "skygrid-e2e": "apps/skygrid-e2e"
   },
-  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "defaultProject": "skygrid"
 }

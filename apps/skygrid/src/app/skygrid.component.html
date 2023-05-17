@@ -1,210 +1,214 @@
-<div
-  class="h-full p-4"
-  *ngIf="{
-    darkActive: _active$ | async
-  } as vm"
->
+<div class="h-full p-4">
   <mat-card class="h-full">
-    <mat-card-title>
-      <div class="flex">
-        <img
-          *ngIf="!vm.darkActive"
-          src="assets/skygrid_logo_dark.svg"
-          class="py-4 w-[12rem]"
-          alt="skygrid app logo dark"
-        />
-        <img
-          *ngIf="vm.darkActive"
-          src="assets/skygrid_logo_light.svg"
-          class="py-4 w-[12rem]"
-          alt="skygrid app logo light"
-        />
-        <div class="flex items-center gap-4 ml-auto">
-          <span class="!font-normal text-md">Light/Dark</span>
-          <avo-toggle-icon-theme color="primary"></avo-toggle-icon-theme>
+    <mat-card-header>
+      <mat-card-title>
+        <div class="py-4 w-[12rem]">
+          <avo-skygrid-logo-svg></avo-skygrid-logo-svg>
         </div>
+      </mat-card-title>
+      <div class="flex items-center gap-4 ml-auto">
+        <span class="!font-normal text-md">Light/Dark</span>
+        <avo-toggle-icon-theme color="primary"></avo-toggle-icon-theme>
       </div>
-    </mat-card-title>
-    <cdk-virtual-scroll-viewport [tvsItemSize]="38" class="h-[calc(100%-5.5rem)]">
-      <mat-table
-        class="mat-table-gap-2 input-density-xs rows-collapsed rows-grouping hide-divider rows-hover"
-        mat-spreadsheet
-        #matSpreadsheet="matSpreadsheet"
-        [itemRules]="itemRules"
-        [dataSource]="dataSource"
-        [density]="'xs'"
-        [rowHover]="true"
-        [collapsedRows]="true"
-        [cellGap]="2"
-        [rowGrouping]="false"
-      >
-        <ng-container matColumnDef="date">
-          <mat-header-cell *matHeaderCellDef>
-            <span>Date</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let skyItem; type: dataSource">
-            <mat-spreadsheet-input
-              cdk-spreadsheet-edit
-              [validator]="standardValidation"
-              [item]="skyItem"
-              [key]="'date'"
-            ></mat-spreadsheet-input>
-          </mat-cell>
-        </ng-container>
+    </mat-card-header>
+    <mat-card-content class="h-full">
+      <cdk-virtual-scroll-viewport [tvsItemSize]="48" class="h-full">
+        <div class="density-sm">
+          <!--          class="re-datagrid mat-table-gap-2 rows-collapsed rows-grouping hide-divider rows-hover"-->
 
-        <ng-container matColumnDef="airline">
-          <mat-header-cell *matHeaderCellDef>
-            <span>Airline</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let skyItem; type: dataSource">
-            <mat-spreadsheet-input
-              cdk-spreadsheet-edit
-              [validator]="standardValidation"
-              [item]="skyItem"
-              [key]="'airline'"
-            ></mat-spreadsheet-input>
-          </mat-cell>
-        </ng-container>
+          <mat-table
+            class="re-datagrid hide-row-divider column-spacing-xs header-font-size-13"
+            mat-datagrid
+            #matDatagrid="matDatagrid"
+            [itemRules]="itemRules"
+            [dataSource]="dataSource"
+            [density]="'xs'"
+            [rowHover]="true"
+            [collapsedRows]="true"
+            [cellGap]="2"
+            [rowGrouping]="false"
+          >
+            <ng-container matColumnDef="collapse">
+              <mat-header-cell *matHeaderCellDef></mat-header-cell>
+              <mat-cell *matCellDef="let skyItem; type: dataSource">
+                <mat-datagrid-input
+                  cdk-datagrid-edit
+                  [validator]="standardValidation"
+                  [item]="skyItem"
+                  [key]="'collapse'"
+                ></mat-datagrid-input>
+              </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="flightNumber">
-          <mat-header-cell *matHeaderCellDef>
-            <span>Flight Number</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let skyItem; type: dataSource">
-            <mat-spreadsheet-input
-              cdk-spreadsheet-edit
-              [validator]="flightNumberValidation"
-              [item]="skyItem"
-              [key]="'flightNumber'"
-            ></mat-spreadsheet-input>
-          </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="date">
+              <mat-header-cell *matHeaderCellDef>
+                <span>Date</span>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let skyItem; type: dataSource">
+                <mat-datagrid-input
+                  cdk-datagrid-edit
+                  [validator]="standardValidation"
+                  [item]="skyItem"
+                  [key]="'date'"
+                ></mat-datagrid-input>
+              </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="status">
-          <mat-header-cell *matHeaderCellDef>
-            <span>Status</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let skyItem; type: dataSource">
-            <mat-spreadsheet-combobox
-              cdk-spreadsheet-edit
-              [item]="skyItem"
-              [key]="'status'"
-              [options]="flightStatus"
-              [validator]="flightStatusValidation"
-            ></mat-spreadsheet-combobox>
-          </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="airline">
+              <mat-header-cell *matHeaderCellDef>
+                <span>Airline</span>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let skyItem; type: dataSource">
+                <mat-datagrid-input
+                  cdk-datagrid-edit
+                  [validator]="standardValidation"
+                  [item]="skyItem"
+                  [key]="'airline'"
+                ></mat-datagrid-input>
+              </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="origin">
-          <mat-header-cell *matHeaderCellDef>
-            <span>Origin</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let skyItem; type: dataSource">
-            <mat-spreadsheet-input
-              cdk-spreadsheet-edit
-              [validator]="standardValidation"
-              [item]="skyItem"
-              [key]="'origin'"
-            ></mat-spreadsheet-input>
-          </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="flightNumber">
+              <mat-header-cell *matHeaderCellDef>
+                <span>Flight Number</span>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let skyItem; type: dataSource">
+                <mat-datagrid-input
+                  cdk-datagrid-edit
+                  [validator]="flightNumberValidation"
+                  [item]="skyItem"
+                  [key]="'flightNumber'"
+                ></mat-datagrid-input>
+              </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="destination">
-          <mat-header-cell *matHeaderCellDef>
-            <span>Destination</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let skyItem; type: dataSource">
-            <mat-spreadsheet-combobox
-              cdk-spreadsheet-edit
-              [item]="skyItem"
-              [key]="'destination'"
-              [options]="destinations"
-              [validator]="destinationValidation"
-            ></mat-spreadsheet-combobox>
-          </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="status">
+              <mat-header-cell *matHeaderCellDef>
+                <span>Status</span>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let skyItem; type: dataSource">
+                <mat-datagrid-combobox
+                  cdk-datagrid-edit
+                  [item]="skyItem"
+                  [key]="'status'"
+                  [options]="flightStatus"
+                  [validator]="flightStatusValidation"
+                ></mat-datagrid-combobox>
+              </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="duration">
-          <mat-header-cell *matHeaderCellDef>
-            <span>Duration</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let skyItem; type: dataSource">
-            <mat-spreadsheet-input
-              cdk-spreadsheet-edit
-              [validator]="durationAValidation"
-              [item]="skyItem"
-              [key]="'duration'"
-            ></mat-spreadsheet-input>
-          </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="origin">
+              <mat-header-cell *matHeaderCellDef>
+                <span>Origin</span>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let skyItem; type: dataSource">
+                <mat-datagrid-input
+                  cdk-datagrid-edit
+                  [validator]="standardValidation"
+                  [item]="skyItem"
+                  [key]="'origin'"
+                ></mat-datagrid-input>
+              </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="estArrival">
-          <mat-header-cell *matHeaderCellDef>
-            <span>Arrival</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let skyItem; type: dataSource">
-            <mat-spreadsheet-input
-              cdk-spreadsheet-edit
-              type="time"
-              [validator]="standardValidation"
-              [item]="skyItem"
-              [key]="'estArrival'"
-            ></mat-spreadsheet-input>
-          </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="destination">
+              <mat-header-cell *matHeaderCellDef>
+                <span>Destination</span>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let skyItem; type: dataSource">
+                <mat-datagrid-combobox
+                  cdk-datagrid-edit
+                  [item]="skyItem"
+                  [key]="'destination'"
+                  [options]="destinations"
+                  [validator]="destinationValidation"
+                ></mat-datagrid-combobox>
+              </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="estDeparture">
-          <mat-header-cell *matHeaderCellDef>
-            <span>Departure</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let skyItem; type: dataSource">
-            <mat-spreadsheet-input
-              cdk-spreadsheet-edit
-              type="time"
-              [validator]="standardValidation"
-              [item]="skyItem"
-              [key]="'estDeparture'"
-            ></mat-spreadsheet-input>
-          </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="duration">
+              <mat-header-cell *matHeaderCellDef>
+                <span>Duration</span>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let skyItem; type: dataSource">
+                <mat-datagrid-input
+                  cdk-datagrid-edit
+                  [validator]="durationAValidation"
+                  [item]="skyItem"
+                  [key]="'duration'"
+                ></mat-datagrid-input>
+              </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="terminal">
-          <mat-header-cell *matHeaderCellDef>
-            <span>Terminal</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let skyItem; type: dataSource">
-            <mat-spreadsheet-input
-              cdk-spreadsheet-edit
-              type="number"
-              [validator]="standardValidation"
-              [item]="skyItem"
-              [key]="'terminal'"
-            ></mat-spreadsheet-input>
-          </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="estArrival">
+              <mat-header-cell *matHeaderCellDef>
+                <span>Arrival</span>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let skyItem; type: dataSource">
+                <mat-datagrid-input
+                  cdk-datagrid-edit
+                  type="time"
+                  [validator]="standardValidation"
+                  [item]="skyItem"
+                  [key]="'estArrival'"
+                ></mat-datagrid-input>
+              </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="gate">
-          <mat-header-cell *matHeaderCellDef>
-            <span>Gate</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let skyItem; type: dataSource">
-            <mat-spreadsheet-combobox
-              cdk-spreadsheet-edit
-              [item]="skyItem"
-              [key]="'gate'"
-              [options]="gates"
-              [validator]="standardValidation"
-            ></mat-spreadsheet-combobox>
-          </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="estDeparture">
+              <mat-header-cell *matHeaderCellDef>
+                <span>Departure</span>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let skyItem; type: dataSource">
+                <mat-datagrid-input
+                  cdk-datagrid-edit
+                  type="time"
+                  [validator]="standardValidation"
+                  [item]="skyItem"
+                  [key]="'estDeparture'"
+                ></mat-datagrid-input>
+              </mat-cell>
+            </ng-container>
 
-        <mat-header-row *matHeaderRowDef="tableColumns; sticky: true"></mat-header-row>
-        <mat-row
-          cdk-spreadsheet-row
-          *matRowDef="let skyItem; columns: tableColumns"
-          [item]="skyItem"
-        ></mat-row>
-      </mat-table>
-    </cdk-virtual-scroll-viewport>
+            <ng-container matColumnDef="terminal">
+              <mat-header-cell *matHeaderCellDef>
+                <span>Terminal</span>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let skyItem; type: dataSource">
+                <mat-datagrid-input
+                  cdk-datagrid-edit
+                  type="number"
+                  [validator]="standardValidation"
+                  [item]="skyItem"
+                  [key]="'terminal'"
+                ></mat-datagrid-input>
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="gate">
+              <mat-header-cell *matHeaderCellDef>
+                <span>Gate</span>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let skyItem; type: dataSource">
+                <mat-datagrid-combobox
+                  cdk-datagrid-edit
+                  [item]="skyItem"
+                  [key]="'gate'"
+                  [options]="gates"
+                  [validator]="standardValidation"
+                ></mat-datagrid-combobox>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="tableColumns; sticky: false"></mat-header-row>
+            <mat-row
+              cdk-datagrid-row
+              *matRowDef="let skyItem; columns: tableColumns"
+              [item]="skyItem"
+            ></mat-row>
+          </mat-table>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </mat-card-content>
   </mat-card>
 </div>

@@ -1,5 +1,5 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "skygrid",
   "projectType": "application",
   "sourceRoot": "apps/skygrid/src",
   "prefix": "avo",
@@ -16,13 +16,9 @@
         "inlineStyleLanguage": "scss",
         "assets": ["apps/skygrid/src/favicon.ico", "apps/skygrid/src/assets"],
         "styles": [
-          "libs/styles/theming/_index.scss",
-          "libs/styles/tailwind/_tailwindcss-base.scss",
-          "libs/styles/tailwind/_tailwindcss-components.scss",
-          "libs/styles/tailwind/_tailwindcss-utilities.scss",
-          "libs/styles/base/_index.scss",
-          "libs/components/spreadsheet/src/lib/_cdk-spreadsheet.scss",
-          "apps/skygrid/src/styles.scss"
+          "apps/skygrid/src/styles.scss",
+          "libs/styles/6_vendors/_tailwindcss-components.scss",
+          "libs/styles/6_vendors/_tailwindcss-utilities.scss"
         ],
         "scripts": []
       },

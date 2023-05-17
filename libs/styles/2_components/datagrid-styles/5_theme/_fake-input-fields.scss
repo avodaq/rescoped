@@ -1,0 +1,119 @@
+@use '../0_abstracts/variables' as v;
+@use '../0_abstracts/mixins' as m;
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+$dark-theme-class: v.$dark-theme-class;
+
+:root {
+  --fake-input-border-color: #{v.$black-20};
+  --fake-input-border-color-hover: #{v.$black-84};
+  --fake-input-border-error: #{map.get(mat.$red-palette, 500)};
+
+  --input-bg-global: #{v.$white-90};
+  --input-bg-group: #{v.$white-84};
+  --input-bg: transparent;
+
+  #{$dark-theme-class} {
+    --fake-input-border-color: #{v.$white-12};
+    --fake-input-border-color-hover: #{v.$white-84};
+
+    --input-bg-global: #{v.$black-8};
+    --input-bg-group: #{v.$black-4};
+    --input-bg: #{v.$white-2};
+  }
+}
+
+// fake-input general styles
+.re-datagrid {
+  .cdk-default-field,
+  .cdk-default-date-field {
+    position: relative;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+// fake-input padding-x
+.density-xs .re-datagrid {
+  @include m.fake-input-padding-x(6px);
+}
+
+.density-sm .re-datagrid {
+  @include m.fake-input-padding-x(7px);
+}
+
+.density-md .re-datagrid {
+  @include m.fake-input-padding-x(8px);
+}
+
+.density-lg .re-datagrid {
+  @include m.fake-input-padding-x(9px);
+}
+
+// fake-input font-size
+.density-xs .re-datagrid {
+  @include m.fake-input-font-size(14px);
+}
+
+.density-sm .re-datagrid {
+  @include m.fake-input-font-size(14.75px);
+}
+
+.density-md .re-datagrid {
+  @include m.fake-input-font-size(15.25px);
+}
+
+.density-lg .re-datagrid {
+  @include m.fake-input-font-size(16px);
+}
+
+// outline-input/fake-input bg-color
+.re-datagrid {
+  @include m.outline-input-bg-color(var(--input-bg));
+  @include m.fake-input-bg-color(var(--input-bg));
+  .mat-mdc-text-field-wrapper {
+    border-radius: 4px;
+  }
+
+  .cdk-datagrid-row-group {
+    @include m.outline-input-bg-color(var(--input-bg-group));
+    @include m.fake-input-bg-color(var(--input-bg-group));
+    .mat-mdc-text-field-wrapper {
+      border-radius: 4px;
+    }
+  }
+
+  .cdk-datagrid-row-global {
+    @include m.outline-input-bg-color(var(--input-bg-global));
+    @include m.fake-input-bg-color(var(--input-bg-global));
+    .mat-mdc-text-field-wrapper {
+      border-radius: 4px;
+    }
+  }
+}
+
+.re-datagrid {
+  //fake-input border-color
+  .cdk-default-field:not(.disabled),
+  .cdk-default-date-field:not(.disabled) {
+    box-shadow: inset 0 0 0 1px var(--fake-input-border-color);
+
+    &:hover {
+      box-shadow: inset 0 0 0 2px var(--fake-input-border-color-hover);
+    }
+
+    // fake-input border-color error
+    &.mat-error {
+      box-shadow: inset 0 0 0 1px var(--fake-input-border-error);
+
+      &:hover {
+        box-shadow: inset 0 0 0 2px var(--fake-input-border-error);
+      }
+    }
+  }
+}

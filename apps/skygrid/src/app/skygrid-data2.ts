@@ -1,4 +1,4 @@
-import { MatSpreadsheetCollapseComponent, setItemPayload } from '@rescoped/components/spreadsheet';
+import { MatDatagridCollapseComponent, setItemPayload } from '@rescoped/components/datagrid';
 
 export const flightStatus = [
   { status: 'On Time' },
@@ -47,6 +47,7 @@ export const gates = [
 ];
 
 export interface SkyGridData {
+  collapse: string;
   date: string;
   airline: string;
   flightNumber: string;
@@ -65,21 +66,21 @@ const group2 = setItemPayload(<SkyGridData>{ date: '16.10.2022' });
 const group3 = setItemPayload(<SkyGridData>{ date: '17.10.2022' });
 
 export const skyGridData: SkyGridData[] = [
-  // global-edit
-  setItemPayload(<SkyGridData>{}, { actionType: 'global-edit' }),
+  // row-global
+  setItemPayload(<SkyGridData>{}, { actionType: 'row-global' }),
 
-  // group-edit
+  // row-group
   // 15.10.2022
   setItemPayload(group1, {
-    actionType: 'group-edit',
+    actionType: 'row-group',
     parent: true,
     groupId: 1,
     rules: {
       overrides: {
-        date: {
+        collapse: {
           action: {
-            componentType: MatSpreadsheetCollapseComponent,
-            componentPosition: 'before',
+            componentType: MatDatagridCollapseComponent,
+            componentPosition: 'override',
             data: {
               item: group1,
             },
@@ -89,9 +90,10 @@ export const skyGridData: SkyGridData[] = [
     },
   }),
 
-  // single-edit
+  // row-single
   setItemPayload(
     {
+      collapse: '',
       date: '15.10.2022',
       airline: 'Sky Fly',
       flightNumber: 'SF-2042',
@@ -104,10 +106,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'C02',
     },
-    { actionType: 'single-edit', groupId: 1 },
+    { actionType: 'row-single', groupId: 1 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '15.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-2931',
@@ -120,10 +123,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A03',
     },
-    { actionType: 'single-edit', groupId: 1 },
+    { actionType: 'row-single', groupId: 1 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '15.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-1274',
@@ -136,10 +140,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B04',
     },
-    { actionType: 'single-edit', groupId: 1 },
+    { actionType: 'row-single', groupId: 1 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '15.10.2022',
       airline: 'Comfort Flights',
       flightNumber: 'CF-8532',
@@ -152,10 +157,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B13',
     },
-    { actionType: 'single-edit', groupId: 1 },
+    { actionType: 'row-single', groupId: 1 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '15.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-12',
@@ -168,10 +174,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A09',
     },
-    { actionType: 'single-edit', groupId: 1 },
+    { actionType: 'row-single', groupId: 1 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '15.10.2022',
       airline: 'Sky Fly',
       flightNumber: 'SF-',
@@ -184,10 +191,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'C03',
     },
-    { actionType: 'single-edit', groupId: 1 },
+    { actionType: 'row-single', groupId: 1 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '15.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1632',
@@ -200,10 +208,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A12',
     },
-    { actionType: 'single-edit', groupId: 1 },
+    { actionType: 'row-single', groupId: 1 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '15.10.2022',
       airline: 'Venture Airlines',
       flightNumber: 'VA-1424',
@@ -216,10 +225,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A07',
     },
-    { actionType: 'single-edit', groupId: 1 },
+    { actionType: 'row-single', groupId: 1 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '15.10.2022',
       airline: 'Venture Airlines',
       flightNumber: 'VA-1040',
@@ -232,21 +242,21 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'B10',
     },
-    { actionType: 'single-edit', groupId: 1 },
+    { actionType: 'row-single', groupId: 1 },
   ),
 
-  // group-edit
+  // row-group
   // 16.10.2022
   setItemPayload(group2, {
-    actionType: 'group-edit',
+    actionType: 'row-group',
     parent: true,
     groupId: 2,
     rules: {
       overrides: {
-        date: {
+        collapse: {
           action: {
-            componentType: MatSpreadsheetCollapseComponent,
-            componentPosition: 'before',
+            componentType: MatDatagridCollapseComponent,
+            componentPosition: 'override',
             data: {
               item: group2,
             },
@@ -256,9 +266,10 @@ export const skyGridData: SkyGridData[] = [
     },
   }),
 
-  // single-edit
+  // row-single
   setItemPayload(
     {
+      collapse: '',
       date: '16.10.2022',
       airline: 'Sky Fly',
       flightNumber: '',
@@ -271,11 +282,12 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A02',
     },
-    { actionType: 'single-edit', groupId: 2 },
+    { actionType: 'row-single', groupId: 2 },
   ),
 
   setItemPayload(
     {
+      collapse: '',
       date: '16.10.2022',
       airline: 'Central Ways',
       flightNumber: '-2415',
@@ -288,10 +300,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A01',
     },
-    { actionType: 'single-edit', groupId: 2 },
+    { actionType: 'row-single', groupId: 2 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '16.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-1932',
@@ -304,10 +317,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'B08',
     },
-    { actionType: 'single-edit', groupId: 2 },
+    { actionType: 'row-single', groupId: 2 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '16.10.2022',
       airline: 'Comfort Flights',
       flightNumber: 'CF-8551',
@@ -320,10 +334,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B13',
     },
-    { actionType: 'single-edit', groupId: 2 },
+    { actionType: 'row-single', groupId: 2 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '16.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-1264',
@@ -336,10 +351,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A09',
     },
-    { actionType: 'single-edit', groupId: 2 },
+    { actionType: 'row-single', groupId: 2 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '16.10.2022',
       airline: 'Sky Fly',
       flightNumber: 'SF-5323',
@@ -352,10 +368,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'C03',
     },
-    { actionType: 'single-edit', groupId: 2 },
+    { actionType: 'row-single', groupId: 2 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '16.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1435',
@@ -368,10 +385,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A12',
     },
-    { actionType: 'single-edit', groupId: 2 },
+    { actionType: 'row-single', groupId: 2 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '16.10.2022',
       airline: 'Venture Airlines',
       flightNumber: 'VA-1126',
@@ -384,10 +402,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A03',
     },
-    { actionType: 'single-edit', groupId: 2 },
+    { actionType: 'row-single', groupId: 2 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '16.10.2022',
       airline: 'Venture Airlines',
       flightNumber: 'VA-1044',
@@ -400,21 +419,21 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'C10',
     },
-    { actionType: 'single-edit', groupId: 2 },
+    { actionType: 'row-single', groupId: 2 },
   ),
 
-  // group-edit
+  // row-group
   // 17.10.2022
   setItemPayload(group3, {
-    actionType: 'group-edit',
+    actionType: 'row-group',
     parent: true,
     groupId: 3,
     rules: {
       overrides: {
-        date: {
+        collapse: {
           action: {
-            componentType: MatSpreadsheetCollapseComponent,
-            componentPosition: 'before',
+            componentType: MatDatagridCollapseComponent,
+            componentPosition: 'override',
             data: {
               item: group3,
             },
@@ -424,9 +443,10 @@ export const skyGridData: SkyGridData[] = [
     },
   }),
 
-  // single-edit
+  // row-single
   setItemPayload(
     {
+      collapse: '',
       date: '17.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-2422',
@@ -439,10 +459,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'C02',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '17.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-3931',
@@ -455,10 +476,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '17.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-0274',
@@ -471,10 +493,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B04',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '17.10.2022',
       airline: 'Comfort Flights',
       flightNumber: 'CF-7532',
@@ -487,10 +510,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B13',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '17.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-1264',
@@ -503,10 +527,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A09',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '17.10.2022',
       airline: 'Sky Fly',
       flightNumber: 'SF-5323',
@@ -519,10 +544,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'C03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '17.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1632',
@@ -535,10 +561,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A12',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '17.10.2022',
       airline: 'Venture Airlines',
       flightNumber: 'VA-1424',
@@ -551,10 +578,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A07',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '17.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1042',
@@ -567,12 +595,13 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'B10',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
 
   // 18.10.2022
   setItemPayload(
     {
+      collapse: '',
       date: '18.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-2422',
@@ -585,10 +614,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'C02',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '18.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-3931',
@@ -601,10 +631,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '18.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-0274',
@@ -617,10 +648,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B04',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '18.10.2022',
       airline: 'Comfort Flights',
       flightNumber: 'CF-7532',
@@ -633,10 +665,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B13',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '18.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-1264',
@@ -649,10 +682,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A09',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '18.10.2022',
       airline: 'Sky Fly',
       flightNumber: 'SF-5323',
@@ -665,10 +699,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'C03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '18.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1632',
@@ -681,10 +716,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A12',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '18.10.2022',
       airline: 'Venture Airlines',
       flightNumber: 'VA-1424',
@@ -697,10 +733,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A07',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '18.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1042',
@@ -713,12 +750,13 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'B10',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
 
   // 19.10.2022
   setItemPayload(
     {
+      collapse: '',
       date: '19.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-2422',
@@ -731,10 +769,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'C02',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '19.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-3931',
@@ -747,10 +786,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '19.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-0274',
@@ -763,10 +803,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B04',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '19.10.2022',
       airline: 'Comfort Flights',
       flightNumber: 'CF-7532',
@@ -779,10 +820,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B13',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '19.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-1264',
@@ -795,10 +837,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A09',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '19.10.2022',
       airline: 'Sky Fly',
       flightNumber: 'SF-5323',
@@ -811,10 +854,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'C03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '19.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1632',
@@ -827,10 +871,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A12',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '19.10.2022',
       airline: 'Venture Airlines',
       flightNumber: 'VA-1424',
@@ -843,10 +888,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A07',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '19.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1042',
@@ -859,12 +905,13 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'B10',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
 
   // 20.10.2022
   setItemPayload(
     {
+      collapse: '',
       date: '20.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-2422',
@@ -877,10 +924,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'C02',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '20.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-3931',
@@ -893,10 +941,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '20.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-0274',
@@ -909,10 +958,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B04',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '20.10.2022',
       airline: 'Comfort Flights',
       flightNumber: 'CF-7532',
@@ -925,10 +975,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B13',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '20.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-1264',
@@ -941,10 +992,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A09',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '20.10.2022',
       airline: 'Sky Fly',
       flightNumber: 'SF-5323',
@@ -957,10 +1009,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'C03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '20.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1632',
@@ -973,10 +1026,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A12',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '20.10.2022',
       airline: 'Venture Airlines',
       flightNumber: 'VA-1424',
@@ -989,10 +1043,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A07',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '20.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1042',
@@ -1005,12 +1060,13 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'B10',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
 
   // 21.10.2022
   setItemPayload(
     {
+      collapse: '',
       date: '21.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-2422',
@@ -1023,10 +1079,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'C02',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '21.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-3931',
@@ -1039,10 +1096,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '21.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-0274',
@@ -1055,10 +1113,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B04',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '21.10.2022',
       airline: 'Comfort Flights',
       flightNumber: 'CF-7532',
@@ -1071,10 +1130,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B13',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '21.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-1264',
@@ -1087,10 +1147,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A09',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '21.10.2022',
       airline: 'Sky Fly',
       flightNumber: 'SF-5323',
@@ -1103,10 +1164,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'C03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '21.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1632',
@@ -1119,10 +1181,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A12',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '21.10.2022',
       airline: 'Venture Airlines',
       flightNumber: 'VA-1424',
@@ -1135,10 +1198,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A07',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '21.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1042',
@@ -1151,12 +1215,13 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'B10',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
 
   // 22.10.2022
   setItemPayload(
     {
+      collapse: '',
       date: '22.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-2422',
@@ -1169,10 +1234,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'C02',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '22.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-3931',
@@ -1185,10 +1251,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '22.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-0274',
@@ -1201,10 +1268,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B04',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '22.10.2022',
       airline: 'Comfort Flights',
       flightNumber: 'CF-7532',
@@ -1217,10 +1285,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B13',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '22.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-1264',
@@ -1233,10 +1302,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A09',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '22.10.2022',
       airline: 'Sky Fly',
       flightNumber: 'SF-5323',
@@ -1249,10 +1319,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'C03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '22.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1632',
@@ -1265,10 +1336,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A12',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '22.10.2022',
       airline: 'Venture Airlines',
       flightNumber: 'VA-1424',
@@ -1281,10 +1353,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A07',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '22.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1042',
@@ -1297,12 +1370,13 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'B10',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
 
   // 23.10.2022
   setItemPayload(
     {
+      collapse: '',
       date: '23.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-2422',
@@ -1315,10 +1389,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'C02',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '23.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-3931',
@@ -1331,10 +1406,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '23.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-0274',
@@ -1347,10 +1423,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B04',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '23.10.2022',
       airline: 'Comfort Flights',
       flightNumber: 'CF-7532',
@@ -1363,10 +1440,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'B13',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '23.10.2022',
       airline: 'Astro Airlines',
       flightNumber: 'AA-1264',
@@ -1379,10 +1457,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A09',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '23.10.2022',
       airline: 'Sky Fly',
       flightNumber: 'SF-5323',
@@ -1395,10 +1474,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'C03',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '23.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1632',
@@ -1411,10 +1491,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'A12',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '23.10.2022',
       airline: 'Venture Airlines',
       flightNumber: 'VA-1424',
@@ -1427,10 +1508,11 @@ export const skyGridData: SkyGridData[] = [
       terminal: '1',
       gate: 'A07',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
   setItemPayload(
     {
+      collapse: '',
       date: '23.10.2022',
       airline: 'Central Ways',
       flightNumber: 'CW-1042',
@@ -1443,6 +1525,6 @@ export const skyGridData: SkyGridData[] = [
       terminal: '2',
       gate: 'B10',
     },
-    { actionType: 'single-edit', groupId: 3 },
+    { actionType: 'row-single', groupId: 3 },
   ),
 ];

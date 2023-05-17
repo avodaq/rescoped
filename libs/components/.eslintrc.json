@@ -16,7 +16,7 @@
       }
     },
     // @todo:
-    // - this can be added to the spreadsheet because its applied there!
+    // - this can be added to the datagrid because its applied there!
     // - how to apply to a specific inline-template?
     {
       "files": ["*.html"],
