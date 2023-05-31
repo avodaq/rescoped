@@ -1,5 +1,5 @@
 import { Observable, of } from 'rxjs';
-import { StorageMap } from '@ngx-builders/pwa-local-storage';
+import { StorageMap } from '@ngx-pwa/local-storage';
 import { Provider } from '@angular/core';
 import { ThemeState } from '../src/theme-store.models';
 

@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { DOCUMENT } from '@angular/common';
 import { exhaustMap, map, mapTo, takeUntil, tap } from 'rxjs/operators';
-import { StorageMap } from '@ngx-builders/pwa-local-storage';
+import { StorageMap } from '@ngx-pwa/local-storage';
 import { Observable, Subject } from 'rxjs';
 import { defaultThemeState, LS_THEME_KEY, ThemeState } from './theme-store.models';
 
