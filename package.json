@@ -77,7 +77,6 @@
     "@ngrx/component-store": "15.1.0",
     "@ngrx/entity": "15.1.0",
     "@ngrx/store": "15.1.0",
-    "@ngx-builders/pwa-local-storage": "14.0.0",
     "@ngx-pwa/local-storage": "15.0.0",
     "@nrwl/angular": "15.5.3",
     "@rescoped/components": "file:libs/components",
