@@ -5,7 +5,7 @@ module.exports = {
         project: ['./tsconfig.*?.json'],
       },
       files: ['*.ts'],
-      plugins: ['rxjs', 'rxjs-angular'],
+      plugins: ['rxjs', 'rxjs-angular', 'unused-imports'],
       extends: [
         'plugin:@nrwl/nx/angular',
         'plugin:@nrwl/nx/typescript',
@@ -45,12 +45,13 @@ module.exports = {
         'rxjs-angular/prefer-takeuntil': [
           'error',
           {
-            alias: ['take', 'takeUntil'],
+            alias: ['take', 'takeUntil', 'takeUntilDestroyed'],
             checkComplete: true,
             checkDecorators: ['Component', 'Directive', 'Injectable'],
             checkDestroy: false,
           },
         ],
+        'unused-imports/no-unused-imports': 'error',
       },
     },
     {
