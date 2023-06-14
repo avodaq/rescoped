@@ -238,7 +238,7 @@ export class CdkDatagridDataManager<
   }
 
   setItemByKeyValue<ItemKey extends keyof Item>(item: Item, key: ItemKey, value: Item[ItemKey]) {
-    if (item[key] === undefined) {
+    if (!Object.getOwnPropertyDescriptor(item, key)) {
       throw new Error(`Invalid key: ${key.toString()} or no default item object is provided`);
     }
     item[key] = value;
