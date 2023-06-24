@@ -20,6 +20,7 @@
     "stripInternal": true,
     "baseUrl": ".",
     "paths": {
+      "@@rescoped/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
       "@rescoped/components/*": ["libs/components/*"],
       "@rescoped/provider/*": ["libs/provider/*"],
       "@rescoped/services/*": ["libs/services/*"]

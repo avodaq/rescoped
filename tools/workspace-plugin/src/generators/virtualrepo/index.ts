@@ -47,9 +47,9 @@ async function updatePackageJson(tree: Tree, virtualRepo: Virtualrepo) {
   if (tree.isFile('nx.json')) {
     if (virtualRepo) {
       const pwd = process.cwd();
-      let prevDir = pwd.split('/');
+      const prevDir = pwd.split('/');
       prevDir.splice(-1);
-      let prevRoot = prevDir.join('/');
+      const prevRoot = prevDir.join('/');
 
       const path = `${pwd}/libs/${virtualRepo.namespace}`;
 

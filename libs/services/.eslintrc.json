@@ -4,9 +4,9 @@
   "overrides": [
     {
       "files": ["*.ts"],
-      "extends": ["plugin:@nrwl/nx/angular"],
+      "extends": ["plugin:@nx/angular"],
       "rules": {
-        "@nrwl/nx/enforce-module-boundaries": [
+        "@nx/enforce-module-boundaries": [
           "error",
           {
             "enforceBuildableLibDependency": true,

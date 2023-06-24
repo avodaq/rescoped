@@ -4,9 +4,9 @@
   "overrides": [
     {
       "files": ["*.ts"],
-      "extends": ["plugin:@nrwl/nx/angular"],
+      "extends": ["plugin:@nx/angular"],
       "rules": {
-        "@nrwl/nx/enforce-module-boundaries": [
+        "@nx/enforce-module-boundaries": [
           "error",
           {
             "enforceBuildableLibDependency": true,
@@ -20,7 +20,7 @@
     // - how to apply to a specific inline-template?
     {
       "files": ["*.html"],
-      "extends": ["plugin:@nrwl/nx/angular-template"],
+      "extends": ["plugin:@nx/angular-template"],
       "rules": {
         "@angular-eslint/template/no-call-expression": 0
       }

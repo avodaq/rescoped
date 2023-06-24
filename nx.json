@@ -9,7 +9,7 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nx/workspace/tasks-runners/default",
       "options": {
         "cacheableOperations": ["build", "lint", "test", "e2e"],
         "parallel": 1
@@ -17,15 +17,7 @@
     }
   },
   "generators": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
+    "@nx/angular:application": {
       "style": "scss",
       "linter": "eslint",
       "unitTestRunner": "none",
@@ -33,7 +25,7 @@
       "routing": true,
       "strict": true
     },
-    "@nrwl/angular:library": {
+    "@nx/angular:library": {
       "linter": "eslint",
       "unitTestRunner": "none",
       "simpleName": true,
@@ -44,7 +36,7 @@
       "buildable": false,
       "publishable": false
     },
-    "@nrwl/angular:component": {
+    "@nx/angular:component": {
       "style": "scss",
       "changeDetection": "OnPush",
       "displayBlock": true,
@@ -56,14 +48,22 @@
       "flat": false,
       "viewEncapsulation": "Emulated"
     },
-    "@nrwl/angular:library-secondary-entry-point": {
+    "@nx/angular:library-secondary-entry-point": {
       "skipModule": true
     },
-    "@nrwl/angular:module": {
+    "@nx/angular:module": {
       "flat": true
     },
-    "@nrwl/angular:service": {
+    "@nx/angular:service": {
       "flat": true
+    },
+    "@nx/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
     }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",

@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "virtualrepo": {
+      "implementation": "./src/generators/virtualrepo",
+      "schema": "./src/generators/virtualrepo/schema.json",
+      "description": "Generator virtualrepo"
+    }
+  }
+}
