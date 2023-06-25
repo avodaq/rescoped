@@ -1,19 +1,4 @@
 {
   "extends": ["../../.eslintrc.json", "@rescoped/eslint-config/angular"],
-  "ignorePatterns": ["!**/*"],
-  "overrides": [
-    {
-      "files": ["*.ts"],
-      "extends": ["plugin:@nx/angular"],
-      "rules": {
-        "@nx/enforce-module-boundaries": [
-          "error",
-          {
-            "enforceBuildableLibDependency": true,
-            "allow": ["@rescoped/services/*", "@rescoped/tests/util"]
-          }
-        ]
-      }
-    }
-  ]
+  "ignorePatterns": ["!**/*"]
 }

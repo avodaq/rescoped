@@ -48,11 +48,8 @@
     "workspace-generator": "nx workspace-generator"
   },
   "lint-staged": {
-    "*.{ts,html}": [
+    "*.{ts,html,scss,json}": [
       "nx affected:lint --parallel --uncommitted",
-      "prettier --write"
-    ],
-    "*.{json,md,js,md}": [
       "prettier --write"
     ]
   },
