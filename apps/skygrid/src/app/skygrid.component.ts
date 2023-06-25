@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { destinations, flightStatus, gates, SkyGridData, skyGridData } from './skygrid-data2';
+import { destinations, flightStatus, gates, SkyGridData, skyGridData } from './skygrid-data';
 import { ThemeStore } from '@rescoped/services/theme-store';
 
 import {

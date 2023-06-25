@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkDatagridModule, MAT_FORMAT_DATE_INPUT } from '@rescoped/components/datagrid';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { SkyGridData } from './skygrid-data2';
+import { SkyGridData } from './skygrid-data';
 import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkyGridComponent } from './skygrid.component';
