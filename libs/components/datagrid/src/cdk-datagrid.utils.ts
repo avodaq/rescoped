@@ -24,7 +24,7 @@ export const setItemPayload = <
 };
 
 /**
- * getItemPayloadValue returns a specific itemPayloadValue of a item by given key.
+ * getItemPayloadValue returns a specific itemPayloadValue of an item by given key.
  */
 // prettier-ignore
 export const getItemPayloadValue = <
