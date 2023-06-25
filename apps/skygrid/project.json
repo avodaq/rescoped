@@ -1,5 +1,6 @@
 {
   "name": "skygrid",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/skygrid/src",
   "prefix": "avo",
@@ -80,7 +81,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": ["apps/skygrid/src/**/*.ts", "apps/skygrid/src/**/*.html"]
       }

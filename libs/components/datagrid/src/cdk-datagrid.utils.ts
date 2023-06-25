@@ -1,6 +1,21 @@
 import { HiddenItemPayload, ItemPayload, itemPayloadDefault } from './cdk-datagrid-data.manager';
 
 /**
+ * experimental
+ * @param itemDefault
+ * @param itemPayloadDefault
+ */
+export const itemPayloadFactory =
+  <Item>(itemDefault: Item, itemPayloadDefault: Partial<ItemPayload<Item>> = {}) =>
+  (item: Item, itemPayload: Partial<ItemPayload<Item>> = {}) => {
+    return setItemPayload<Item>(
+      // item // works!
+      { ...itemDefault, ...item }, // does not work!
+      Object.keys(itemPayloadDefault).length ? itemPayloadDefault : itemPayload,
+    );
+  };
+
+/**
  * setItemPayload sets an itemPayload on item in hidden-type-mode.
  * This means there is no direct access to itemPayload on returned item with TypeScript.
  * The advantage of this approach is that you can put implementation details
@@ -24,7 +39,7 @@ export const setItemPayload = <
 };
 
 /**
- * getItemPayloadValue returns a specific itemPayloadValue of a item by given key.
+ * getItemPayloadValue returns a specific itemPayloadValue of an item by given key.
  */
 // prettier-ignore
 export const getItemPayloadValue = <

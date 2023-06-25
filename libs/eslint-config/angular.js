@@ -59,7 +59,6 @@ module.exports = {
       extends: ['plugin:@nrwl/nx/angular-template'],
       rules: {
         '@angular-eslint/template/no-negated-async': 'error',
-        '@angular-eslint/template/no-call-expression': 'error',
         '@angular-eslint/template/banana-in-box': 'error',
       },
     },

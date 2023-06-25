@@ -69,7 +69,11 @@
     }
   }
   .density-xs {
-    @include mat.icon-button-density(-6);
+    // @error:
+    // SassError: "mdc-density: size must be between 28px and 48px (inclusive), but received 24px."
+    // https://github.com/angular/components/issues/26045
+    // angular@material@16.0.2
+    // @include mat.icon-button-density(-6);
 
     $size: 18px;
     .mat-mdc-icon-button {
