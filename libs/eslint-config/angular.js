@@ -25,6 +25,7 @@ module.exports = {
         '@typescript-eslint/ban-ts-comment': 0,
         '@typescript-eslint/no-explicit-any': 0,
         '@typescript-eslint/no-empty-interface': 0,
+        "@angular-eslint/template/no-call-expression": 0,
         '@typescript-eslint/prefer-readonly': 'error',
         '@angular-eslint/prefer-on-push-component-change-detection': 'error',
         '@typescript-eslint/explicit-member-accessibility': [
