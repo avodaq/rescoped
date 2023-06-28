@@ -26,4 +26,4 @@ jobs:
           user-name: Bitcollage
           user-email: serkan.sipahi@yahoo.de
           target-branch: test-nightly-builds-deploy-key
-          target-directory: ./
+          target-directory: /
