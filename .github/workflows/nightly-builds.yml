@@ -1,0 +1,18 @@
+name: Nightly Builds
+run-name: Nightly Builds 🚀
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Build-Library-Packages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm install -i
+      - run: npx nx affected -t build --base=main~1 --head=main
