@@ -1,18 +1,30 @@
+## https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
 name: Nightly Builds
+
 run-name: Nightly Builds 🚀
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 jobs:
   Build-Library-Packages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
       - run: npm install -i
       - run: npx nx run-many -t build --all
+      - run: cp -R libs/eslint-config dist/libs/eslint-config
+
+      - uses: cpina/github-action-push-to-another-repository@main
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+        with:
+          source-directory: 'dist/libs'
+          destination-github-username: 'avodaq'
+          destination-repository-name: 'rescoped-builds'
+          user-name: Bitcollage
+          user-email: serkan.sipahi@yahoo.de
+          target-branch: main
+          target-directory: /
