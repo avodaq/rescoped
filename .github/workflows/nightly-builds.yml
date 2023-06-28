@@ -15,4 +15,4 @@ jobs:
         with:
           node-version: '18'
       - run: npm install -i
-      - run: npx nx affected -t build --base=main~1 --head=main
+      - run: npx nx run-many -t build --all
