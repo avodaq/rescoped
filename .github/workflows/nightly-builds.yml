@@ -1,4 +1,3 @@
-## https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
 name: Nightly Builds
 
 run-name: Nightly Builds 🚀
@@ -17,7 +16,7 @@ jobs:
       - run: npx nx run-many -t build --all
       - run: cp -R libs/eslint-config dist/libs/eslint-config
 
-      - uses: cpina/github-action-push-to-another-repository@main
+      - uses: cpina/github-action-push-to-another-repository@1.7.2
         env:
           SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
         with:
