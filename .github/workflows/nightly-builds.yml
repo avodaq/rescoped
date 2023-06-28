@@ -1,9 +1,10 @@
+## https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
 name: Nightly Builds
 
 run-name: Nightly Builds 🚀
 on:
   push:
-    branches: [ main, test-nightly-builds-deploy-key ]
+    branches: [ main ]
 jobs:
   Build-Library-Packages:
     runs-on: ubuntu-latest
@@ -25,5 +26,5 @@ jobs:
           destination-repository-name: 'rescoped-builds'
           user-name: Bitcollage
           user-email: serkan.sipahi@yahoo.de
-          target-branch: test-nightly-builds-deploy-key
+          target-branch: main
           target-directory: /
