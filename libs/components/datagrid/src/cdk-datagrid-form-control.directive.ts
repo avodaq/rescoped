@@ -110,7 +110,7 @@ export class CdkDatagridFormControlDirective<Item> implements OnInit, OnDestroy 
   }
 
   ngOnDestroy() {
-    if (this._formManager.formGroupControls[this.formControlName]) {
+    if (this._storage.item && this._formManager.formGroupControls[this.formControlName]) {
       this._formManager.removeFormControl(this.formControlName);
     }
 
