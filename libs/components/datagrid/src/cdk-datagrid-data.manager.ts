@@ -139,10 +139,16 @@ export class CdkDatagridDataManager<
     const parent = payload.parent;
 
     this.#originalData = this.#originalData.filter(item => {
-      return (
+      const toNotDeleteItem =
         (!parent && getItemPayload(item).index !== _index) ||
-        (includeChildren && parent && getItemPayload(item).groupId !== groupId)
-      );
+        (includeChildren && parent && getItemPayload(item).groupId !== groupId);
+
+      if (!toNotDeleteItem && typeof getItemPayload(item).groupId !== 'number') {
+        console.error('ItemPayload.groupId is missing when includeChildren on', item);
+        throw new Error('ItemPayload.groupId is required and must be a number!');
+      }
+
+      return toNotDeleteItem;
     });
 
     this.#originalData = this.cloneItemAll();
