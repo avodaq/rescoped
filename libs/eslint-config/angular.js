@@ -27,6 +27,14 @@ module.exports = {
         '@typescript-eslint/no-empty-interface': 0,
         '@typescript-eslint/prefer-readonly': 'error',
         '@angular-eslint/prefer-on-push-component-change-detection': 'error',
+        '@typescript-eslint/no-unused-vars': [
+          'warn',
+          {
+            argsIgnorePattern: '^_',
+            varsIgnorePattern: '^_',
+            caughtErrorsIgnorePattern: '^_',
+          },
+        ],
         '@typescript-eslint/explicit-member-accessibility': [
           'error',
           {

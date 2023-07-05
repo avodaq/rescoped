@@ -4,8 +4,6 @@ import { Subject } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { ComponentType } from '@angular/cdk/overlay';
 import { DatagridValidation } from './cdk-datagrid-form-control.directive';
-
-// MDC
 import { MatTableDataSource } from '@angular/material/table';
 
 export const itemPayloadDefault: ItemPayload<object> = {
