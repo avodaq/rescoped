@@ -19,7 +19,7 @@ import {
 } from '@rescoped/components/datagrid';
 import { TableVirtualScrollDataSource, TableVirtualScrollModule } from 'ng-table-virtual-scroll';
 import { MatTableModule } from '@angular/material/table';
-import { CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { SkygridLogoSvgComponent } from './components/skygrid-logo-svg/skygrid-logo-svg.component';
 import { MatCardModule } from '@angular/material/card';
 import { ToggleIconThemeComponent } from '@rescoped/components/toggle-icon-theme';
@@ -36,7 +36,7 @@ import { ToggleIconThemeComponent } from '@rescoped/components/toggle-icon-theme
     SkygridLogoSvgComponent,
     ToggleIconThemeComponent,
     TypeSafeMatCellDefDirective,
-    // DataGrid related imports
+
     CdkVirtualScrollViewport,
     MatTableModule,
     CdkDatagridEditDirective,
@@ -47,7 +47,6 @@ import { ToggleIconThemeComponent } from '@rescoped/components/toggle-icon-theme
     CdkDatagridStorageDirective,
     MatDatagridComboboxComponent,
     MatDatagridRowDirective,
-    ScrollingModule,
     TableVirtualScrollModule,
   ],
 })
