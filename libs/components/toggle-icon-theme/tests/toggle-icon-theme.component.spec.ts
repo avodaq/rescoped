@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToggleIconThemeComponent } from '../src/toggle-icon-theme.component';
-import { ToggleIconThemeModule } from '../src/toggle-icon-theme.module';
 import { ToggleIconComponent } from '@rescoped/components/toggle-icon';
 import { render, RenderResult } from '@testing-library/angular';
 import { ThemeStore } from '@rescoped/services/theme-store';
@@ -19,7 +18,6 @@ describe('AvoToggleThemeComponent', () => {
 
   beforeEach(async () => {
     renderResult = await render(ToggleIconThemeComponent, {
-      imports: [ToggleIconThemeModule],
       providers: [ThemeStore, MockStorageMapProvider],
     });
 

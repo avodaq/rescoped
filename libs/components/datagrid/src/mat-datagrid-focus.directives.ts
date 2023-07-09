@@ -8,6 +8,7 @@ import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: 'input[cdkFocusInput]',
+  standalone: true,
 })
 export class CdkDatagridFocusInputDirective<Item> implements AfterViewInit {
   constructor(
@@ -28,6 +29,7 @@ export class CdkDatagridFocusInputDirective<Item> implements AfterViewInit {
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: 'input[matAutocomplete][cdkFocusCombobox]',
+  standalone: true,
 })
 export class CdkDatagridFocusComboboxDirective<Item> implements AfterViewInit {
   constructor(

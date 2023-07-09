@@ -12,7 +12,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { DATAGRID_STORAGE_PROVIDER, DATAGRID_STORAGE_TOKEN } from './cdk-datagrid-storage.factory';
-import { ComponentPortal, Portal } from '@angular/cdk/portal';
+import { ComponentPortal, Portal, PortalModule } from '@angular/cdk/portal';
 import { CdkDatagridRuleManager } from './cdk-datagrid-rule.manager';
 import { ACTION_DATA } from './mat-datagrid-input';
 
@@ -24,6 +24,8 @@ import { ACTION_DATA } from './mat-datagrid-input';
   template: '<ng-template [cdkPortalOutlet]="actionPortal"></ng-template>',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PortalModule],
 })
 export class MatDatagridEmptyCellComponent<Item> implements AfterViewInit {
   constructor(

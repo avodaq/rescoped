@@ -1,5 +1,8 @@
 // MDC
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import {
+  MatAutocompleteSelectedEvent,
+  MatAutocompleteModule,
+} from '@angular/material/autocomplete';
 
 import { CdkDatagridEditDirective } from './cdk-datagrid-edit.directive';
 import {
@@ -24,7 +27,15 @@ import { DATAGRID_COMMON_PROVIDER, DATAGRID_COMMON_TOKEN } from './cdk-datagrid-
 import { CdkDatagridCommonDirective } from './cdk-datagrid-common.directive';
 import { DATAGRID_STORAGE_PROVIDER, DATAGRID_STORAGE_TOKEN } from './cdk-datagrid-storage.factory';
 import { CdkDatagridStorageDirective } from './cdk-datagrid-storage.directive';
-import { ThemePalette } from '@angular/material/core';
+import { ThemePalette, MatOptionModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { CdkDatagridFocusComboboxDirective } from './mat-datagrid-focus.directives';
+import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgIf, NgFor, NgClass, AsyncPipe } from '@angular/common';
 
 // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
 @Component({
@@ -110,6 +121,23 @@ import { ThemePalette } from '@angular/material/core';
   `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    NgIf,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatTooltipModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    CdkDatagridFocusComboboxDirective,
+    MatButtonModule,
+    MatIconModule,
+    NgFor,
+    MatOptionModule,
+    NgClass,
+    AsyncPipe,
+  ],
 })
 export class MatDatagridComboboxComponent<Item, Options> {
   constructor(

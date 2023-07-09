@@ -3,6 +3,7 @@ import { Directive, Input } from '@angular/core';
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[cdk-datagrid-edit]',
+  standalone: true,
 })
 export class CdkDatagridCommonDirective {
   @Input() type: 'text' | 'number' | 'time' = 'text';

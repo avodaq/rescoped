@@ -4,6 +4,7 @@ import { CdkDatagridDirective } from './cdk-datagrid.directive';
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[connectWithDatagrid]',
+  standalone: true,
 })
 export class CdkDatagridConnectWithDirective<Item> implements OnInit {
   @Input() connectWithDatagrid: CdkDatagridDirective<Item> | null = null;

@@ -20,6 +20,13 @@ import { DATAGRID_COMMON_PROVIDER, DATAGRID_COMMON_TOKEN } from './cdk-datagrid-
 import { DATAGRID_STORAGE_PROVIDER, DATAGRID_STORAGE_TOKEN } from './cdk-datagrid-storage.factory';
 import { CdkDatagridDateAdapter } from './cdk-datagrid-date.adapter';
 import { Moment } from 'moment/moment';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { CdkDatagridFocusInputDirective } from './mat-datagrid-focus.directives';
+import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgIf, NgClass, AsyncPipe } from '@angular/common';
 
 // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
 @Component({
@@ -82,6 +89,19 @@ import { Moment } from 'moment/moment';
   `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    NgIf,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatTooltipModule,
+    MatInputModule,
+    CdkDatagridFocusInputDirective,
+    MatDatepickerModule,
+    NgClass,
+    AsyncPipe,
+  ],
 })
 export class MatDatagridDatepickerComponent<Item> {
   constructor(

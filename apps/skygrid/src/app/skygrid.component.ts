@@ -3,12 +3,26 @@ import { destinations, flightStatus, gates, SkyGridData, skyGridData } from './s
 import { ThemeStore } from '@rescoped/services/theme-store';
 
 import {
+  CdkDatagridCommonDirective,
+  CdkDatagridEditDirective,
+  CdkDatagridFormControlDirective,
+  CdkDatagridStorageDirective,
   DatagridValidation,
   GlobalRules,
   ItemRules,
+  MatDatagridComboboxComponent,
+  MatDatagridDirective,
+  MatDatagridInputComponent,
+  MatDatagridRowDirective,
+  TypeSafeMatCellDefDirective,
   Validators,
 } from '@rescoped/components/datagrid';
-import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
+import { TableVirtualScrollDataSource, TableVirtualScrollModule } from 'ng-table-virtual-scroll';
+import { MatTableModule } from '@angular/material/table';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { SkygridLogoSvgComponent } from './components/skygrid-logo-svg/skygrid-logo-svg.component';
+import { MatCardModule } from '@angular/material/card';
+import { ToggleIconThemeComponent } from '@rescoped/components/toggle-icon-theme';
 
 @Component({
   selector: 'avo-skygrid',
@@ -16,6 +30,24 @@ import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
   styleUrls: ['./skygrid.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    MatCardModule,
+    SkygridLogoSvgComponent,
+    ToggleIconThemeComponent,
+    CdkVirtualScrollViewport,
+    TableVirtualScrollModule,
+    MatTableModule,
+    MatDatagridDirective,
+    TypeSafeMatCellDefDirective,
+    MatDatagridInputComponent,
+    CdkDatagridFormControlDirective,
+    CdkDatagridEditDirective,
+    CdkDatagridCommonDirective,
+    CdkDatagridStorageDirective,
+    MatDatagridComboboxComponent,
+    MatDatagridRowDirective,
+  ],
 })
 export class SkyGridComponent implements OnInit {
   readonly _active$ = this._themeStore.active$;

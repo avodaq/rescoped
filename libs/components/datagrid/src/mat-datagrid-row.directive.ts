@@ -6,6 +6,7 @@ const HOST_CLASS_PREFIX = 'cdk-datagrid';
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[cdk-datagrid-row]',
+  standalone: true,
 })
 export class MatDatagridRowDirective<Item> {
   #itemPayload!: ItemPayload<Item>;

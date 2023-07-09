@@ -96,8 +96,8 @@ const DATAGRID_CORE_DEPS = [
     ReactiveFormsModule,
     ScrollingModule,
     PortalModule,
+    ...DATAGRID_CORE_DEPS,
   ],
-  declarations: [...DATAGRID_CORE_DEPS],
   exports: [...DATAGRID_CORE_DEPS],
 })
 export class CdkDatagridModule {

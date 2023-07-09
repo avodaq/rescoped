@@ -44,6 +44,8 @@
     "sort": "sort-package-json",
     "start": "set NODE_OPTIONS=--max_old_space_size=8192 & ng serve",
     "test": "ng test",
+    "test:all": "nx run-many -t test --all --watch=false",
+    "test:all:headless": "nx run-many -t test --all --browsers=ChromeHeadlessCI --watch=false",
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator"
   },
