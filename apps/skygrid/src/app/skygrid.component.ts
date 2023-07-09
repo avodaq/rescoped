@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { destinations, flightStatus, gates, SkyGridData, skyGridData } from './skygrid-data';
 import { ThemeStore } from '@rescoped/services/theme-store';
-
 import {
   CdkDatagridCommonDirective,
   CdkDatagridEditDirective,
@@ -28,8 +27,6 @@ import { ToggleIconThemeComponent } from '@rescoped/components/toggle-icon-theme
   selector: 'avo-skygrid',
   templateUrl: './skygrid.component.html',
   styleUrls: ['./skygrid.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
     MatCardModule,
@@ -49,6 +46,8 @@ import { ToggleIconThemeComponent } from '@rescoped/components/toggle-icon-theme
     MatDatagridRowDirective,
     TableVirtualScrollModule,
   ],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkyGridComponent implements OnInit {
   readonly _active$ = this._themeStore.active$;
