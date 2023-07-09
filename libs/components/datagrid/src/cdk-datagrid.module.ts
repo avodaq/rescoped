@@ -1,43 +1,18 @@
-import { MatDatagridDirective } from './mat-datagrid.directive';
-import { CdkDatagridDirective } from './cdk-datagrid.directive';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDatagridComboboxComponent } from './mat-datagrid-combobox';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
-  MAT_FORMAT_INPUT,
-  MAT_NUMBER_INPUT,
-  MatDatagridInputComponent,
   DatagridInputFormats,
   DatagridInputNumbers,
+  MAT_FORMAT_INPUT,
+  MAT_NUMBER_INPUT,
 } from './mat-datagrid-input';
-import { MatDatagridCollapseComponent } from './mat-datagrid-collapse';
-import { CdkDatagridCollapseComponent } from './cdk-datagrid-collapse';
 
 //MDC
-import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatSelectModule } from '@angular/material/select';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatInputModule } from '@angular/material/input';
-
-import { CdkDatagridFormControlDirective } from './cdk-datagrid-form-control.directive';
-import { CdkDatagridEditDirective } from './cdk-datagrid-edit.directive';
-import { ScrollingModule } from '@angular/cdk/scrolling';
 import { PartialDeep } from './cdk-datagrid.types';
 import { LOCALE_ID, ModuleWithProviders, NgModule, Provider } from '@angular/core';
-import { CdkDatagridCommonDirective } from './cdk-datagrid-common.directive';
-import { CdkDatagridStorageDirective } from './cdk-datagrid-storage.directive';
-import { MatDatagridDatepickerComponent } from './mat-datagrid-datepicker';
 import {
   CdkDatagridDateAdapter,
   MAT_DATE_CLASS,
   matDateFormatsDefaults,
 } from './cdk-datagrid-date.adapter';
-import { MatDatagridRowDirective } from './mat-datagrid-row.directive';
-import { TypeSafeMatCellDefDirective } from './type-safe-mat-cell-def.directive';
-import { CdkDatagridConnectWithDirective } from './cdk-datagrid-connect-with.directive';
 import deepmerge from 'deepmerge';
 import moment from 'moment';
 import {
@@ -45,61 +20,17 @@ import {
   MomentDateAdapter,
 } from '@angular/material-moment-adapter';
 import {
-  CdkDatagridFocusComboboxDirective,
-  CdkDatagridFocusInputDirective,
-} from './mat-datagrid-focus.directives';
-import {
   DateAdapter,
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
-  MatNativeDateModule,
   MatDateFormats,
 } from '@angular/material/core';
-import { PortalModule } from '@angular/cdk/portal';
-import { MatDatagridEmptyCellComponent } from './mat-datagrid-empty-cell';
 import { CdkDatagridRuleManager } from './cdk-datagrid-rule.manager';
 import { CdkDatagridEditManager } from './cdk-datagrid-edit.manager';
 import { CdkDatagridFormManager } from './cdk-datagrid-form.manager';
 import { CdkDatagridDataManager } from './cdk-datagrid-data.manager';
 
-const DATAGRID_CORE_DEPS = [
-  CdkDatagridDirective,
-  CdkDatagridCollapseComponent,
-  CdkDatagridFormControlDirective,
-  CdkDatagridEditDirective,
-  CdkDatagridCommonDirective,
-  CdkDatagridStorageDirective,
-  CdkDatagridFocusInputDirective,
-  CdkDatagridFocusComboboxDirective,
-  CdkDatagridConnectWithDirective,
-  MatDatagridDirective,
-  MatDatagridComboboxComponent,
-  MatDatagridDatepickerComponent,
-  MatDatagridInputComponent,
-  MatDatagridCollapseComponent,
-  MatDatagridRowDirective,
-  MatDatagridEmptyCellComponent,
-  TypeSafeMatCellDefDirective,
-];
-@NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatSelectModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatTooltipModule,
-    MatButtonModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    ScrollingModule,
-    PortalModule,
-    ...DATAGRID_CORE_DEPS,
-  ],
-  exports: [...DATAGRID_CORE_DEPS],
-})
+@NgModule()
 export class CdkDatagridModule {
   static forRoot<Item = unknown>(
     options: DatagridOptions<Item>,
