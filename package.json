@@ -32,6 +32,8 @@
     "postinstall": "husky install",
     "lint": "nx workspace-lint && ng lint",
     "lint-staged": "lint-staged",
+    "lint:all": "nx run-many -t lint --all",
+    "lint:all:parallel": "nx run-many -t lint --all --parallel",
     "ncu": "ncu -i",
     "ng": "nx",
     "nx": "nx",
