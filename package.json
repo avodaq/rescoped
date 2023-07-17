@@ -24,6 +24,7 @@
     "build:prod:serve": "set NODE_OPTIONS=--max_old_space_size=8192 & nx serve $npm_config_project --configuration=production",
     "build:staging": "NB_BUILD_MANGLE=false ng build $npm_config_project --configuration=staging",
     "build:staging:serve": "set NODE_OPTIONS=--max_old_space_size=8192 & NB_BUILD_MANGLE=false nx serve $npm_config_project --configuration=staging",
+    "build:all": "rm -rf dist && npx nx run-many -t build --all --skip-nx-cache && cp -R libs/eslint-config dist/libs/eslint-config",
     "dep-graph": "nx dep-graph",
     "format": "nx format:write",
     "format:check": "nx format:check",
