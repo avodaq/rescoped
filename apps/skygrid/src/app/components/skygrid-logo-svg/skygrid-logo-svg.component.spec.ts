@@ -1,19 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SkygridLogoSvgComponent } from './skygrid-logo-svg.component';
+import { render } from '@testing-library/angular';
 
-describe('SkygridLogoSvgComponent', () => {
+describe('SkyGridLogoSvgComponent', () => {
   let component: SkygridLogoSvgComponent;
-  let fixture: ComponentFixture<SkygridLogoSvgComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [SkygridLogoSvgComponent],
-    }).compileComponents();
+    const skiGridLogo = await render(SkygridLogoSvgComponent);
 
-    fixture = TestBed.createComponent(SkygridLogoSvgComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = skiGridLogo.fixture.componentInstance;
+    skiGridLogo.detectChanges;
   });
 
   it('should create', () => {

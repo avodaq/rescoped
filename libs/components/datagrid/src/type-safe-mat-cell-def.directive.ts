@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[matCellDef],[cdkCellDef]',
+  standalone: true,
 })
 export class TypeSafeMatCellDefDirective<T> {
   @Input() matCellDefType!: T[] | Observable<T[]> | MatTableDataSource<T>;

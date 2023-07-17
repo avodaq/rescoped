@@ -32,6 +32,7 @@ export type CellGap = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: 'cdk-table[cdk-datagrid]',
   exportAs: 'cdkDatagrid',
+  standalone: true,
 })
 export class CdkDatagridDirective<Item> implements OnInit, OnDestroy {
   constructor(

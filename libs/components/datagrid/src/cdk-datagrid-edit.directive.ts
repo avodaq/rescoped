@@ -9,6 +9,7 @@ import {
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[cdk-datagrid-edit]',
+  standalone: true,
 })
 export class CdkDatagridEditDirective implements OnInit, OnDestroy, CdkDatagridEdit {
   constructor(

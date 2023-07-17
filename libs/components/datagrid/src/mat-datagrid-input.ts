@@ -22,9 +22,15 @@ import {
   DATAGRID_FORM_CONTROL_TOKEN,
 } from './cdk-datagrid-form-control.factory';
 import { DATAGRID_STORAGE_PROVIDER, DATAGRID_STORAGE_TOKEN } from './cdk-datagrid-storage.factory';
-import { ComponentPortal, Portal } from '@angular/cdk/portal';
+import { ComponentPortal, Portal, PortalModule } from '@angular/cdk/portal';
 import { CdkDatagridRuleManager } from './cdk-datagrid-rule.manager';
 import { getItemPayload } from './cdk-datagrid.utils';
+import { CdkDatagridFocusInputDirective } from './mat-datagrid-focus.directives';
+import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgIf, NgClass, AsyncPipe } from '@angular/common';
 
 // @todo: move to separate file!
 export const ACTION_DATA = new InjectionToken<unknown>('ActionData');
@@ -90,6 +96,19 @@ export const ACTION_DATA = new InjectionToken<unknown>('ActionData');
   `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    PortalModule,
+    NgIf,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatTooltipModule,
+    MatInputModule,
+    CdkDatagridFocusInputDirective,
+    NgClass,
+    AsyncPipe,
+  ],
 })
 export class MatDatagridInputComponent<Item> implements OnInit {
   constructor(

@@ -8,8 +8,6 @@ import {
   TOGGLE_THUMB_SEL,
   CHECKED_ICON,
 } from '../src/toggle-icon.component';
-
-import { ToggleIconModule } from '../src/toggle-icon.module';
 import { MatSlideToggleHarness } from '@angular/material/slide-toggle/testing';
 
 describe('AvoToggleComponent', () => {
@@ -23,9 +21,7 @@ describe('AvoToggleComponent', () => {
     getComputedStyle(toggleThumbEl, ':before').getPropertyValue('content').replace(/"/g, '');
 
   beforeEach(async () => {
-    renderResult = await render(ToggleIconComponent, {
-      imports: [ToggleIconModule],
-    });
+    renderResult = await render(ToggleIconComponent);
 
     fixture = renderResult.fixture;
     loader = TestbedHarnessEnvironment.loader(fixture);

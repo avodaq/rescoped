@@ -1,9 +1,10 @@
+# https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
 name: Nightly Builds
 
 run-name: Nightly Builds 🚀
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 jobs:
   Build-Library-Packages:
     runs-on: ubuntu-latest

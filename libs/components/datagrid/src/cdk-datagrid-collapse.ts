@@ -19,6 +19,7 @@ type ActionData<Item> = { item: Item };
   template: ``,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class CdkDatagridCollapseComponent<Item> {
   constructor(

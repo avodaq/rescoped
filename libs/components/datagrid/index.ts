@@ -1,4 +1,4 @@
-export * from './src/cdk-datagrid.module';
+export * from './src/cdk-datagrid.provider';
 export * from './src/cdk-datagrid-collapse';
 export * from './src/cdk-datagrid-form-control.directive';
 export * from './src/cdk-datagrid-form.manager';

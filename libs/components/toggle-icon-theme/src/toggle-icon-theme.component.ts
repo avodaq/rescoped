@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ThemeStore } from '@rescoped/services/theme-store';
+import { AsyncPipe } from '@angular/common';
+import { ToggleIconComponent } from '@rescoped/components/toggle-icon';
 
 @Component({
   selector: 'avo-toggle-icon-theme',
@@ -14,6 +16,8 @@ import { ThemeStore } from '@rescoped/services/theme-store';
   styleUrls: ['./toggle-icon-theme.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [ToggleIconComponent, AsyncPipe],
 })
 export class ToggleIconThemeComponent {
   /** The active themeStore state */

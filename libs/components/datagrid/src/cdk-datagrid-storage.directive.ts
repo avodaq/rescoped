@@ -7,6 +7,7 @@ import { CdkDatagridRuleManager } from './cdk-datagrid-rule.manager';
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[cdk-datagrid-edit]',
+  standalone: true,
 })
 export class CdkDatagridStorageDirective<
   Item,

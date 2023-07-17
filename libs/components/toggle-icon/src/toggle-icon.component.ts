@@ -12,7 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ThemePalette } from '@angular/material/core';
 
 // MDC
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 export const CHECKED_ICON = 'bedtime';
 export const UNCHECKED_ICON = 'wb_sunny';
@@ -27,6 +27,8 @@ export const TOGGLE_THUMB_SEL = '.mdc-switch__icons';
   styleUrls: ['./toggle-icon.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [MatSlideToggleModule],
 })
 export class ToggleIconComponent {
   /** @internal  */

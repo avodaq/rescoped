@@ -23,6 +23,7 @@ export interface DatagridValidation {
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[cdk-datagrid-edit]',
+  standalone: true,
 })
 export class CdkDatagridFormControlDirective<Item> implements OnInit, OnDestroy {
   constructor(
