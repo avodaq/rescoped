@@ -8,7 +8,7 @@ import {
 import { ThemePalette } from '@angular/material/core';
 import { ThemeStore } from '@rescoped/services/theme-store';
 import { AsyncPipe } from '@angular/common';
-import { ToggleIconComponent } from '../../toggle-icon/src/toggle-icon.component';
+import { ToggleIconComponent } from '@rescoped/components/toggle-icon';
 
 @Component({
   selector: 'avo-toggle-icon-theme',
