@@ -139,7 +139,7 @@ import { NgIf, NgFor, NgClass, AsyncPipe } from '@angular/common';
     AsyncPipe,
   ],
 })
-export class MatDatagridComboboxComponent<Item, Options> {
+export class MatDatagridComboboxComponent<Item> {
   constructor(
     @Inject(DATAGRID_COMMON_TOKEN)
     public readonly _common: CdkDatagridCommonDirective,

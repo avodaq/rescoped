@@ -42,7 +42,7 @@ export class CdkDatagridDirective<Item> implements OnInit, OnDestroy {
     private readonly _editManager: CdkDatagridEditManager<HTMLElement>,
   ) {}
 
-  #unsub = new Subject<void>();
+  readonly #unsub = new Subject<void>();
 
   get countSingleItems() {
     return this._dataManager.countSingleItems;
@@ -101,23 +101,23 @@ export class CdkDatagridDirective<Item> implements OnInit, OnDestroy {
     e.preventDefault(); // @todo: remove this later when keyboard navigation is implemented!
   }
 
-  @HostListener('keyup.esc', ['$event']) esc(e: KeyboardEvent) {
+  @HostListener('keyup.esc', ['$event']) esc(_e: KeyboardEvent) {
     // console.log('keyup.esc', e);
   }
 
-  @HostListener('keydown', ['$event']) arrowKey(e: KeyboardEvent) {
+  @HostListener('keydown', ['$event']) arrowKey(_e: KeyboardEvent) {
     // console.log('keydown', e);
   }
 
-  @HostListener('keydown.enter', ['$event']) enter(e: KeyboardEvent) {
+  @HostListener('keydown.enter', ['$event']) enter(_e: KeyboardEvent) {
     // console.log('keydown.enter', e);
   }
 
-  @HostListener('keydown.shift.enter', ['$event']) shiftEnter(e: KeyboardEvent) {
+  @HostListener('keydown.shift.enter', ['$event']) shiftEnter(_e: KeyboardEvent) {
     // console.log('keydown.shift.enter', e);
   }
 
-  @HostListener('keydown.shift.tab', ['$event']) shiftTab(e: KeyboardEvent) {
+  @HostListener('keydown.shift.tab', ['$event']) shiftTab(_e: KeyboardEvent) {
     // console.log('keydown.shift.tab', e);
   }
 

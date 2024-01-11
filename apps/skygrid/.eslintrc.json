@@ -28,6 +28,10 @@
       "files": ["*.html"],
       "extends": ["plugin:@nx/angular-template"],
       "rules": {}
+    },
+    {
+      "files": ["*.js"],
+      "excludedFiles": ["karma.conf.js"]
     }
   ]
 }

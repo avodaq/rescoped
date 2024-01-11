@@ -74,7 +74,7 @@ export class Validators {
   }
 
   static nullAsyncValidator(): AsyncValidatorFn {
-    return control => {
+    return _control => {
       return new Promise<null>(resolve => {
         resolve(null);
         // null validators does nothing!
