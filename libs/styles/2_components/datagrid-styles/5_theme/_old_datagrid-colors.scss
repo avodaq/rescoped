@@ -49,7 +49,8 @@ $empty-row-center-erase-color-dark: map.get(mat.$blue-grey-palette, 800) !defaul
   }
 
   &.cdk-datagrid-empty {
-    box-shadow: inset $border-thickness 0 0 0 $group-color-light,
+    box-shadow:
+      inset $border-thickness 0 0 0 $group-color-light,
       inset 0 ($border-thickness * -1) 0 0 $group-color-light;
   }
 }
@@ -70,7 +71,8 @@ $empty-row-center-erase-color-dark: map.get(mat.$blue-grey-palette, 800) !defaul
   }
 
   &.cdk-datagrid-empty {
-    box-shadow: inset $border-thickness 0 0 0 $group-color-light-hover,
+    box-shadow:
+      inset $border-thickness 0 0 0 $group-color-light-hover,
       inset 0 ($border-thickness * -1) 0 0 $group-color-light-hover;
     background-color: $single-color-light-hover;
   }
@@ -79,7 +81,8 @@ $empty-row-center-erase-color-dark: map.get(mat.$blue-grey-palette, 800) !defaul
 // empty-row center light
 .re-datagrid .empty-row-center .mat-mdc-row {
   &.cdk-datagrid-empty {
-    box-shadow: inset 0 $empty-row-center-erase-height 0 0 $empty-row-center-erase-color-light,
+    box-shadow:
+      inset 0 $empty-row-center-erase-height 0 0 $empty-row-center-erase-color-light,
       inset 0 $empty-row-center-height 0 0 $group-color-light,
       inset $border-thickness 0 0 0 $group-color-light;
   }
@@ -88,7 +91,8 @@ $empty-row-center-erase-color-dark: map.get(mat.$blue-grey-palette, 800) !defaul
 // empty-row center light:hover
 .re-datagrid .empty-row-center .mat-mdc-row:hover {
   &.cdk-datagrid-empty {
-    box-shadow: inset 0 $empty-row-center-erase-height 0 0 $single-color-light-hover,
+    box-shadow:
+      inset 0 $empty-row-center-erase-height 0 0 $single-color-light-hover,
       inset 0 $empty-row-center-height 0 0 $group-color-light-hover,
       inset $border-thickness 0 0 0 $group-color-light-hover;
   }
@@ -120,7 +124,8 @@ $empty-row-center-erase-color-dark: map.get(mat.$blue-grey-palette, 800) !defaul
     }
 
     &.cdk-datagrid-empty {
-      box-shadow: inset $border-thickness 0 0 0 $group-color-dark,
+      box-shadow:
+        inset $border-thickness 0 0 0 $group-color-dark,
         inset 0 ($border-thickness * -1) 0 0 $group-color-dark;
     }
   }
@@ -141,7 +146,8 @@ $empty-row-center-erase-color-dark: map.get(mat.$blue-grey-palette, 800) !defaul
     }
 
     &.cdk-datagrid-empty {
-      box-shadow: inset $border-thickness 0 0 0 $group-color-dark-hover,
+      box-shadow:
+        inset $border-thickness 0 0 0 $group-color-dark-hover,
         inset 0 ($border-thickness * -1) 0 0 $group-color-dark-hover;
       background-color: $single-color-dark-hover;
     }
@@ -150,7 +156,8 @@ $empty-row-center-erase-color-dark: map.get(mat.$blue-grey-palette, 800) !defaul
   // empty-row center dark
   .empty-row-center .mat-mdc-row {
     &.cdk-datagrid-empty {
-      box-shadow: inset 0 $empty-row-center-erase-height 0 0 $empty-row-center-erase-color-dark,
+      box-shadow:
+        inset 0 $empty-row-center-erase-height 0 0 $empty-row-center-erase-color-dark,
         inset 0 $empty-row-center-height 0 0 $group-color-dark,
         inset $border-thickness 0 0 0 $group-color-dark;
     }
@@ -159,7 +166,8 @@ $empty-row-center-erase-color-dark: map.get(mat.$blue-grey-palette, 800) !defaul
   // empty-row center dark:hover
   .empty-row-center .mat-mdc-row:hover {
     &.cdk-datagrid-empty {
-      box-shadow: inset 0 $empty-row-center-erase-height 0 0 $single-color-dark-hover,
+      box-shadow:
+        inset 0 $empty-row-center-erase-height 0 0 $single-color-dark-hover,
         inset 0 $empty-row-center-height 0 0 $group-color-dark-hover,
         inset $border-thickness 0 0 0 $group-color-dark-hover;
     }

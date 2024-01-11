@@ -49,79 +49,76 @@ import { NgClass, AsyncPipe } from '@angular/common';
   ],
   template: `
     @if ((_edit.active$ | async) === true && !_formControl.disabled) {
-
-    <form
-      novalidate
-      [formGroup]="_formControl.formControlGroup"
-      (keydown.enter)="$event.preventDefault()"
-      (ngSubmit)="_addSelection(input.value)"
-    >
-      <mat-form-field
-        [appearance]="'outline'"
-        #tooltip="matTooltip"
-        [matTooltip]="_formControl.errors?.validationMessage"
-        [matTooltipPosition]="'above'"
-        [matTooltipDisabled]="!_formControl.errors"
-        [matTooltipShowDelay]="0"
-        [matTooltipHideDelay]="0"
+      <form
+        novalidate
+        [formGroup]="_formControl.formControlGroup"
+        (keydown.enter)="$event.preventDefault()"
+        (ngSubmit)="_addSelection(input.value)"
       >
-        <input
-          matInput
-          cdkFocusCombobox
-          #input
-          [placeholder]="_storage.placeholder"
-          (keyup)="_search$.next(input.value)"
-          [formControlName]="_formControl.formControlName"
-          [title]="_renderForDefaultView"
-          [matAutocomplete]="auto"
-          [autocomplete]="autocomplete"
-          [type]="_common.type"
-        />
-        @if (_formControl.errors) {
-        <mat-error></mat-error>
-        } @if (selectionAdd) {
-        <button
-          matSuffix
-          mat-icon-button
-          aria-label="add item button"
-          class="add-item-icon"
-          (click)="_addSelection(input.value.trim()); input.value = ''"
-          [color]="selectionAddIconColor"
+        <mat-form-field
+          [appearance]="'outline'"
+          #tooltip="matTooltip"
+          [matTooltip]="_formControl.errors?.validationMessage"
+          [matTooltipPosition]="'above'"
+          [matTooltipDisabled]="!_formControl.errors"
+          [matTooltipShowDelay]="0"
+          [matTooltipHideDelay]="0"
         >
-          <mat-icon>{{ selectionAddIcon }}</mat-icon>
-        </button>
-        }
-
-        <mat-autocomplete
-          #auto="matAutocomplete"
-          [panelWidth]="'auto'"
-          [displayWith]="_displayForAutoCompleteOption.bind(this)"
-          (optionSelected)="
-            _selectionChange($event); input.blur(); _formControl.errors && tooltip.show()
-          "
-        >
-          @for (option of _filteredOptions$ | async; track option) {
-          <mat-option [value]="option">
-            <div>{{ option[this._storage.renderKey] }}</div>
-          </mat-option>
+          <input
+            matInput
+            cdkFocusCombobox
+            #input
+            [placeholder]="_storage.placeholder"
+            (keyup)="_search$.next(input.value)"
+            [formControlName]="_formControl.formControlName"
+            [title]="_renderForDefaultView"
+            [matAutocomplete]="auto"
+            [autocomplete]="autocomplete"
+            [type]="_common.type"
+          />
+          @if (_formControl.errors) {
+            <mat-error></mat-error>
           }
-        </mat-autocomplete>
-      </mat-form-field>
-    </form>
+          @if (selectionAdd) {
+            <button
+              matSuffix
+              mat-icon-button
+              aria-label="add item button"
+              class="add-item-icon"
+              (click)="_addSelection(input.value.trim()); input.value = ''"
+              [color]="selectionAddIconColor"
+            >
+              <mat-icon>{{ selectionAddIcon }}</mat-icon>
+            </button>
+          }
 
+          <mat-autocomplete
+            #auto="matAutocomplete"
+            [panelWidth]="'auto'"
+            [displayWith]="_displayForAutoCompleteOption.bind(this)"
+            (optionSelected)="
+              _selectionChange($event); input.blur(); _formControl.errors && tooltip.show()
+            "
+          >
+            @for (option of _filteredOptions$ | async; track option) {
+              <mat-option [value]="option">
+                <div>{{ option[this._storage.renderKey] }}</div>
+              </mat-option>
+            }
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
     } @else {
-
-    <div
-      [title]="_renderForDefaultView"
-      class="cdk-default-field"
-      [ngClass]="{
-        disabled: _formControl.disabled,
-        'mat-red-500 mat-error': _formControl.errors
-      }"
-    >
-      <span>{{ _renderForDefaultView || _storage.placeholder }}</span>
-    </div>
-
+      <div
+        [title]="_renderForDefaultView"
+        class="cdk-default-field"
+        [ngClass]="{
+          disabled: _formControl.disabled,
+          'mat-red-500 mat-error': _formControl.errors
+        }"
+      >
+        <span>{{ _renderForDefaultView || _storage.placeholder }}</span>
+      </div>
     }
   `,
   encapsulation: ViewEncapsulation.None,

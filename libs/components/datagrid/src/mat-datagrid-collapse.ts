@@ -9,19 +9,16 @@ import { MatIconModule } from '@angular/material/icon';
   template: `
     <div class="cdk-datagrid-collapse">
       @if (getActionType === 'row-global') {
-
-      <div class="row-global flex">
-        <mat-icon class="m-auto">edit_note</mat-icon>
-      </div>
-
-      } @if (getActionType === 'row-group') {
-
-      <button (click)="collapseChanged()" mat-icon-button aria-label="Collapse this group">
-        <mat-icon>
-          {{ collapsed ? 'expand_more' : 'expand_less' }}
-        </mat-icon>
-      </button>
-
+        <div class="row-global flex">
+          <mat-icon class="m-auto">edit_note</mat-icon>
+        </div>
+      }
+      @if (getActionType === 'row-group') {
+        <button (click)="collapseChanged()" mat-icon-button aria-label="Collapse this group">
+          <mat-icon>
+            {{ collapsed ? 'expand_more' : 'expand_less' }}
+          </mat-icon>
+        </button>
       }
     </div>
   `,

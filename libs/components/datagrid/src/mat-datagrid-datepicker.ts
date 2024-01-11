@@ -40,54 +40,50 @@ import { NgClass, AsyncPipe } from '@angular/common';
   ],
   template: `
     @if ((_edit.active$ | async) === true && !_formControl.disabled) {
-
-    <form
-      novalidate
-      [formGroup]="_formControl.formControlGroup"
-      (ngSubmit)="_dateChange(matDatepicker.value); _formControl.errors && tooltip.show()"
-    >
-      <mat-form-field
-        appearance="outline"
-        #tooltip="matTooltip"
-        [matTooltip]="_formControl.errors?.validationMessage"
-        [matTooltipPosition]="'above'"
-        [matTooltipDisabled]="!_formControl.errors"
-        [matTooltipShowDelay]="0"
-        [matTooltipHideDelay]="0"
+      <form
+        novalidate
+        [formGroup]="_formControl.formControlGroup"
+        (ngSubmit)="_dateChange(matDatepicker.value); _formControl.errors && tooltip.show()"
       >
-        <input
-          matInput
-          cdkFocusInput
-          #input
-          #matDatepicker="matDatepickerInput"
-          [placeholder]="_storage.placeholder"
-          [formControlName]="_formControl.formControlName"
-          [matDatepicker]="picker"
-          (dateChange)="_dateChange(matDatepicker.value); picker.close()"
-          [type]="_common.type"
-          [autocomplete]="_common.autocomplete"
-        />
-        @if (_formControl.errors) {
-        <mat-error></mat-error>
-        }
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </form>
-
+        <mat-form-field
+          appearance="outline"
+          #tooltip="matTooltip"
+          [matTooltip]="_formControl.errors?.validationMessage"
+          [matTooltipPosition]="'above'"
+          [matTooltipDisabled]="!_formControl.errors"
+          [matTooltipShowDelay]="0"
+          [matTooltipHideDelay]="0"
+        >
+          <input
+            matInput
+            cdkFocusInput
+            #input
+            #matDatepicker="matDatepickerInput"
+            [placeholder]="_storage.placeholder"
+            [formControlName]="_formControl.formControlName"
+            [matDatepicker]="picker"
+            (dateChange)="_dateChange(matDatepicker.value); picker.close()"
+            [type]="_common.type"
+            [autocomplete]="_common.autocomplete"
+          />
+          @if (_formControl.errors) {
+            <mat-error></mat-error>
+          }
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </form>
     } @else {
-
-    <div
-      [title]="_dateRender"
-      class="cdk-default-field"
-      [ngClass]="{
-        disabled: _formControl.disabled,
-        'mat-red-500 mat-error': _formControl.errors
-      }"
-    >
-      <span>{{ _dateRender || _storage.placeholder }}</span>
-    </div>
-
+      <div
+        [title]="_dateRender"
+        class="cdk-default-field"
+        [ngClass]="{
+          disabled: _formControl.disabled,
+          'mat-red-500 mat-error': _formControl.errors
+        }"
+      >
+        <span>{{ _dateRender || _storage.placeholder }}</span>
+      </div>
     }
   `,
   encapsulation: ViewEncapsulation.None,

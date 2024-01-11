@@ -48,51 +48,49 @@ export const ACTION_DATA = new InjectionToken<unknown>('ActionData');
   ],
   template: `
     <ng-template [cdkPortalOutlet]="beforeActionPortal"></ng-template>
-    @if (!override) { @if ((_edit.active$ | async) === true && !_formControl.disabled) {
-
-    <form
-      novalidate
-      [formGroup]="_formControl.formControlGroup"
-      (ngSubmit)="_inputChange(input.value); _formControl.errors && tooltip.show()"
-    >
-      <mat-form-field
-        appearance="outline"
-        #tooltip="matTooltip"
-        [matTooltip]="_formControl.errors?.validationMessage"
-        [matTooltipPosition]="'above'"
-        [matTooltipDisabled]="!_formControl.errors"
-        [matTooltipShowDelay]="0"
-        [matTooltipHideDelay]="0"
-      >
-        <input
-          matInput
-          cdkFocusInput
-          #input
-          [placeholder]="_storage.placeholder"
-          [formControlName]="_formControl.formControlName"
-          [type]="_common.type"
-          [autocomplete]="_common.autocomplete"
-        />
-        @if (_formControl.errors) {
-        <mat-error></mat-error>
-        }
-      </mat-form-field>
-    </form>
-
-    } @else {
-
-    <div
-      [title]="_formControl.value"
-      class="cdk-default-field"
-      [ngClass]="{
-        disabled: _formControl.disabled,
-        'mat-red-500 mat-error': _formControl.errors
-      }"
-    >
-      <span>{{ _formControl.value || _storage.placeholder }}</span>
-    </div>
-
-    } }
+    @if (!override) {
+      @if ((_edit.active$ | async) === true && !_formControl.disabled) {
+        <form
+          novalidate
+          [formGroup]="_formControl.formControlGroup"
+          (ngSubmit)="_inputChange(input.value); _formControl.errors && tooltip.show()"
+        >
+          <mat-form-field
+            appearance="outline"
+            #tooltip="matTooltip"
+            [matTooltip]="_formControl.errors?.validationMessage"
+            [matTooltipPosition]="'above'"
+            [matTooltipDisabled]="!_formControl.errors"
+            [matTooltipShowDelay]="0"
+            [matTooltipHideDelay]="0"
+          >
+            <input
+              matInput
+              cdkFocusInput
+              #input
+              [placeholder]="_storage.placeholder"
+              [formControlName]="_formControl.formControlName"
+              [type]="_common.type"
+              [autocomplete]="_common.autocomplete"
+            />
+            @if (_formControl.errors) {
+              <mat-error></mat-error>
+            }
+          </mat-form-field>
+        </form>
+      } @else {
+        <div
+          [title]="_formControl.value"
+          class="cdk-default-field"
+          [ngClass]="{
+            disabled: _formControl.disabled,
+            'mat-red-500 mat-error': _formControl.errors
+          }"
+        >
+          <span>{{ _formControl.value || _storage.placeholder }}</span>
+        </div>
+      }
+    }
     <ng-template [cdkPortalOutlet]="afterActionPortal"></ng-template>
   `,
   encapsulation: ViewEncapsulation.None,
