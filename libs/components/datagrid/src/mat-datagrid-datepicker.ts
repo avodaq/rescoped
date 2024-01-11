@@ -26,7 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgIf, NgClass, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 
 // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
 @Component({
@@ -39,59 +39,61 @@ import { NgIf, NgClass, AsyncPipe } from '@angular/common';
     DATAGRID_STORAGE_PROVIDER,
   ],
   template: `
-    <ng-container
-      *ngIf="(_edit.active$ | async) === true && !_formControl.disabled; else defaultTemplate"
+    @if ((_edit.active$ | async) === true && !_formControl.disabled) {
+
+    <form
+      novalidate
+      [formGroup]="_formControl.formControlGroup"
+      (ngSubmit)="_dateChange(matDatepicker.value); _formControl.errors && tooltip.show()"
     >
-      <form
-        novalidate
-        [formGroup]="_formControl.formControlGroup"
-        (ngSubmit)="_dateChange(matDatepicker.value); _formControl.errors && tooltip.show()"
+      <mat-form-field
+        appearance="outline"
+        #tooltip="matTooltip"
+        [matTooltip]="_formControl.errors?.validationMessage"
+        [matTooltipPosition]="'above'"
+        [matTooltipDisabled]="!_formControl.errors"
+        [matTooltipShowDelay]="0"
+        [matTooltipHideDelay]="0"
       >
-        <mat-form-field
-          appearance="outline"
-          #tooltip="matTooltip"
-          [matTooltip]="_formControl.errors?.validationMessage"
-          [matTooltipPosition]="'above'"
-          [matTooltipDisabled]="!_formControl.errors"
-          [matTooltipShowDelay]="0"
-          [matTooltipHideDelay]="0"
-        >
-          <input
-            matInput
-            cdkFocusInput
-            #input
-            #matDatepicker="matDatepickerInput"
-            [placeholder]="_storage.placeholder"
-            [formControlName]="_formControl.formControlName"
-            [matDatepicker]="picker"
-            (dateChange)="_dateChange(matDatepicker.value); picker.close()"
-            [type]="_common.type"
-            [autocomplete]="_common.autocomplete"
-          />
-          <mat-error *ngIf="_formControl.errors"></mat-error>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </form>
-    </ng-container>
-    <ng-template #defaultTemplate>
-      <div
-        [title]="_dateRender"
-        class="cdk-default-field"
-        [ngClass]="{
-          disabled: _formControl.disabled,
-          'mat-red-500 mat-error': _formControl.errors
-        }"
-      >
-        <span>{{ _dateRender || _storage.placeholder }}</span>
-      </div>
-    </ng-template>
+        <input
+          matInput
+          cdkFocusInput
+          #input
+          #matDatepicker="matDatepickerInput"
+          [placeholder]="_storage.placeholder"
+          [formControlName]="_formControl.formControlName"
+          [matDatepicker]="picker"
+          (dateChange)="_dateChange(matDatepicker.value); picker.close()"
+          [type]="_common.type"
+          [autocomplete]="_common.autocomplete"
+        />
+        @if (_formControl.errors) {
+        <mat-error></mat-error>
+        }
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </form>
+
+    } @else {
+
+    <div
+      [title]="_dateRender"
+      class="cdk-default-field"
+      [ngClass]="{
+        disabled: _formControl.disabled,
+        'mat-red-500 mat-error': _formControl.errors
+      }"
+    >
+      <span>{{ _dateRender || _storage.placeholder }}</span>
+    </div>
+
+    }
   `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
-    NgIf,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,

@@ -2,32 +2,33 @@ import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } fr
 import { CdkDatagridCollapseComponent } from './cdk-datagrid-collapse';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { NgIf } from '@angular/common';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'mat-datagrid-collapse',
   template: `
     <div class="cdk-datagrid-collapse">
-      <ng-container *ngIf="getActionType === 'row-global'">
-        <div class="row-global flex">
-          <mat-icon class="m-auto">edit_note</mat-icon>
-        </div>
-      </ng-container>
+      @if (getActionType === 'row-global') {
 
-      <ng-container *ngIf="getActionType === 'row-group'">
-        <button (click)="collapseChanged()" mat-icon-button aria-label="Collapse this group">
-          <mat-icon>
-            {{ collapsed ? 'expand_more' : 'expand_less' }}
-          </mat-icon>
-        </button>
-      </ng-container>
+      <div class="row-global flex">
+        <mat-icon class="m-auto">edit_note</mat-icon>
+      </div>
+
+      } @if (getActionType === 'row-group') {
+
+      <button (click)="collapseChanged()" mat-icon-button aria-label="Collapse this group">
+        <mat-icon>
+          {{ collapsed ? 'expand_more' : 'expand_less' }}
+        </mat-icon>
+      </button>
+
+      }
     </div>
   `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, MatIconModule, MatButtonModule],
+  imports: [MatIconModule, MatButtonModule],
 })
 export class MatDatagridCollapseComponent<Item> extends CdkDatagridCollapseComponent<Item> {
   @HostBinding('class.mat-datagrid-collapse') override hostClass = true;

@@ -35,7 +35,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgIf, NgFor, NgClass, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 
 // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
 @Component({
@@ -48,82 +48,86 @@ import { NgIf, NgFor, NgClass, AsyncPipe } from '@angular/common';
     DATAGRID_STORAGE_PROVIDER,
   ],
   template: `
-    <ng-container
-      *ngIf="(_edit.active$ | async) === true && !_formControl.disabled; else defaultTemplate"
-    >
-      <form
-        novalidate
-        [formGroup]="_formControl.formControlGroup"
-        (keydown.enter)="$event.preventDefault()"
-        (ngSubmit)="_addSelection(input.value)"
-      >
-        <mat-form-field
-          [appearance]="'outline'"
-          #tooltip="matTooltip"
-          [matTooltip]="_formControl.errors?.validationMessage"
-          [matTooltipPosition]="'above'"
-          [matTooltipDisabled]="!_formControl.errors"
-          [matTooltipShowDelay]="0"
-          [matTooltipHideDelay]="0"
-        >
-          <input
-            matInput
-            cdkFocusCombobox
-            #input
-            [placeholder]="_storage.placeholder"
-            (keyup)="_search$.next(input.value)"
-            [formControlName]="_formControl.formControlName"
-            [title]="_renderForDefaultView"
-            [matAutocomplete]="auto"
-            [autocomplete]="autocomplete"
-            [type]="_common.type"
-          />
-          <mat-error *ngIf="_formControl.errors"></mat-error>
-          <button
-            matSuffix
-            mat-icon-button
-            aria-label="add item button"
-            class="add-item-icon"
-            *ngIf="selectionAdd"
-            (click)="_addSelection(input.value.trim()); input.value = ''"
-            [color]="selectionAddIconColor"
-          >
-            <mat-icon>{{ selectionAddIcon }}</mat-icon>
-          </button>
+    @if ((_edit.active$ | async) === true && !_formControl.disabled) {
 
-          <mat-autocomplete
-            #auto="matAutocomplete"
-            [panelWidth]="'auto'"
-            [displayWith]="_displayForAutoCompleteOption.bind(this)"
-            (optionSelected)="
-              _selectionChange($event); input.blur(); _formControl.errors && tooltip.show()
-            "
-          >
-            <mat-option *ngFor="let option of _filteredOptions$ | async" [value]="option">
-              <div>{{ option[this._storage.renderKey] }}</div>
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-      </form>
-    </ng-container>
-    <ng-template #defaultTemplate>
-      <div
-        [title]="_renderForDefaultView"
-        class="cdk-default-field"
-        [ngClass]="{
-          disabled: _formControl.disabled,
-          'mat-red-500 mat-error': _formControl.errors
-        }"
+    <form
+      novalidate
+      [formGroup]="_formControl.formControlGroup"
+      (keydown.enter)="$event.preventDefault()"
+      (ngSubmit)="_addSelection(input.value)"
+    >
+      <mat-form-field
+        [appearance]="'outline'"
+        #tooltip="matTooltip"
+        [matTooltip]="_formControl.errors?.validationMessage"
+        [matTooltipPosition]="'above'"
+        [matTooltipDisabled]="!_formControl.errors"
+        [matTooltipShowDelay]="0"
+        [matTooltipHideDelay]="0"
       >
-        <span>{{ _renderForDefaultView || _storage.placeholder }}</span>
-      </div>
-    </ng-template>
+        <input
+          matInput
+          cdkFocusCombobox
+          #input
+          [placeholder]="_storage.placeholder"
+          (keyup)="_search$.next(input.value)"
+          [formControlName]="_formControl.formControlName"
+          [title]="_renderForDefaultView"
+          [matAutocomplete]="auto"
+          [autocomplete]="autocomplete"
+          [type]="_common.type"
+        />
+        @if (_formControl.errors) {
+        <mat-error></mat-error>
+        } @if (selectionAdd) {
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="add item button"
+          class="add-item-icon"
+          (click)="_addSelection(input.value.trim()); input.value = ''"
+          [color]="selectionAddIconColor"
+        >
+          <mat-icon>{{ selectionAddIcon }}</mat-icon>
+        </button>
+        }
+
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          [panelWidth]="'auto'"
+          [displayWith]="_displayForAutoCompleteOption.bind(this)"
+          (optionSelected)="
+            _selectionChange($event); input.blur(); _formControl.errors && tooltip.show()
+          "
+        >
+          @for (option of _filteredOptions$ | async; track option) {
+          <mat-option [value]="option">
+            <div>{{ option[this._storage.renderKey] }}</div>
+          </mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+
+    } @else {
+
+    <div
+      [title]="_renderForDefaultView"
+      class="cdk-default-field"
+      [ngClass]="{
+        disabled: _formControl.disabled,
+        'mat-red-500 mat-error': _formControl.errors
+      }"
+    >
+      <span>{{ _renderForDefaultView || _storage.placeholder }}</span>
+    </div>
+
+    }
   `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
-    NgIf,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -133,7 +137,6 @@ import { NgIf, NgFor, NgClass, AsyncPipe } from '@angular/common';
     CdkDatagridFocusComboboxDirective,
     MatButtonModule,
     MatIconModule,
-    NgFor,
     MatOptionModule,
     NgClass,
     AsyncPipe,
