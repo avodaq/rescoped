@@ -2,9 +2,6 @@
   "extends": ["../../.eslintrc.json", "@rescoped/eslint-config/angular"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
-    // @todo:
-    // - this can be added to the datagrid because its applied there!
-    // - how to apply to a specific inline-template?
     {
       "files": ["*.html"],
       "extends": ["plugin:@nx/angular-template"],

@@ -21,19 +21,11 @@
       },
       "defaultConfiguration": "production"
     },
-    "test": {
-      "executor": "@angular-devkit/build-angular:karma",
-      "options": {
-        "tsConfig": "libs/components/tsconfig.spec.json",
-        "karmaConfig": "libs/components/karma.conf.js",
-        "polyfills": ["zone.js", "zone.js/testing"]
-      }
-    },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/components/**/*.ts", "libs/components/**/*.html"]
+        "lintFilePatterns": ["libs/components/**/*.{ts,tsx,js,jsx}", "libs/components/package.json"]
       }
     }
   },

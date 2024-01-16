@@ -22,9 +22,10 @@
       "defaultConfiguration": "production"
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/provider/**/*.ts", "libs/provider/**/*.html"]
+        "lintFilePatterns": ["libs/provider/**/*.{ts,tsx,js,jsx}", "libs/provider/package.json"]
       }
     }
   },

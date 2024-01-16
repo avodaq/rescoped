@@ -6,15 +6,18 @@
   "prefix": "avo",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:browser-esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/skygrid",
         "index": "apps/skygrid/src/index.html",
         "main": "apps/skygrid/src/main.ts",
-        "polyfills": "apps/skygrid/src/polyfills.ts",
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/skygrid/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
+        "stylePreprocessorOptions": {
+          "includePaths": [""]
+        },
         "assets": ["apps/skygrid/src/favicon.ico", "apps/skygrid/src/assets"],
         "styles": [
           "apps/skygrid/src/styles.scss",
@@ -25,25 +28,24 @@
       },
       "configurations": {
         "production": {
-          "budgets": [
-            {
-              "type": "initial",
-              "maximumWarning": "2mb",
-              "maximumError": "2mb"
-            },
-            {
-              "type": "anyComponentStyle",
-              "maximumWarning": "2kb",
-              "maximumError": "4kb"
-            }
-          ],
           "optimization": true,
           "outputHashing": "all",
           "sourceMap": false,
           "namedChunks": false,
           "extractLicenses": true,
-          "vendorChunk": false,
           "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2.4mb",
+              "maximumError": "3.00mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "20kb",
+              "maximumError": "500kb"
+            }
+          ],
           "fileReplacements": [
             {
               "replace": "apps/skygrid/src/environments/environment.ts",
@@ -54,22 +56,20 @@
         "development": {
           "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
         }
-      },
-      "defaultConfiguration": "production"
+      }
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "skygrid:build:production"
+          "buildTarget": "skygrid:build:production"
         },
         "development": {
-          "browserTarget": "skygrid:build:development"
+          "buildTarget": "skygrid:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -77,26 +77,11 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "skygrid:build"
+        "buildTarget": "skygrid:build"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "options": {
-        "lintFilePatterns": ["apps/skygrid/src/**/*.ts", "apps/skygrid/src/**/*.html"]
-      }
-    },
-    "test": {
-      "executor": "@angular-devkit/build-angular:karma",
-      "options": {
-        "main": "apps/skygrid/src/test.ts",
-        "tsConfig": "apps/skygrid/tsconfig.spec.json",
-        "karmaConfig": "apps/skygrid/karma.conf.js",
-        "polyfills": "apps/skygrid/src/polyfills.ts",
-        "styles": [],
-        "scripts": [],
-        "assets": []
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": []

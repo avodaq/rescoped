@@ -5,7 +5,7 @@ export type Item = {
   name: string;
 };
 
-type CustomActionTypes =
+export type CustomActionTypes =
   // item
   | 'item-has-override-rules'
   | 'item-has-not-override-rules'

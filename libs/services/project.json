@@ -31,10 +31,10 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/services/**/*.ts", "libs/services/**/*.html"]
+        "lintFilePatterns": ["libs/services/**/*.{ts,tsx,js,jsx}", "libs/services/package.json"]
       }
     }
   },

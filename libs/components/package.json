@@ -2,10 +2,8 @@
   "name": "@rescoped/components",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "16.0.6",
-    "@angular/core": "16.0.6"
+    "@rescoped/provider": "*",
+    "@rescoped/services": "*"
   },
-  "dependencies": {
-    "tslib": "^2.4.1"
-  }
+  "dependencies": {}
 }

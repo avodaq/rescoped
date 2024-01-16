@@ -12,9 +12,7 @@ export class MatDatagridRowDirective<Item> {
   #itemPayload!: ItemPayload<Item>;
 
   @HostBinding('class') get actionType() {
-    return `${HOST_CLASS_PREFIX}-${this.#itemPayload.actionType} ${HOST_CLASS_PREFIX}-group-id-${
-      this.#itemPayload.groupId
-    } ${HOST_CLASS_PREFIX}-parent-${this.#itemPayload.parent}`;
+    return `${HOST_CLASS_PREFIX}-${this.#itemPayload.actionType} ${HOST_CLASS_PREFIX}-group-id-${this.#itemPayload.groupId} ${HOST_CLASS_PREFIX}-parent-${this.#itemPayload.parent}`;
   }
 
   @Input() set item(item: Item) {

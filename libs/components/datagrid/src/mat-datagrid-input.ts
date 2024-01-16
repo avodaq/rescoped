@@ -30,7 +30,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgIf, NgClass, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 
 // @todo: move to separate file!
 export const ACTION_DATA = new InjectionToken<unknown>('ActionData');
@@ -48,10 +48,8 @@ export const ACTION_DATA = new InjectionToken<unknown>('ActionData');
   ],
   template: `
     <ng-template [cdkPortalOutlet]="beforeActionPortal"></ng-template>
-    <ng-container *ngIf="!override">
-      <ng-container
-        *ngIf="(_edit.active$ | async) === true && !_formControl.disabled; else defaultTemplate"
-      >
+    @if (!override) {
+      @if ((_edit.active$ | async) === true && !_formControl.disabled) {
         <form
           novalidate
           [formGroup]="_formControl.formControlGroup"
@@ -75,11 +73,12 @@ export const ACTION_DATA = new InjectionToken<unknown>('ActionData');
               [type]="_common.type"
               [autocomplete]="_common.autocomplete"
             />
-            <mat-error *ngIf="_formControl.errors"></mat-error>
+            @if (_formControl.errors) {
+              <mat-error></mat-error>
+            }
           </mat-form-field>
         </form>
-      </ng-container>
-      <ng-template #defaultTemplate>
+      } @else {
         <div
           [title]="_formControl.value"
           class="cdk-default-field"
@@ -90,8 +89,8 @@ export const ACTION_DATA = new InjectionToken<unknown>('ActionData');
         >
           <span>{{ _formControl.value || _storage.placeholder }}</span>
         </div>
-      </ng-template>
-    </ng-container>
+      }
+    }
     <ng-template [cdkPortalOutlet]="afterActionPortal"></ng-template>
   `,
   encapsulation: ViewEncapsulation.None,
@@ -99,7 +98,6 @@ export const ACTION_DATA = new InjectionToken<unknown>('ActionData');
   standalone: true,
   imports: [
     PortalModule,
-    NgIf,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,

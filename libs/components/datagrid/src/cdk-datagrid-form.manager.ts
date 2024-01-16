@@ -23,9 +23,9 @@ export class CdkDatagridFormManager<
     private readonly _ruleManager: CdkDatagridRuleManager<Item>,
   ) {}
 
-  #formControlsByIds: DatagridForms<Item> = new Map();
+  readonly #formControlsByIds: DatagridForms<Item> = new Map();
 
-  #formGroup = this._formBuilder.group({});
+  readonly #formGroup = this._formBuilder.group({});
 
   formGroupControls = this.#formGroup.controls;
 

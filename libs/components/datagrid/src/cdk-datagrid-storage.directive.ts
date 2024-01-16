@@ -60,10 +60,10 @@ export class CdkDatagridStorageDirective<
     const actionType = getItemPayloadValue(this.item, 'actionType');
     const action = this._ruleManager.getActionRule(this.item, this.key, actionType);
 
-    let itemData = { [this.key]: valueByKey };
+    let _itemData = { [this.key]: valueByKey };
     if (action?.transform) {
-      itemData = getItemData(this.item) as { [key: string]: ItemValue };
-      itemData = action.transform(itemData, this.key, value);
+      _itemData = getItemData(this.item) as { [key: string]: ItemValue };
+      _itemData = action.transform(_itemData, this.key, value);
     }
 
     this._dataSourceManager.setValue(this.key, valueByKey, this.item, payload => {
