@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } fr
 import { CdkDatagridCollapseComponent } from './cdk-datagrid-collapse';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { NgIf } from '@angular/common';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -25,7 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [MatIconModule, MatButtonModule],
+  imports: [NgIf, MatIconModule, MatButtonModule],
 })
 export class MatDatagridCollapseComponent<Item> extends CdkDatagridCollapseComponent<Item> {
   @HostBinding('class.mat-datagrid-collapse') override hostClass = true;
