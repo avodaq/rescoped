@@ -2,8 +2,8 @@
   "name": "@rescoped/components",
   "version": "0.0.1",
   "peerDependencies": {
-    "@rescoped/provider": "*",
-    "@rescoped/services": "*"
+    "@rescoped/provider": "file:../provider",
+    "@rescoped/services": "file:../services"
   },
   "dependencies": {}
 }
