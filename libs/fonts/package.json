@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Self host google font Roboto & Material icons",
   "main": "_index.scss",
-  "author": "Arthur Ersosi",
+  "author": "Serkan Sipahi",
   "license": "MIT",
   "files": [
     "_index.scss"

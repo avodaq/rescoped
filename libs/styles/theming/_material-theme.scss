@@ -1,13 +1,13 @@
 @use '@angular/material' as mat;
-@use '@angular/material/theming' as mat_palettes;
+//@use '@angular/material/theming' as mat_palettes;
 @use 'sass:map';
 @include mat.core();
 
-$avo-primary: mat.define-palette(mat.$cyan-palette) !default;
-$avo-accent: mat.define-palette(mat.$deep-purple-palette, A200, A100, A400) !default;
-$avo-warn: mat.define-palette(mat.$red-palette) !default;
+$avo-primary: mat.m2-define-palette(mat.$cyan-palette) !default;
+$avo-accent: mat.m2-define-palette(mat.$deep-purple-palette, A200, A100, A400) !default;
+$avo-warn: mat.m2-define-palette(mat.$red-palette) !default;
 
-$avo-light-theme: mat.define-light-theme(
+$avo-light-theme: mat.m2-define-light-theme(
   (
     color: (
       primary: $avo-primary,
@@ -36,7 +36,7 @@ $avo-dark-theme-background-palette: (
   dialog: map.get(mat.$blue-grey-palette, 800),
   disabled-button: rgba(white, 0.12),
   raised-button: map.get(mat.$blue-grey-palette, 800),
-  focused-button: mat_palettes.$light-focused,
+  //focused-button: mat_palettes.$light-focused,
   selected-button: map.get(mat.$blue-grey-palette, 900),
   selected-disabled-button: map.get(mat.$blue-grey-palette, 800),
   disabled-button-toggle: black,
@@ -49,7 +49,7 @@ $avo-dark-theme-background-palette: (
   @return (
     primary: $primary,
     accent: $accent,
-    warn: if($warn != null, $warn, mat.define-palette(mat.$red-palette)),
+    warn: if($warn != null, $warn, mat.m2-define-palette(mat.$red-palette)),
     is-dark: true,
     foreground: mat.$dark-theme-foreground-palette,
     background: $avo-dark-theme-background-palette
