@@ -2,25 +2,25 @@
 
 @mixin MDC-form-field-densities() {
   .density-lg {
-    @include mat.private-form-field-density(-5);
+    @include mat.form-field-density(-5);
     .mat-mdc-form-field-input-control.mat-mdc-form-field-input-control {
       font-size: 16px;
     }
   }
   .density-md {
-    @include mat.private-form-field-density(-6);
+    @include mat.form-field-density(-6);
     .mat-mdc-form-field-input-control.mat-mdc-form-field-input-control {
       font-size: 15.25px;
     }
   }
   .density-sm {
-    @include mat.private-form-field-density(-7);
+    @include mat.form-field-density(-7);
     .mat-mdc-form-field-input-control.mat-mdc-form-field-input-control {
       font-size: 14.75px;
     }
   }
   .density-xs {
-    @include mat.private-form-field-density(-8);
+    @include mat.form-field-density(-8);
     .mat-mdc-form-field-input-control.mat-mdc-form-field-input-control {
       font-size: 14px;
     }

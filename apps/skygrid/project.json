@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/skygrid/src",
   "prefix": "avo",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser-esbuild",
@@ -16,7 +17,7 @@
         "tsConfig": "apps/skygrid/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "stylePreprocessorOptions": {
-          "includePaths": [""]
+          "includePaths": ["./node_modules"]
         },
         "assets": ["apps/skygrid/src/favicon.ico", "apps/skygrid/src/assets"],
         "styles": [
@@ -83,6 +84,5 @@
     "lint": {
       "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": []
+  }
 }

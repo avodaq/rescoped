@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/services",
   "prefix": "avo",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:package",
@@ -32,11 +33,9 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/services/**/*.{ts,tsx,js,jsx}", "libs/services/package.json"]
+        "lintFilePatterns": ["{projectRoot}/**/*.{ts,tsx,js,jsx}", "{projectRoot}/package.json"]
       }
     }
-  },
-  "tags": []
+  }
 }
