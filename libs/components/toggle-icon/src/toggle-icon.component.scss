@@ -20,7 +20,7 @@
   // unchecked
   .mdc-switch--unselected .mdc-switch__icons:before {
     @include helpers.get-icon(var(--avo-toggle-icon-unchecked));
-    color: map.get(mat.$yellow-palette, 500);
+    color: map.get(mat.$m2-yellow-palette, 500);
   }
 
   // checked

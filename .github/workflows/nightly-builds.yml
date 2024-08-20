@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - run: npm install -i
+      - run: npm ci
       - run: npx nx run-many -t build --all
       - run: cp -R libs/eslint-config dist/libs/eslint-config
 
